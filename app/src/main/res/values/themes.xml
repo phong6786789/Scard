@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Scard" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/blue2_main</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -14,5 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowDisablePreview">true</item>
+        <item name="fontFamily">@font/quicksand</item>
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>

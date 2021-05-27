@@ -7,10 +7,17 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:background="@drawable/linear_bg"
+        android:gravity="center"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.PlashScreen">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:padding="80dp"
+            android:src="@drawable/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 </layout>

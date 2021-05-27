@@ -7,6 +7,8 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.subi.scard.R
 import com.subi.scard.databinding.ActivityPlashScreenBinding
+import com.subi.scard.utils.Utils
+import com.subi.scard.view.intro.IntroActivity
 
 class PlashScreen : AppCompatActivity() {
     lateinit var binding: ActivityPlashScreenBinding
@@ -23,7 +25,7 @@ class PlashScreen : AppCompatActivity() {
 
         //Next screen
         Handler().postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-        }, 3000)
+            Utils.tempNext(this, IntroActivity::class.java)
+        }, 2000)
     }
 }

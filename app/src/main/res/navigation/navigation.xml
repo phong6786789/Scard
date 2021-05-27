@@ -2,23 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"
-    app:startDestination="@id/introFirstFragment">
-
-    <fragment
-        android:id="@+id/introFirstFragment"
-        android:name="com.subi.scard.IntroFirstFragment"
-        android:label="fragment_intro_first"
-        tools:layout="@layout/fragment_intro_first" />
-    <fragment
-        android:id="@+id/introSecondFragment"
-        android:name="com.subi.scard.IntroSecondFragment"
-        android:label="fragment_intro_second"
-        tools:layout="@layout/fragment_intro_second" />
-    <fragment
-        android:id="@+id/introThirdFragment"
-        android:name="com.subi.scard.IntroThirdFragment"
-        android:label="fragment_intro_third"
-        tools:layout="@layout/fragment_intro_third" />
+    android:id="@+id/navigation">
 
 </navigation>
