@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-    //Block back
+    //Block back if this in curren fragment
     override fun onBackPressed() {
         val currentFragment = findNavController(R.id.fragment).currentDestination?.id
         if (currentFragment == R.id.loginFragment||currentFragment == R.id.homeFragment) {
