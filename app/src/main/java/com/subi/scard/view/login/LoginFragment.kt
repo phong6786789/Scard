@@ -8,6 +8,7 @@ import com.subi.scard.BR
 import com.subi.scard.R
 import com.subi.scard.base.fragment.BaseBindingFragment
 import com.subi.scard.databinding.FragmentLoginBinding
+import com.subi.scard.utils.Constance
 
 class LoginFragment : BaseBindingFragment<FragmentLoginBinding, LoginViewmodel>() {
     override val bindingVariable: Int
@@ -26,6 +27,10 @@ class LoginFragment : BaseBindingFragment<FragmentLoginBinding, LoginViewmodel>(
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
-        activity?.title = "ĐĂNG NHẬP"
+        activity?.title = Constance.TITLE.LOGIN
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 }

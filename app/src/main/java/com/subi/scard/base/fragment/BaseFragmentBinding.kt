@@ -23,6 +23,7 @@ abstract class BaseBindingFragment<V : ViewDataBinding, M : BaseViewModel> : Bas
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         viewDataBinding = DataBindingUtil.inflate(inflater, layoutResource, container, false)
         initVariable(savedInstanceState, viewDataBinding?.root!!)
         initData(savedInstanceState, viewDataBinding?.root!!)
@@ -42,7 +43,6 @@ abstract class BaseBindingFragment<V : ViewDataBinding, M : BaseViewModel> : Bas
         inflater.inflate(R.menu.menu, menu)
         itemLogout =menu.findItem(R.id.logout)
         itemQr =menu.findItem(R.id.home)
-
         super.onCreateOptionsMenu(menu, inflater)
     }
 
