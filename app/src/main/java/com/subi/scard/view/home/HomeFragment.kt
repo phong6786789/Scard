@@ -10,7 +10,8 @@ import com.subi.scard.BR
 import com.subi.scard.R
 import com.subi.scard.base.fragment.BaseBindingFragment
 import com.subi.scard.databinding.FragmentHomeBinding
-import com.subi.scard.databinding.FragmentLoginBinding
+
+
 class HomeFragment : BaseBindingFragment<FragmentHomeBinding, HomeViewmodel>() {
     override val bindingVariable: Int
         get() = BR.viewmodel
