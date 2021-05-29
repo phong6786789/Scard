@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -31,8 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    dataBinding{
-        enabled = true
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
 }
 
@@ -47,6 +49,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -60,5 +63,19 @@ dependencies {
     def lifecycle_version = "2.0.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation 'com.romandanylyk:pageindicatorview:0.2.0'
+//    implementation 'com.romandanylyk:pageindicatorview:0.2.0'
+
+    //google
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:27.1.0')
+
+    // Declare the dependency for the Firebase Authentication library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    // Also declare the dependency for the Google Play services library and specify its version
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+    //facebook login
+    implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
 }

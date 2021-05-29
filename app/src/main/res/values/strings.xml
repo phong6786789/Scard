@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">Scard</string>
+
+    <string name="facebook_app_id">502865764485189</string>
+    <string name="fb_login_protocol_scheme">fb502865764485189</string>
+
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_login_google">sign in with google</string>
+    <string name="button_login_fb">sign in with facebook</string>
+
 </resources>

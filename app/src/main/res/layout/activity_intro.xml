@@ -33,20 +33,20 @@
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/blue_main" />
 
-        <com.rd.PageIndicatorView
-            android:id="@+id/pageIndicatorView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:padding="5dp"
-            attrs:piv_animationType="fill"
-            attrs:piv_interactiveAnimation="true"
-            attrs:piv_padding="15dp"
-            attrs:piv_radius="5dp"
-            attrs:piv_selectedColor="@color/blue2_main"
-            attrs:piv_unselectedColor="@color/blue2_main"
-            attrs:piv_viewPager="@id/view_pager" />
+<!--        <com.rd.PageIndicatorView-->
+<!--            android:id="@+id/pageIndicatorView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:padding="5dp"-->
+<!--            attrs:piv_animationType="fill"-->
+<!--            attrs:piv_interactiveAnimation="true"-->
+<!--            attrs:piv_padding="15dp"-->
+<!--            attrs:piv_radius="5dp"-->
+<!--            attrs:piv_selectedColor="@color/blue2_main"-->
+<!--            attrs:piv_unselectedColor="@color/blue2_main"-->
+<!--            attrs:piv_viewPager="@id/view_pager" />-->
     </RelativeLayout>
 </layout>
