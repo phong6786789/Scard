@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:attrs="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -22,6 +19,7 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_marginEnd="16dp"
+            android:layout_alignParentBottom="true"
             android:visibility="gone"
             android:tint="@color/white"
             android:src="@drawable/ic_baseline_navigate_next_24"
@@ -29,24 +27,22 @@
             android:id="@+id/button_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/pageIndicatorView"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/blue_main" />
-
-        <com.rd.PageIndicatorView
-            android:id="@+id/pageIndicatorView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:padding="5dp"
-            attrs:piv_animationType="fill"
-            attrs:piv_interactiveAnimation="true"
-            attrs:piv_padding="15dp"
-            attrs:piv_radius="5dp"
-            attrs:piv_selectedColor="@color/blue2_main"
-            attrs:piv_unselectedColor="@color/blue2_main"
-            attrs:piv_viewPager="@id/view_pager" />
+<!--        <com.rd.PageIndicatorView-->
+<!--            android:id="@+id/pageIndicatorView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:padding="5dp"-->
+<!--            attrs:piv_animationType="fill"-->
+<!--            attrs:piv_interactiveAnimation="true"-->
+<!--            attrs:piv_padding="15dp"-->
+<!--            attrs:piv_radius="5dp"-->
+<!--            attrs:piv_selectedColor="@color/blue2_main"-->
+<!--            attrs:piv_unselectedColor="@color/blue2_main"-->
+<!--            attrs:piv_viewPager="@id/view_pager" />-->
     </RelativeLayout>
 </layout>

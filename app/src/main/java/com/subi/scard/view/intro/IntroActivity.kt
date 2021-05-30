@@ -10,6 +10,7 @@ import com.subi.scard.R
 import com.subi.scard.databinding.ActivityIntroBinding
 import com.subi.scard.utils.Utils
 import com.subi.scard.view.MainActivity
+import com.subi.scard.view.loginGG.LoginActivity
 
 class IntroActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class IntroActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_intro)
         binding.lifecycleOwner = this
         binding.viewPager.adapter = IntroAdapter(this, images)
-        binding.pageIndicatorView.setViewPager(binding.viewPager)
+//        binding.pageIndicatorView.setViewPager(binding.viewPager)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -68,7 +69,7 @@ class IntroActivity : AppCompatActivity() {
 
     private fun onClickNext() {
         if (isLastPage) {
-            Utils.tempNext(this, MainActivity::class.java)
+            Utils.tempNext(this, LoginActivity::class.java)
         } else {
             binding.viewPager.arrowScroll(View.FOCUS_RIGHT)
         }

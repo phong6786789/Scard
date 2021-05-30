@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "422886863519",
+    "project_id": "scard-1f326",
+    "storage_bucket": "scard-1f326.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422886863519:android:47ed5fbeff18bd1a2028aa",
+        "android_client_info": {
+          "package_name": "com.subi.scard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422886863519-npjraug9tvkcdkgfoc27oudvvldtvgvu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXxXnQwPQCgcxpFByklw9dLKgQw-l6FkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422886863519-npjraug9tvkcdkgfoc27oudvvldtvgvu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
