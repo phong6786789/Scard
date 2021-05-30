@@ -20,9 +20,7 @@ class LoginFragment : BaseBindingFragment<FragmentLoginBinding, LoginViewmodel>(
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
         viewDataBinding?.apply {
-            btnRegister.setOnClickListener {
-                findNavController().navigate(R.id.registerFragment)
-            }
+
         }
     }
 
