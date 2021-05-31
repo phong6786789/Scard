@@ -79,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
                     val account = task.getResult(ApiException::class.java)!!
                     firebaseAuthWithGoogle(account.idToken!!)
                 } catch (e: ApiException) {
+                    Log.d("chauAPI", e.message.toString())
                     // Google Sign In failed, update UI appropriately
                     Toast.makeText(this, "Google sign in failed", Toast.LENGTH_SHORT).show()
                     updateUI(null)

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "422886863519-s6823nosdhid7u8c7tf3ffbjqm11k6sv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.subi.scard",
+            "certificate_hash": "94cf068dd698908b817b101e90fe141385668beb"
+          }
+        },
+        {
           "client_id": "422886863519-npjraug9tvkcdkgfoc27oudvvldtvgvu.apps.googleusercontent.com",
           "client_type": 3
         }
