@@ -76,4 +76,11 @@ dependencies {
 
     //facebook login
     implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
+
+    // Koin AndroidX Scope features
+    implementation "io.insert-koin:koin-androidx-scope:2.2.2"
+    // Koin AndroidX ViewModel features
+    implementation "io.insert-koin:koin-androidx-viewmodel:2.2.2"
+    // Koin AndroidX Fragment features
+    implementation "io.insert-koin:koin-androidx-fragment:2.2.2"
 }

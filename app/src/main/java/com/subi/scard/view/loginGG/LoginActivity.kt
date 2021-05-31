@@ -30,6 +30,7 @@ import com.subi.scard.R
 import com.subi.scard.databinding.ActivityLoginBinding
 import com.subi.scard.utils.Utils
 import com.subi.scard.view.MainActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -41,6 +42,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var dialog: AlertDialog
     private lateinit var fbCallbackManager: CallbackManager
+
+    private val loginViewModel by viewModel<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +65,35 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.buttonLoginFb.setOnClickListener {
             signInFb()
+        }
+
+        loginViewModel.status.observe(this){
+            it?.let {
+                when(it){
+                    "login" -> {
+                        Toast.makeText(
+                            baseContext,
+                            "Login success",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        Utils.tempNext(this, MainActivity::class.java)
+                    }
+                    "success" ->{
+                        Toast.makeText(
+                            baseContext,
+                            "Insert User success",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    "failed" ->{
+                        Toast.makeText(
+                            baseContext,
+                            "Insert User failed",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
         }
 
     }
@@ -122,8 +154,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?){
         user?.let {
-            Toast.makeText(this, it.uid, Toast.LENGTH_SHORT).show()
-            Utils.tempNext(this, MainActivity::class.java)
+            loginViewModel.checkUser(it.uid)
         }
         dialog.dismiss()
     }
