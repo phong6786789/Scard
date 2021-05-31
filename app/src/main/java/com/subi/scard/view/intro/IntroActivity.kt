@@ -12,6 +12,7 @@ import com.subi.scard.utils.Utils
 import com.subi.scard.view.MainActivity
 import com.subi.scard.view.loginGG.LoginActivity
 
+@Suppress("DEPRECATION")
 class IntroActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityIntroBinding
@@ -26,6 +27,7 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_intro)
         binding.lifecycleOwner = this
+        binding.tabDots.setupWithViewPager( binding.viewPager, true)
         binding.viewPager.adapter = IntroAdapter(this, images)
 //        binding.pageIndicatorView.setViewPager(binding.viewPager)
         window.setFlags(

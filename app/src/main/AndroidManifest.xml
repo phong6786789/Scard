@@ -18,8 +18,7 @@
             android:name=".view.intro.IntroActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".view.PlashScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:name=".view.PlashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

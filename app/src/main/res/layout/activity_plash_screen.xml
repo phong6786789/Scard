@@ -8,7 +8,7 @@
     </data>
 
     <LinearLayout
-        android:background="@drawable/button"
+        android:background="@drawable/linear_bg"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"

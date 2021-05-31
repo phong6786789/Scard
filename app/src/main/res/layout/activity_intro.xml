@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -12,37 +13,47 @@
         android:orientation="vertical">
 
         <androidx.viewpager.widget.ViewPager
-            android:layout_centerInParent="true"
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabDots"
+            app:tabBackground="@drawable/tab_seclecter"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_marginEnd="16dp"
-            android:layout_alignParentBottom="true"
-            android:visibility="gone"
-            android:tint="@color/white"
-            android:src="@drawable/ic_baseline_navigate_next_24"
-            android:layout_alignParentEnd="true"
             android:id="@+id/button_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:backgroundTint="@color/blue_main" />
-<!--        <com.rd.PageIndicatorView-->
-<!--            android:id="@+id/pageIndicatorView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:padding="5dp"-->
-<!--            attrs:piv_animationType="fill"-->
-<!--            attrs:piv_interactiveAnimation="true"-->
-<!--            attrs:piv_padding="15dp"-->
-<!--            attrs:piv_radius="5dp"-->
-<!--            attrs:piv_selectedColor="@color/blue2_main"-->
-<!--            attrs:piv_unselectedColor="@color/blue2_main"-->
-<!--            attrs:piv_viewPager="@id/view_pager" />-->
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/blue_main"
+            android:contentDescription="Main"
+            android:src="@drawable/ic_baseline_navigate_next_24"
+            android:tint="@color/white"
+            android:visibility="gone" />
+        <!--        <com.rd.PageIndicatorView-->
+        <!--            android:id="@+id/pageIndicatorView"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_centerHorizontal="true"-->
+        <!--            android:layout_marginBottom="20dp"-->
+        <!--            android:padding="5dp"-->
+        <!--            attrs:piv_animationType="fill"-->
+        <!--            attrs:piv_interactiveAnimation="true"-->
+        <!--            attrs:piv_padding="15dp"-->
+        <!--            attrs:piv_radius="5dp"-->
+        <!--            attrs:piv_selectedColor="@color/blue2_main"-->
+        <!--            attrs:piv_unselectedColor="@color/blue2_main"-->
+        <!--            attrs:piv_viewPager="@id/view_pager" />-->
     </RelativeLayout>
 </layout>
