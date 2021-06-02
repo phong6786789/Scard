@@ -18,7 +18,7 @@
             android:src="@drawable/logo"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="55dp"
-            tools:layout_editor_absoluteY="89dp" />
+            tools:layout_editor_absoluteY="112dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
 
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="144dp"
-            tools:layout_editor_absoluteY="241dp" />
+            tools:layout_editor_absoluteY="251dp" />
 
         <Button
             android:id="@+id/buttonLoginGg"
@@ -44,11 +44,12 @@
             android:paddingEnd="40dp"
             android:text="@string/button_login_google"
             android:textColor="@color/white"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.491" />
+            app:layout_constraintVertical_bias="0.527" />
 
         <Button
             app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +64,7 @@
             android:paddingEnd="40dp"
             android:text="@string/button_login_fb"
             android:textColor="@color/white"
+            android:textStyle="bold"
             style="@style/TextAppearance.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
