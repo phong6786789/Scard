@@ -17,7 +17,7 @@ object Utils {
     }
 
     fun log(tag: String, message: String) {
-        Log.d(tag, message);
+        Log.d(tag, message)
     }
 
     fun showProgressBar(context: Context, message: String): AlertDialog {
