@@ -14,23 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scard"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.loginGG.LoginActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+        <activity android:name=".view.loginGG.LoginActivity"></activity>
         <activity
             android:name=".view.intro.IntroActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".view.PlashScreen">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".view.MainActivity" />
 
