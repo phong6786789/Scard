@@ -71,7 +71,7 @@ class IntroActivity : AppCompatActivity() {
 
     private fun onClickNext() {
         if (isLastPage) {
-            Utils.tempNext(this, LoginActivity::class.java)
+            Utils.tempNext(this, MainActivity::class.java)
         } else {
             binding.viewPager.arrowScroll(View.FOCUS_RIGHT)
         }

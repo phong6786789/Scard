@@ -71,26 +71,27 @@ class LoginActivity : AppCompatActivity() {
             it?.let {
                 when(it){
                     "login" -> {
-                        Toast.makeText(
-                            baseContext,
-                            "Login success",
-                            Toast.LENGTH_SHORT
-                        ).show()
+//                        Toast.makeText(
+//                            baseContext,
+//                            "Login success",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
                         Utils.tempNext(this, MainActivity::class.java)
                     }
                     "success" ->{
-                        Toast.makeText(
-                            baseContext,
-                            "Insert User success",
-                            Toast.LENGTH_SHORT
-                        ).show()
+//                        Toast.makeText(
+//                            baseContext,
+//                            "Insert User success",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+                        Utils.tempNext(this, MainActivity::class.java)
                     }
                     "failed" ->{
-                        Toast.makeText(
-                            baseContext,
-                            "Insert User failed",
-                            Toast.LENGTH_SHORT
-                        ).show()
+//                        Toast.makeText(
+//                            baseContext,
+//                            "Insert User failed",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
                     }
                 }
             }
@@ -144,11 +145,11 @@ class LoginActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.d("chauAPI", it.message.toString())
                 updateUI(null)
-                Toast.makeText(
-                    baseContext,
-                    "Login google failed",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    baseContext,
+//                    "Login google failed",
+//                    Toast.LENGTH_SHORT
+//                ).show()
             }
     }
 
@@ -174,10 +175,10 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onCancel() {
                 updateUI(null)
-                Toast.makeText(
-                    baseContext, "facebook cancel.",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    baseContext, "facebook cancel.",
+//                    Toast.LENGTH_SHORT
+//                ).show()
             }
 
             override fun onError(error: FacebookException) {
@@ -205,10 +206,10 @@ class LoginActivity : AppCompatActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.d("chauAPI", task.exception?.message.toString())
-                    Toast.makeText(
-                        baseContext, "Login facebook failed.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+//                    Toast.makeText(
+//                        baseContext, "Login facebook failed.",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
                     updateUI(null)
                 }
             }
@@ -247,5 +248,10 @@ class LoginActivity : AppCompatActivity() {
             Log.e("Exception", e.toString())
         }
         return key
+    }
+
+    override fun onResume() {
+        dialog.dismiss()
+        super.onResume()
     }
 }

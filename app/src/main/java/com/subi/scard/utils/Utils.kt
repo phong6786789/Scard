@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.core.content.ContextCompat
 import com.subi.scard.databinding.ProgressBarBinding
+import com.subi.scard.view.MainActivity
 
 object Utils {
     fun <T> tempNext(ctx: Context, ofClass: Class<T>) {
@@ -27,5 +28,22 @@ object Utils {
         binding.textMessage.text = message
         builder.setView(binding.root)
         return builder.create()
+    }
+
+    fun saveIdUser(context: Context, key: String) {
+        val sharedPrefs = SharedPrefs.getInstance()
+        sharedPrefs.setStringValue(context, Constants.USER.ID_USER, key)
+    }
+
+    fun getIdUser(context: Context): String? {
+        val sharedPrefs = SharedPrefs.getInstance()
+        val stringValue = sharedPrefs.getStringValue(context, Constants.USER.ID_USER, null)
+        return stringValue
+    }
+
+    //Clear all data
+    fun clearAllSharePrefs(context: Context){
+        val sharedPrefs = SharedPrefs.getInstance()
+        sharedPrefs.getSharedPref(context).edit().clear().apply()
     }
 }

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:visible="false"
-        android:id="@+id/home"
+        android:id="@+id/qr"
         android:icon="@drawable/ic_baseline_qr_code_scanner_24"
         android:title="Quét QR"
         app:showAsAction="always" />

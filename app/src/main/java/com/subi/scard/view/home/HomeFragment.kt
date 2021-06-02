@@ -1,10 +1,9 @@
 package com.subi.scard.view.home
 
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import com.subi.scard.BR
 import com.subi.scard.R
@@ -24,6 +23,29 @@ class HomeFragment : BaseBindingFragment<FragmentHomeBinding, HomeViewmodel>() {
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
         activity?.title = "S-CARD"
-        homeSetup()
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+        itemLogout =menu.findItem(R.id.logout)
+        itemQr =menu.findItem(R.id.home)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.logout -> {
+                logOut()
+                return true
+            }
+            R.id.qr -> {
+                Toast.makeText(activity, "QR", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            else -> {
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
