@@ -9,33 +9,47 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffff">
+        android:background="@drawable/linear_bg"
+        >
 
         <ImageView
+            android:layout_width="301dp"
+            android:layout_height="128dp"
+            android:src="@drawable/logo"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="55dp"
+            tools:layout_editor_absoluteY="89dp" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/logologin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="50dp"/>
+            android:text="Xin chào!"
+            android:textColor="#FFF"
+            android:textSize="30dp"
+            android:textStyle="bold"
+
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="144dp"
+            tools:layout_editor_absoluteY="241dp" />
 
         <Button
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/buttonLoginGg"
-            android:drawableStart="@drawable/ic_google"
-            android:background="@drawable/bg_button_google"
-            android:paddingStart="40dp"
-            android:paddingEnd="40dp"
-            android:layout_marginHorizontal="30dp"
-            android:text="@string/button_login_google"
-            android:textColor="@color/white"
             style="@style/TextAppearance.AppCompat.Button"
             android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/bg_button_google"
+            android:drawableStart="@drawable/ic_google"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:text="@string/button_login_google"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.491" />
+
         <Button
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
