@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         auth = Firebase.auth
         setContentView(binding.root)
-//        printKeyHash(this)
+        printKeyHash(this)
         dialog = Utils.showProgressBar(this, "Loading...")
 
         instanceGoogleSignIn()
