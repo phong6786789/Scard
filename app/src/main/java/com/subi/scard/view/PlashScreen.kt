@@ -27,6 +27,9 @@ class PlashScreen : AppCompatActivity() {
             FLAG_FULLSCREEN,
             FLAG_FULLSCREEN
         )
+
+        //Hide actionbar
+        supportActionBar?.hide()
         binding = ActivityPlashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -34,6 +37,7 @@ class PlashScreen : AppCompatActivity() {
         io.reactivex.Observable.timer(1000, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
             .subscribe {
                 Utils.tempNext(this, IntroActivity::class.java)
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
     }
 }

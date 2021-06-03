@@ -23,5 +23,4 @@ abstract class BaseFragment : Fragment() {
         initData(savedInstanceState, rootView)
         return rootView
     }
-
 }
