@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scard"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.loginGG.LoginActivity" />
+        <activity android:name=".view.loginGG.LoginActivity"></activity>
         <activity
             android:name=".view.intro.IntroActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
