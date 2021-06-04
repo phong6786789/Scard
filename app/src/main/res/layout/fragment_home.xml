@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.subi.scard.view.home.HomeViewmodel" />
+            type="com.subi.scard.view.fragment.home.HomeViewmodel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -8,9 +8,9 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/view_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/view_main">
+        android:layout_height="match_parent">
 
 
         <fragment
@@ -18,9 +18,23 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/bottomNavigation"
+            android:layout_alignParentTop="true"
             app:defaultNavHost="true"
             app:navGraph="@navigation/navigation"
             tools:layout_editor_absoluteX="264dp"
             tools:layout_editor_absoluteY="196dp" />
+        <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:background="@color/blue_main"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:mbn_countBackgroundColor="#ff6f00"
+            app:mbn_countTextColor="#000"
+            app:mbn_defaultIconColor="#909090"
+            app:mbn_rippleColor="@color/blue2_main"
+            app:mbn_selectedIconColor="@color/blue2_main"
+            app:mbn_shadowColor="#5000" />
     </RelativeLayout>
 </layout>

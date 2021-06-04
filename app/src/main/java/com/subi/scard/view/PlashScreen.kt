@@ -2,15 +2,12 @@ package com.subi.scard.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Handler
-import android.view.WindowManager
-import android.view.WindowManager.LayoutParams
 import android.view.WindowManager.LayoutParams.*
 import androidx.appcompat.app.AppCompatActivity
 import com.subi.scard.R
 import com.subi.scard.databinding.ActivityPlashScreenBinding
 import com.subi.scard.utils.Utils
-import com.subi.scard.view.intro.IntroActivity
+import com.subi.scard.view.activity.intro.IntroActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
 

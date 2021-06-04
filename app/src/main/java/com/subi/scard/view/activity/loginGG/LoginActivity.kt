@@ -1,7 +1,8 @@
-package com.subi.scard.view.loginGG
+package com.subi.scard.view.activity.loginGG
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
@@ -10,6 +11,7 @@ import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.ObservableField
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -26,31 +28,36 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.subi.pokemonproject.data.network.BaseNetwork
 import com.subi.scard.R
 import com.subi.scard.databinding.ActivityLoginBinding
-import com.subi.scard.utils.Utils
+import com.subi.scard.utils.*
 import com.subi.scard.view.MainActivity
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import okhttp3.internal.Util
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
 
 class LoginActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityLoginBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
-    private lateinit var dialog: AlertDialog
     private lateinit var fbCallbackManager: CallbackManager
-
-    private val loginViewModel by viewModel<LoginViewModel>()
-
+    private lateinit var dialog: AlertDialog
+    var status: ObservableField<String>? = ObservableField()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
         auth = Firebase.auth
+        if (auth.currentUser!=null){
+            Utils.tempNext(this, MainActivity::class.java)
+        }
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        printKeyHash(this)
+//        printKeyHash(this)
+        //Set no title
+        supportActionBar?.hide()
         dialog = Utils.showProgressBar(this, "Loading...")
 
         instanceGoogleSignIn()
@@ -66,36 +73,6 @@ class LoginActivity : AppCompatActivity() {
         binding.buttonLoginFb.setOnClickListener {
             signInFb()
         }
-
-     /*   loginViewModel.status.observe(this){
-            it?.let {
-                when(it){
-                    "login" -> {
-//                        Toast.makeText(
-//                            baseContext,
-//                            "Login success",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-                        Utils.tempNext(this, MainActivity::class.java)
-                    }
-                    "success" ->{
-//                        Toast.makeText(
-//                            baseContext,
-//                            "Insert User success",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-                        Utils.tempNext(this, MainActivity::class.java)
-                    }
-                    "failed" ->{
-//                        Toast.makeText(
-//                            baseContext,
-//                            "Insert User failed",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-                    }
-                }
-            }
-        }*/
 
     }
 
@@ -153,9 +130,9 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    private fun updateUI(user: FirebaseUser?){
+    private fun updateUI(user: FirebaseUser?) {
         user?.let {
-            loginViewModel.checkUser(it.uid)
+            checkUserById(it.uid)
         }
         dialog.dismiss()
     }
@@ -215,7 +192,7 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    companion object{
+    companion object {
         const val SNS_REQUEST_CODE_GOOGLE = 1
     }
 
@@ -253,5 +230,45 @@ class LoginActivity : AppCompatActivity() {
     override fun onResume() {
         dialog.dismiss()
         super.onResume()
+    }
+
+    fun checkUserById(idUser: String) {
+        GlobalScope.launch {
+            try {
+                Utils.log(
+                    "LOGINTEST",
+                    "respons: " + BaseNetwork.getInstance().checkUserById(idUser).body()?.status
+                )
+
+                fun showMess(message:String){
+                    runOnUiThread {
+                        var dialog: Dialog? = null
+                        dialog =
+                            ShowDialog.Builder(this@LoginActivity)
+                                .title("Thông báo")
+                                .message(message)
+                                .setRightButton("ĐÓNG", object : RightInterface {
+                                    override fun onClick() {
+                                        dialog?.dismiss()
+                                    }
+
+                                })
+                                .miniDialog()
+                        dialog?.show()
+                    }
+                }
+
+                val status = BaseNetwork.getInstance().checkUserById(idUser).body()?.status
+                when (status) {
+                    "login" ->Utils.tempNext(this@LoginActivity, MainActivity::class.java)
+                    "success" -> Utils.tempNext(this@LoginActivity, MainActivity::class.java)
+                    "failed" -> showMess("Đăng nhập thất bại!")
+                }
+
+            } catch (e: Exception) {
+                Utils.log("LOGINTEST", "erro: " + e.message.toString())
+            }
+
+        }
     }
 }

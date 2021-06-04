@@ -1,4 +1,4 @@
-package com.subi.scard.view.intro
+package com.subi.scard.view.activity.intro
 
 import android.content.Context
 import android.view.LayoutInflater
