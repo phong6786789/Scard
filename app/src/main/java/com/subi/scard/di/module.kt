@@ -2,6 +2,7 @@ package com.subi.scard.di
 
 import com.google.gson.GsonBuilder
 import com.subi.scard.data.ApiService
+import com.subi.scard.view.home.HomeViewmodel
 import com.subi.scard.view.loginGG.LoginViewModel
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -16,6 +17,7 @@ val applicationModule = module {
     single { MyReposity(get()) }
 
     viewModel { LoginViewModel(get()) }
+    viewModel { HomeViewmodel(get()) }
 }
 private fun provideRetrofit(): ApiService {
     val gson = GsonBuilder().setLenient().create()

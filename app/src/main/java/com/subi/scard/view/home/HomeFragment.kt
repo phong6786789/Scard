@@ -18,6 +18,8 @@ class HomeFragment : BaseBindingFragment<FragmentHomeBinding, HomeViewmodel>() {
     override val layoutResource: Int
         get() = R.layout.fragment_home
 
+
+
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
     }
 

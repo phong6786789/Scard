@@ -8,11 +8,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val res: MyReposity): BaseViewModel() {
-    val status = MutableLiveData<String?>()
-
+    val statusCheckUser = MutableLiveData<String?>()
     fun checkUser(idUser: String){
         viewModelScope.launch (Dispatchers.IO){
-            status.postValue(res.checkUser(idUser).body()?.status)
+            statusCheckUser.postValue(res.checkUser(idUser).body()?.status)
         }
     }
+
 }
