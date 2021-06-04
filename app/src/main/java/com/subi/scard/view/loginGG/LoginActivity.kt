@@ -67,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
             signInFb()
         }
 
-        loginViewModel.status.observe(this){
+     /*   loginViewModel.status.observe(this){
             it?.let {
                 when(it){
                     "login" -> {
@@ -95,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
-        }
+        }*/
 
     }
 
