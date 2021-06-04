@@ -35,7 +35,7 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="171dp"
-            android:layout_height="19dp"
+            android:layout_height="24dp"
             android:text="chaudang@gmail.com"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/cardView"
