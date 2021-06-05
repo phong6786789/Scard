@@ -17,6 +17,11 @@ object Utils {
         ContextCompat.startActivity(ctx, intent, null)
     }
 
+    fun <T> tempNextNoClear(ctx: Context, ofClass: Class<T>) {
+        var intent = Intent(ctx, ofClass)
+        ContextCompat.startActivity(ctx, intent, null)
+    }
+
     fun log(tag: String, message: String) {
         Log.d(tag, message)
     }

@@ -31,7 +31,7 @@ object BaseNetwork {
     fun providerRetrofit(url: String? = BASE_URL) = Retrofit.Builder()
         .baseUrl(url!!)
         .client(providerHttpClient())
-        .addConverterFactory(GsonConverterFactory.create(gson))
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     fun scardApi() = providerRetrofit().create(ScardApi::class.java)
