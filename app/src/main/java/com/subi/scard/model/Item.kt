@@ -2,19 +2,22 @@ package com.subi.scard.model
 
 import com.google.gson.annotations.SerializedName
 
-class Item {
-    @SerializedName("idUser")
-    val title: String?=""
+data class ItemModel(
+    @SerializedName("item")
+    var getAllList: List<Item>?
+)
 
+data class Item(
+    @SerializedName("id")
+    val id: String?,
+    @SerializedName("title")
+    val title: String?,
     @SerializedName("description")
-    val description: String?=""
-
+    val description: String?,
     @SerializedName("type")
-    val type: String?=""
-
+    val type: String?,
     @SerializedName("idUser")
-    val idUser: String?=""
-
+    val idUser: String?,
     @SerializedName("status")
-    val status: String?="0"
-}
+    val status: String?
+)

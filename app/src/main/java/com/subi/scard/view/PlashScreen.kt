@@ -33,7 +33,7 @@ class PlashScreen : AppCompatActivity() {
         //Next screen
         io.reactivex.Observable.timer(1000, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
             .subscribe {
-                Utils.tempNext(this, IntroActivity::class.java)
+                Utils.tempNextNoClear(this, IntroActivity::class.java)
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
     }

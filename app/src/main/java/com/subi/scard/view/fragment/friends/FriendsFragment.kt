@@ -24,6 +24,6 @@ class FriendsFragment : BaseBindingFragment<FragmentFriendsBinding, FriendsViewm
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
-        activity?.title = Constants.TITLE.SETTINGS
+        activity?.title = Constants.TITLE.FRIENDS
     }
 }
