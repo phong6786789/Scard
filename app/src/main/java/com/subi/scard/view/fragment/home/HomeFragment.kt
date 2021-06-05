@@ -23,19 +23,11 @@ class HomeFragment : BaseBindingFragment<FragmentHomeBinding, HomeViewmodel>() {
 
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            viewModel.idUser = currentUser.uid
-            viewModel.load()
-        } else {
-            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
-        }
-
+        viewModel.load()
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
         activity?.title = Constants.TITLE.HOME
         viewModel.context = context
-
     }
 }

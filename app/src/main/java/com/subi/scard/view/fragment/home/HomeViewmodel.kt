@@ -5,10 +5,12 @@ import android.content.Context
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
 import com.subi.pokemonproject.data.network.BaseNetwork
 import com.subi.scard.base.viewmodel.BaseViewModel
 import com.subi.scard.model.Item
 import com.subi.scard.utils.Utils
+import com.subi.scard.view.activity.loginGG.LoginActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,6 +23,14 @@ class HomeViewmodel : BaseViewModel() {
     var idUser = ""
 
     fun load() {
+        //Check have account current
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            idUser = currentUser.uid
+        } else {
+            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
+        }
+        //Get data
         try {
             viewModelScope.launch {
                 Utils.log(TAG, "Call data list")
@@ -31,14 +41,13 @@ class HomeViewmodel : BaseViewModel() {
                         if (item != null) {
                             list.clear()
                             list.addAll(item)
+                            Utils.log(TAG, "size: list.size")
                         }
-
                     } else {
                         Utils.log(TAG, "failed: ${response.errorBody()}\n")
                     }
                 }
             }
-
         } catch (e: Exception) {
             Utils.log(TAG, "erro: ${e.message}")
         }
