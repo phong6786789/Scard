@@ -23,9 +23,11 @@ object BaseNetwork {
         .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
         .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
         .build()
-    var gson = GsonBuilder()
+
+    val gson = GsonBuilder()
         .setLenient()
         .create()
+
     fun providerRetrofit(url: String? = BASE_URL) = Retrofit.Builder()
         .baseUrl(url!!)
         .client(providerHttpClient())

@@ -7,7 +7,6 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ScardApi {
-
     //USER
     @POST("user/checkUserById2.php")
     @FormUrlEncoded
@@ -24,4 +23,7 @@ interface ScardApi {
     suspend fun setStatus(
         @Query("idUser") idUser: String?
     ): String
+
+    //ITEM
+    
 }
