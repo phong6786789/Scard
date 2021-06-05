@@ -4,15 +4,51 @@ import android.os.Bundle
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.subi.scard.R
+import com.subi.scard.databinding.ActivityIntroBinding
 import com.subi.scard.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var binding = ActivityMainBinding.inflate(layoutInflater)
-        var view = binding.root
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setupBottomNav()
+    }
+
+    private fun setupBottomNav() {
+        binding.bottomNavigation.add(
+            MeowBottomNavigation.Model(
+                1,
+                R.drawable.ic_baseline_people_24
+            )
+        )
+        binding.bottomNavigation.add(MeowBottomNavigation.Model(2, R.drawable.ic_baseline_home_24))
+        binding.bottomNavigation.add(
+            MeowBottomNavigation.Model(
+                3,
+                R.drawable.ic_baseline_settings_24
+            )
+        )
+
+        //defautl home
+        binding.bottomNavigation.show(2)
+
+        //onclick item fragment
+        binding.bottomNavigation.setOnClickMenuListener {
+            when (it.id) {
+                1-> findNavController(R.id.fragment).navigate(R.id.friendsFragment)
+                2-> findNavController(R.id.fragment).navigate(R.id.homeFragment)
+                3->findNavController(R.id.fragment).navigate(R.id.settingsFragment)
+                }
+        }
+
     }
 
     //Block back if this in curren fragment
@@ -25,5 +61,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-   
+    //Setup navigation
 }

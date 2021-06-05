@@ -1,114 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="20dp"
-    android:background="@android:color/transparent"
-    android:gravity="center">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="5dp"
-        card_view:cardCornerRadius="20dp"
-        card_view:cardElevation="10dp">
+    <data>
+        <import type="android.view.View" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_dialog">
+        <variable
+            name="title"
+            type="String" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="20dp">
+        <variable
+            name="des"
+            type="String" />
 
-                <TextView
-                    android:textStyle="bold"
-                    android:textColor="@color/blue_main"
-                    android:id="@+id/text_title_mini"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="Thành công"
-                    android:textAlignment="center" />
+        <variable
+            name="left"
+            type="String" />
 
-                <TextView
-                    android:id="@+id/text_mini"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:ellipsize="end"
-                    android:maxLines="4"
-                    android:text="Thành công rồi!"
-                    android:textAlignment="center" />
+        <variable
+            name="right"
+            type="String" />
 
-                <LinearLayout
-                    android:id="@+id/layout_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <android.widget.Button
-                        android:id="@+id/btn_close_mini"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/button"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:text="Đóng"
-                        android:textStyle="bold"
-                        android:visibility="visible" />
-
-                    <Button
-                        android:id="@+id/btn_ok_mini"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/button"
-                        android:gravity="center"
-                        android:text="Xác nhận"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </LinearLayout>
-
-        </FrameLayout>
-
-    </androidx.cardview.widget.CardView>
+        <variable
+            name="isRight"
+            type="Boolean" />
+    </data>
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:elevation="10dp">
+        android:layout_margin="20dp"
+        android:background="@android:color/transparent"
+        android:gravity="center">
 
-        <FrameLayout
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_centerInParent="true"
-            android:background="@drawable/border_img" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="5dp"
+            card_view:cardCornerRadius="20dp"
+            card_view:cardElevation="10dp">
 
-        <ImageView
-            android:id="@+id/iv_type_mini"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:padding="5dp"
-            android:src="@drawable/logo"
-            app:tint="@color/blue_main" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_dialog">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:textColor="@color/blue_main"
+                        android:id="@+id/text_title_mini"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="@{title}"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/text_mini"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:ellipsize="end"
+                        android:maxLines="4"
+                        android:text="@{des}"
+                        android:textAlignment="center" />
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:id="@+id/layout_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/btn_close_mini"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="8dp"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:textColor="@color/blue2_main"
+                            android:text="@{left}"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/btn_ok_mini"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@{right}"
+                            android:textColor="@color/blue2_main"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:elevation="10dp">
+
+            <FrameLayout
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/border_img" />
+
+            <ImageView
+                android:id="@+id/iv_type_mini"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:padding="5dp"
+                android:src="@drawable/logo"
+                app:tint="@color/blue_main" />
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+</layout>

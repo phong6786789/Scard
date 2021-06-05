@@ -1,4 +1,4 @@
-package com.subi.scard.view.intro
+package com.subi.scard.view.activity.intro
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,8 +9,7 @@ import androidx.viewpager.widget.ViewPager
 import com.subi.scard.R
 import com.subi.scard.databinding.ActivityIntroBinding
 import com.subi.scard.utils.Utils
-import com.subi.scard.view.MainActivity
-import com.subi.scard.view.loginGG.LoginActivity
+import com.subi.scard.view.activity.loginGG.LoginActivity
 
 @Suppress("DEPRECATION")
 class IntroActivity : AppCompatActivity() {
@@ -71,7 +70,7 @@ class IntroActivity : AppCompatActivity() {
 
     private fun onClickNext() {
         if (isLastPage) {
-            Utils.tempNext(this, MainActivity::class.java)
+            Utils.tempNext(this, LoginActivity::class.java)
         } else {
             binding.viewPager.arrowScroll(View.FOCUS_RIGHT)
         }
