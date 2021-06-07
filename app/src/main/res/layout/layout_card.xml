@@ -16,12 +16,12 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="20dp"
-            android:background="@color/blue3_main"
             android:padding="0dp"
             android:src="@drawable/logo"
             android:translationZ="2dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/blue2_main" />
         <ImageView
             android:id="@+id/imageMasterCard"
             android:layout_width="40dp"

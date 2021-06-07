@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:configChanges="orientation"
             android:name=".view.MainActivity"
             android:theme="@style/Theme.Scard" />
 

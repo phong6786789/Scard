@@ -23,4 +23,8 @@
         android:id="@+id/settingsFragment"
         android:name="com.subi.scard.view.fragment.settings.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/showCardFragment"
+        android:name="com.subi.scard.view.fragment.show_card.ShowCardFragment"
+        android:label="ShowCardFragment" />
 </navigation>

@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.navigation.fragment.findNavController
 import com.subi.scard.R
 import com.subi.scard.base.viewmodel.BaseViewModel
 import com.subi.scard.utils.RightInterface
@@ -18,6 +20,7 @@ abstract class BaseBindingFragment<V : ViewDataBinding, M : BaseViewModel> : Bas
 
     var viewDataBinding: V? = null
     var toolbar: RelativeLayout? = null
+    var titlex:TextView ? = null
     abstract val bindingVariable: Int
 
     abstract val viewModel: M
@@ -59,7 +62,7 @@ abstract class BaseBindingFragment<V : ViewDataBinding, M : BaseViewModel> : Bas
     private fun setupToolbar() {
         var qrCode: ImageView? = toolbar?.findViewById(R.id.imageLeft)
         var showCard: ImageView? = toolbar?.findViewById(R.id.imageRight)
-
+        titlex = toolbar?.findViewById(R.id.textTitle)
         qrCode?.setOnClickListener {
             var dialog: Dialog? = null
             dialog =
@@ -79,22 +82,28 @@ abstract class BaseBindingFragment<V : ViewDataBinding, M : BaseViewModel> : Bas
         }
 
         showCard?.setOnClickListener {
-            var dialog: Dialog? = null
-            dialog =
-                context?.let { it1 ->
-                    ShowDialog.Builder(it1)
-                        .title("Thông báo")
-                        .message("Show card đang pphát triển")
-                        .setRightButton("ĐÓNG", object : RightInterface {
-                            override fun onClick() {
-                                dialog?.dismiss()
-                            }
 
-                        })
-                        .miniDialog()
-                }
-            dialog?.show()
+            findNavController().navigate(R.id.showCardFragment)
+
+//            var dialog: Dialog? = null
+//            dialog =
+//                context?.let { it1 ->
+//                    ShowDialog.Builder(it1)
+//                        .title("Thông báo")
+//                        .message("Show card đang pphát triển")
+//                        .setRightButton("ĐÓNG", object : RightInterface {
+//                            override fun onClick() {
+//                                dialog?.dismiss()
+//                            }
+//
+//                        })
+//                        .miniDialog()
+//                }
+//            dialog?.show()
         }
     }
 
+    fun setTitle(title:String){
+        titlex?.text = title
+    }
 }

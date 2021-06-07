@@ -12,6 +12,25 @@ object Constants {
         const val FRIENDS = "DANH SÁCH BẠN BÈ"
         const val SETTINGS = "CÀI ĐẶT"
         const val QR = "Quét QR S-CARD"
+    }
+
+    object ITEM_TYPE{
+        const val SOCIAL = "SOCIAL"
+        const val INFO = "INFO"
+        const val ATM = "ATM"
+        const val HEALTH = "HEALTH"
+    }
+
+    object SOCIAL_TYPE{
+        const val FACEBOOK = "facebook"
+        const val ZALO = "zalo"
+        const val YOUTUBE = "youtube"
+        const val INSTAGRAM = "instagram"
+        const val SKYPE = "skype"
+        const val EMAIL = "email"
+        const val TWITTER = "twitter"
+        const val TIKTOK = "tiktok"
+
 
     }
 }
