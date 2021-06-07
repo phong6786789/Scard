@@ -41,7 +41,7 @@ class HomeViewmodel : BaseViewModel() {
                         if (item != null) {
                             list.clear()
                             list.addAll(item)
-                            Utils.log(TAG, "size: list.size")
+                            Utils.log(TAG, "size: ${list.size}")
                         }
                     } else {
                         Utils.log(TAG, "failed: ${response.errorBody()}\n")
