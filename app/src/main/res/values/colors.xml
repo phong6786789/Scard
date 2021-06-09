@@ -12,5 +12,6 @@
     <color name="blue3_main">#039BE5</color>
     <color name="blue4_main">#2899EB</color>
     <color name="no_color">#00FFFFFF</color>
+    <color name="bg_qr">#485A5A5A</color>
 
 </resources>

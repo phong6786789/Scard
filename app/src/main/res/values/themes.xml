@@ -30,5 +30,12 @@
         <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
-
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--Background Color-->
+        <item name="android:background">@color/browser_actions_bg_grey</item>
+        <!--Buttons Colors-->
+        <item name="colorAccent">@color/blue_main</item>
+        <!--Title and Messages Color-->
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
 </resources>
