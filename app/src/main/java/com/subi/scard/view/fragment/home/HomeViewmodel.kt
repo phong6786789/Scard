@@ -17,39 +17,5 @@ import kotlinx.coroutines.withContext
 
 @SuppressLint("CheckResult")
 class HomeViewmodel : BaseViewModel() {
-    val TAG = "HomeViewModel"
-    val list: ObservableList<Item> = ObservableArrayList()
-    var context: Context? = null
-    var idUser = ""
 
-    fun load() {
-        //Check have account current
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            idUser = currentUser.uid
-        } else {
-            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
-        }
-        //Get data
-        try {
-            viewModelScope.launch {
-                Utils.log(TAG, "Call data list")
-                val response = BaseNetwork.getInstance().getAllItemByIdUser(idUser)
-                withContext(Dispatchers.Main) {
-                    if (response.isSuccessful) {
-                        val item = response.body()?.getAllList
-                        if (item != null) {
-                            list.clear()
-                            list.addAll(item)
-                            Utils.log(TAG, "size: ${list.size}")
-                        }
-                    } else {
-                        Utils.log(TAG, "failed: ${response.errorBody()}\n")
-                    }
-                }
-            }
-        } catch (e: Exception) {
-            Utils.log(TAG, "erro: ${e.message}")
-        }
-    }
 }

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.subi.scard.view.fragment.settings.SettingsViewmodel" />
+            type="com.subi.scard.view.fragment.qr_code.QRViewmodel" />
     </data>
 
     <FrameLayout

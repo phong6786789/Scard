@@ -27,7 +27,7 @@
         <com.etebarian.meowbottomnavigation.MeowBottomNavigation
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
-            android:background="@color/blue_main"
+            android:background="@color/white"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             app:mbn_countBackgroundColor="#ff6f00"

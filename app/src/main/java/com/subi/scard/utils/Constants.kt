@@ -12,6 +12,7 @@ object Constants {
         const val FRIENDS = "DANH SÁCH BẠN BÈ"
         const val SETTINGS = "CÀI ĐẶT"
         const val QR = "Quét QR S-CARD"
+        const val MXH = "Mạng xã hội"
     }
 
     object ITEM_TYPE{

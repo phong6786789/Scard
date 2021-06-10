@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.subi.scard.view.fragment.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home_main" />
     <fragment
         android:id="@+id/scanQRFragment"
         android:name="com.subi.scard.view.fragment.qr_code.ScanQRFragment"
@@ -27,4 +27,9 @@
         android:id="@+id/showCardFragment"
         android:name="com.subi.scard.view.fragment.show_card.ShowCardFragment"
         android:label="ShowCardFragment" />
+    <fragment
+        android:id="@+id/MXHFragment"
+        android:name="com.subi.scard.view.fragment.mxh.MXHFragment"
+        android:label="fragment_m_x_h"
+        tools:layout="@layout/fragment_m_x_h" />
 </navigation>
