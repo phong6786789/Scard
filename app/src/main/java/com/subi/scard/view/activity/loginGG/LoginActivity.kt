@@ -267,7 +267,7 @@ class LoginActivity : AppCompatActivity() {
 
             } catch (e: Exception) {
                 Utils.log("LOGINTEST", "erro: " + e.message.toString())
-            }
+                Utils.tempNext(this@LoginActivity, MainActivity::class.java) }
 
         }
     }

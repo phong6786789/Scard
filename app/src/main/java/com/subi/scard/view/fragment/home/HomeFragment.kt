@@ -32,15 +32,6 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
         if (currentUser == null) {
             context?.let { Utils.tempNext(it, LoginActivity::class.java) }
         }
-
-
-        //Load list
-
-//        viewDataBinding?.rcvHome?.apply {
-//            adapter = HomeAdapter(viewModel.list, onItemClickListener())
-//            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-//            hasFixedSize()
-//        }
     }
 
     private fun onItemClickListener() = object : HomeAdapter.OnItemClickListener {

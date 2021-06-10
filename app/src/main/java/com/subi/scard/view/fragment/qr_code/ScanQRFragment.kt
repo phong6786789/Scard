@@ -13,17 +13,20 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.subi.scard.BR
 import com.subi.scard.R
 import com.subi.scard.base.fragment.BaseBindingFragment
 import com.subi.scard.databinding.FragmentScanQRBinding
 import com.subi.scard.utils.Constants
+import com.subi.scard.view.MainActivity
 import me.dm7.barcodescanner.zbar.Result
 import me.dm7.barcodescanner.zbar.ZBarScannerView
 
 @Suppress("DEPRECATION")
 class ScanQRFragment : BaseBindingFragment<FragmentScanQRBinding, QRViewmodel>(),
     ZBarScannerView.ResultHandler {
+    var bottomNavigation:MeowBottomNavigation?=null
     lateinit var scannerView: ZBarScannerView
     override val bindingVariable: Int
         get() = BR.viewmodel
@@ -34,6 +37,10 @@ class ScanQRFragment : BaseBindingFragment<FragmentScanQRBinding, QRViewmodel>()
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
         checkForPermission()
+
+        //Hide bottom
+        bottomNavigation = activity?.findViewById(R.id.bottomNavigation)
+        bottomNavigation?.visibility = View.GONE
     }
 
     private fun onClicks() {

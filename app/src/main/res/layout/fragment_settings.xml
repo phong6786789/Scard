@@ -9,7 +9,6 @@
     </data>
 
     <FrameLayout
-        android:background="@drawable/linear_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

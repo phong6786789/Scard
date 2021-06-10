@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.fragment.findNavController
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.subi.scard.R
 import com.subi.scard.base.viewmodel.BaseViewModel
 import com.subi.scard.utils.RightInterface
