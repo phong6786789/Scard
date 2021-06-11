@@ -52,7 +52,11 @@ class MXHFragment : BaseBindingFragment<FragmentMXHBinding, MXHViewmodel>(){
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
-        setTitle(Constants.TITLE.MXH)
         viewModel.context = context
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        toolbarTitleAndBack(Constants.TITLE.MXH)
     }
 }

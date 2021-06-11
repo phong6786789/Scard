@@ -6,12 +6,11 @@ import androidx.lifecycle.ViewModelProviders
 import com.subi.scard.BR
 import com.subi.scard.R
 import com.subi.scard.base.fragment.BaseBindingFragment
-import com.subi.scard.databinding.FragmentScanQRBinding
 import com.subi.scard.databinding.FragmentSettingsBinding
 import com.subi.scard.utils.Constants
 
 @Suppress("DEPRECATION")
-class SettingsFragment :  BaseBindingFragment<FragmentSettingsBinding, SettingsViewmodel>() {
+class SettingsFragment : BaseBindingFragment<FragmentSettingsBinding, SettingsViewmodel>() {
     override val bindingVariable: Int
         get() = BR.viewmodel
     override val viewModel: SettingsViewmodel
@@ -23,6 +22,11 @@ class SettingsFragment :  BaseBindingFragment<FragmentSettingsBinding, SettingsV
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
-        activity?.title = Constants.TITLE.SETTINGS
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        toolbarOnlyTitle(Constants.TITLE.SETTINGS)
+    }
+
 }

@@ -6,7 +6,7 @@
 
         <variable
             name="viewmodel"
-            type="com.subi.scard.view.fragment.friends.FriendsViewmodel" />
+            type="com.subi.scard.view.fragment.info.InfoViewmodel" />
     </data>
 
     <LinearLayout

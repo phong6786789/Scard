@@ -1,4 +1,4 @@
-package com.subi.scard.view.fragment.mxh
+package com.subi.scard.view.fragment.bank
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @SuppressLint("CheckResult")
-class MXHViewmodel : BaseViewModel() {
+class BankViewmodel : BaseViewModel() {
     val TAG = "HomeViewModel"
     val list: ObservableList<Item> = ObservableArrayList()
     var context: Context? = null

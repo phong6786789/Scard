@@ -20,10 +20,6 @@
         android:name="com.subi.scard.view.fragment.friends.FriendsFragment"
         android:label="FriendsFragment" />
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.subi.scard.view.fragment.settings.SettingsFragment"
-        android:label="SettingsFragment" />
-    <fragment
         android:id="@+id/showCardFragment"
         android:name="com.subi.scard.view.fragment.show_card.ShowCardFragment"
         android:label="ShowCardFragment" />
@@ -32,4 +28,25 @@
         android:name="com.subi.scard.view.fragment.mxh.MXHFragment"
         android:label="fragment_m_x_h"
         tools:layout="@layout/fragment_m_x_h" />
+    <fragment
+        android:id="@+id/bankFragment"
+        android:name="com.subi.scard.view.fragment.bank.BankFragment"
+        android:label="BankFragment" />
+    <fragment
+        android:id="@+id/healthFragment"
+        android:name="com.subi.scard.view.fragment.health.HealthFragment"
+        android:label="HealthFragment" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.subi.scard.view.fragment.info.InfoFragment"
+        android:label="InfoFragment" />
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.subi.scard.view.fragment.more.MoreFragment"
+        android:label="MoreFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.subi.scard.view.fragment.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+
 </navigation>

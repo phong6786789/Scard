@@ -19,7 +19,6 @@ import com.subi.scard.R
 import com.subi.scard.base.fragment.BaseBindingFragment
 import com.subi.scard.databinding.FragmentScanQRBinding
 import com.subi.scard.utils.Constants
-import com.subi.scard.view.MainActivity
 import me.dm7.barcodescanner.zbar.Result
 import me.dm7.barcodescanner.zbar.ZBarScannerView
 

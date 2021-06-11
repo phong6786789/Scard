@@ -12,66 +12,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/linear_bg"
         android:orientation="vertical">
 
         <include layout="@layout/tool_bar" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="8dp">
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_home"
+                    setItemAdapter="@{viewmodel.list}"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:elevation="10dp"
-                            app:cardCornerRadius="50dp">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="95dp"
-                                android:layout_height="95dp"
-                                android:layout_gravity="center"
-                                app:cardCornerRadius="50dp">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:src="@drawable/avatar" />
-                            </androidx.cardview.widget.CardView>
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Phong Subi"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcv_home"
-                        setItemAdapter="@{viewmodel.list}"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
+                    android:layout_height="match_parent" />
 
             </androidx.core.widget.NestedScrollView>
 

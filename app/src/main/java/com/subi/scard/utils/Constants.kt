@@ -9,10 +9,14 @@ object Constants {
 
     object TITLE{
         const val HOME = "S-CARD"
-        const val FRIENDS = "DANH SÁCH BẠN BÈ"
-        const val SETTINGS = "CÀI ĐẶT"
+        const val SETTINGS = "Cài đặt"
         const val QR = "Quét QR S-CARD"
+        const val FRIENDS = "Bạn bè"
         const val MXH = "Mạng xã hội"
+        const val BANK = "Ngân hàng"
+        const val INFO = "Cá nhân"
+        const val HEALTH = "Y tế"
+        const val MORE = "Chức năng khác"
     }
 
     object ITEM_TYPE{
