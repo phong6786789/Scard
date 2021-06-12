@@ -1,17 +1,13 @@
 package com.subi.scard.view
 
+import android.os.Build
 import android.os.Bundle
-import android.view.MotionEvent
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MotionEventCompat
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.subi.scard.R
-import com.subi.scard.databinding.ActivityIntroBinding
 import com.subi.scard.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,31 +18,38 @@ class MainActivity : AppCompatActivity() {
         setupBottomNav()
     }
 
+    //Thêm item bottom
     private fun setupBottomNav() {
         binding.bottomNavigation.add(
             MeowBottomNavigation.Model(
-                1,
-                R.drawable.ic_baseline_people_24
+                0,
+                R.drawable.ic_baseline_qr_code_scanner_24
             )
         )
-        binding.bottomNavigation.add(MeowBottomNavigation.Model(2, R.drawable.ic_baseline_home_24))
         binding.bottomNavigation.add(
             MeowBottomNavigation.Model(
-                3,
+                1,
+                R.drawable.ic_baseline_home_24
+            )
+        )
+        binding.bottomNavigation.add(
+            MeowBottomNavigation.Model(
+                2,
                 R.drawable.ic_baseline_settings_24
             )
         )
-
         //defautl home
-        binding.bottomNavigation.show(2)
+        binding.bottomNavigation.show(1)
+
 
         //onclick item fragment
         binding.bottomNavigation.setOnClickMenuListener {
             when (it.id) {
-                1-> findNavController(R.id.fragment).navigate(R.id.friendsFragment)
-                2-> findNavController(R.id.fragment).navigate(R.id.homeFragment)
-                3->findNavController(R.id.fragment).navigate(R.id.settingsFragment)
-                }
+                0 -> findNavController(R.id.fragment).navigate(R.id.scanQRFragment)
+                1 -> findNavController(R.id.fragment).navigate(R.id.homeFragment)
+                2 -> findNavController(R.id.fragment).navigate(R.id.settingsFragment)
+                else -> findNavController(R.id.fragment).navigate(R.id.homeFragment)
+            }
         }
 
     }
@@ -57,9 +60,9 @@ class MainActivity : AppCompatActivity() {
         if (currentFragment == R.id.homeFragment) {
             return
         } else {
-            super.onBackPressed()
+            binding.bottomNavigation.visibility = View.VISIBLE
+            binding.bottomNavigation.show(1)
+            findNavController(R.id.fragment).navigate(R.id.homeFragment)
         }
     }
-
-    //Setup navigation
 }

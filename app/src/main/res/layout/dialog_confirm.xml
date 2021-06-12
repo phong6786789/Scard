@@ -30,15 +30,13 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:background="@android:color/transparent"
         android:gravity="center">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="5dp"
             card_view:cardCornerRadius="20dp"
             card_view:cardElevation="10dp">
@@ -134,7 +132,7 @@
                 android:layout_centerInParent="true"
                 android:padding="5dp"
                 android:src="@drawable/logo"
-                app:tint="@color/blue_main" />
+                app:tint="@color/white" />
         </RelativeLayout>
     </RelativeLayout>
 </layout>

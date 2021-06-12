@@ -104,10 +104,10 @@ class ShowDialog(
             val dialog= context?.let { Dialog(it) }
             val binding = DialogConfirmBinding.inflate(LayoutInflater.from(context))
             dialog?.setContentView(binding.root)
-            dialog?.setCancelable(true)
+            dialog?.setCancelable(false)
             val window = dialog?.window
             window?.setLayout(
-                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
             if (dialog?.window != null) {
@@ -134,11 +134,11 @@ class ShowDialog(
             }
 
             btn_left.setOnClickListener {
-                rightListener?.onClick()
+                leftListener?.onClick()
             }
 
             btn_right.setOnClickListener {
-                leftListener?.onClick()
+                rightListener?.onClick()
             }
             return dialog
         }
