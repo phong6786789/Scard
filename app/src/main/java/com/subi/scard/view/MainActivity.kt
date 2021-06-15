@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 2 -> findNavController(R.id.fragment).navigate(R.id.settingsFragment)
                 else -> findNavController(R.id.fragment).navigate(R.id.homeFragment)
             }
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
     }
