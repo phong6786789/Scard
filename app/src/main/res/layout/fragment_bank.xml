@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/tool_bar" />
+        <include layout="@layout/tool_bar"/>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -25,11 +25,9 @@
                 android:layout_height="match_parent"
                 android:padding="8dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_home"
-                    setItemAdapter="@{viewmodel.list}"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
             </androidx.core.widget.NestedScrollView>
 
