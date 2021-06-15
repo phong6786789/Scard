@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scard"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.HealthActivity"></activity>
+        <activity android:name=".BankActivity"></activity>
+        <activity android:name=".view.HealthActivity" />
         <activity android:name=".view.activity.loginGG.LoginActivity" />
         <activity
             android:name=".view.activity.intro.IntroActivity"
