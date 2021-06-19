@@ -8,6 +8,7 @@ import com.subi.scard.model.User
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.http.Query
 import javax.inject.Inject
 
 class ScardRespository @Inject constructor(
@@ -19,4 +20,31 @@ class ScardRespository @Inject constructor(
     //Item
     suspend fun getAllItemByIdUser(idUser: String)
             : Response<ItemModel> = scardApi.getAllItemByIdUser(idUser)
+
+    suspend fun getAllItemByIdUserAndType(idUser: String, type: String)
+            : Response<ItemModel> = scardApi.getAllItemByIdUserAndType(idUser, type)
+
+    suspend fun insertItemById(
+        title: String?,
+        description: String?,
+        type: String?,
+        idUser: String?,
+        status: String?
+    )
+            : Response<ItemModel> =
+        scardApi.insertItemById(title, description, type, idUser, status)
+
+    suspend fun editItemById(
+        id: String?,
+        title: String?,
+        description: String?,
+        type: String?,
+        idUser: String?,
+        status: String?
+    )
+            : Response<ItemModel> =
+        scardApi.editItemById(id, title, description, type, idUser, status)
+
+    suspend fun deleteItemById(id: String)
+            : Response<ItemModel> = scardApi.deleteItemById(id)
 }
