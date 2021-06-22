@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.R
 import com.subi.scard.model.Item
-import com.subi.scard.view.adapter.HomeAdapter
+import com.subi.scard.view.adapter.MXHAdapter
 
 object BindingUtils {
     @BindingAdapter("setImageItem")
@@ -20,6 +20,9 @@ object BindingUtils {
             Constants.SOCIAL_TYPE.INSTAGRAM -> R.drawable.icon_instagram
             Constants.SOCIAL_TYPE.TIKTOK -> R.drawable.icon_tiktok
             Constants.SOCIAL_TYPE.YOUTUBE -> R.drawable.icon_ytb
+            Constants.SOCIAL_TYPE.EMAIL -> R.drawable.icon_gmail
+            Constants.SOCIAL_TYPE.TWITTER -> R.drawable.icon_twitter
+            Constants.SOCIAL_TYPE.SKYPE -> R.drawable.icon_skype
             else -> R.mipmap.ic_launcher
         }
         imageView.setImageResource(type)
@@ -30,7 +33,7 @@ object BindingUtils {
     @UiThread
     fun setItemAdapter(recyclerView: RecyclerView, items: List<Item>?) {
         val adapter: RecyclerView.Adapter<*>? = recyclerView.adapter
-        if (adapter != null && adapter is HomeAdapter) {
+        if (adapter != null && adapter is MXHAdapter) {
             if (items != null) {
                 adapter.setNewData(items)
             }

@@ -24,8 +24,8 @@ interface ScardApi {
         @Query("type") type: String?
     ): Response<ItemModel>
 
-    @GET("item/insertItemById.php")
-    suspend fun insertItemById(
+    @GET("item/insertItem.php")
+    suspend fun insertItem(
         @Query("title") title: String?,
         @Query("description") description: String?,
         @Query("type") type: String?,
@@ -46,5 +46,5 @@ interface ScardApi {
     @GET("item/deleteItemById.php")
     suspend fun deleteItemById(
         @Query("id") id: String?
-    ): Response<ItemModel>
+    ): Response<Status>
 }

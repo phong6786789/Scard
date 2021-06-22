@@ -1,7 +1,6 @@
 package com.subi.scard.view.adapter
 
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.UiThread
@@ -10,10 +9,10 @@ import com.subi.scard.BR
 import com.subi.scard.databinding.ItemBinding
 import com.subi.scard.model.Item
 
-class HomeAdapter(
+class MXHAdapter(
     var items: List<Item>,
-    var onItemClickListener: OnItemClickListener?
-) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+    val clickItem:(Item)->Unit
+) : RecyclerView.Adapter<MXHAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
        ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -28,13 +27,18 @@ class HomeAdapter(
         holder.binData(items[position])
     }
 
-    class ViewHolder(var binding:ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding:ItemBinding) : RecyclerView.ViewHolder(binding.root) {
         @UiThread
         fun binData(item: Item) {
             binding.apply {
                 setVariable(BR.viewmodel, item)
                 executePendingBindings()
+                cardView.setOnLongClickListener {
+                    clickItem(item)
+                    true
+                }
             }
+
         }
     }
 

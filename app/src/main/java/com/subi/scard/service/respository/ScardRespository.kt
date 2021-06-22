@@ -24,7 +24,7 @@ class ScardRespository @Inject constructor(
     suspend fun getAllItemByIdUserAndType(idUser: String, type: String)
             : Response<ItemModel> = scardApi.getAllItemByIdUserAndType(idUser, type)
 
-    suspend fun insertItemById(
+    suspend fun insertItem(
         title: String?,
         description: String?,
         type: String?,
@@ -32,7 +32,7 @@ class ScardRespository @Inject constructor(
         status: String?
     )
             : Response<ItemModel> =
-        scardApi.insertItemById(title, description, type, idUser, status)
+        scardApi.insertItem(title, description, type, idUser, status)
 
     suspend fun editItemById(
         id: String?,
@@ -46,5 +46,5 @@ class ScardRespository @Inject constructor(
         scardApi.editItemById(id, title, description, type, idUser, status)
 
     suspend fun deleteItemById(id: String)
-            : Response<ItemModel> = scardApi.deleteItemById(id)
+            : Response<Status> = scardApi.deleteItemById(id)
 }
