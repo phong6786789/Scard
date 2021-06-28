@@ -37,10 +37,13 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
 
-//        val currentUser = FirebaseAuth.getInstance().currentUser
-//        if (currentUser == null) {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+
+        if (currentUser != null) {
+            Utils.log(TAG, "UID: ${FirebaseAuth.getInstance().currentUser?.uid.toString()}")
 //            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
-//        }
+          viewModel.uid.set(FirebaseAuth.getInstance().currentUser?.uid.toString())
+        }
 
         //Load list menu
         viewDataBinding?.rcvMenu?.apply {

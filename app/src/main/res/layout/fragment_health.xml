@@ -16,63 +16,23 @@
 
         <include layout="@layout/tool_bar" />
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/sex_text"
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/sex"
-                android:background="@drawable/text_styles"
-                style="@style/healthStyle" />
+                android:layout_height="match_parent"
+                android:padding="8dp">
 
-            <TextView
-                android:id="@+id/height_text"
-                style="@style/healthStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/height" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_home"
+                    setItemAdapter="@{viewmodel.list}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-            <TextView
-                android:id="@+id/weight_text"
-                style="@style/healthStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/weight" />
+            </androidx.core.widget.NestedScrollView>
 
-            <TextView
-                android:id="@+id/blood_type_text"
-                style="@style/healthStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/blood_type" />
-
-            <TextView
-                android:id="@+id/bust_text"
-                style="@style/healthStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/bust" />
-
-            <TextView
-                android:id="@+id/waist_text"
-                style="@style/healthStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/waist" />
-
-            <TextView
-                android:id="@+id/hip_text"
-                style="@style/healthStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hip" />
-        </LinearLayout>
+        </FrameLayout>
     </LinearLayout>
 </layout>
