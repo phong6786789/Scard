@@ -15,7 +15,36 @@ interface ScardApi {
     ): Response<Status>
 
     //ITEM
-    @POST("item/getAllByIdUser.php")
-    @FormUrlEncoded
-    suspend fun getAllItemByIdUser( @Field("idUser") idUser: String?): Response<ItemModel>
+    @GET("item/getAllItemByIdUser.php")
+    suspend fun getAllItemByIdUser( @Query("idUser") idUser: String?): Response<ItemModel>
+
+    @GET("item/getAllItemByIdUserAndType.php")
+    suspend fun getAllItemByIdUserAndType(
+        @Query("idUser") idUser: String?,
+        @Query("type") type: String?
+    ): Response<ItemModel>
+
+    @GET("item/insertItem.php")
+    suspend fun insertItem(
+        @Query("title") title: String?,
+        @Query("description") description: String?,
+        @Query("type") type: String?,
+        @Query("idUser") idUser: String?,
+        @Query("status") status: String?
+    ): Response<ItemModel>
+
+    @GET("item/editItemById.php")
+    suspend fun editItemById(
+        @Query("id") id: String?,
+        @Query("title") title: String?,
+        @Query("description") description: String?,
+        @Query("type") type: String?,
+        @Query("idUser") idUser: String?,
+        @Query("status") status: String?
+    ): Response<ItemModel>
+
+    @GET("item/deleteItemById.php")
+    suspend fun deleteItemById(
+        @Query("id") id: String?
+    ): Response<Status>
 }

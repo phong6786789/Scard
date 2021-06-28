@@ -6,6 +6,9 @@ import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
+import androidx.transition.Visibility
+import com.subi.scard.databinding.LayoutInsertItemBinding
 import com.subi.scard.databinding.ProgressBarBinding
 import com.subi.scard.view.MainActivity
 

@@ -3,6 +3,7 @@ package com.subi.scard.model
 import com.google.gson.annotations.SerializedName
 
 data class ItemModel(
+    val status: String?,
     @SerializedName("item")
     var getAllList: List<Item>?
 )

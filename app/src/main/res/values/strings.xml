@@ -14,4 +14,5 @@
     <string name="bust">Bust:</string>
     <string name="waist">Waist:</string>
     <string name="hip">Hip:</string>
+    <string name="insertItem">Insert Item</string>
 </resources>
