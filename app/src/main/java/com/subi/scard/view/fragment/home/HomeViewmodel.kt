@@ -3,6 +3,7 @@ package com.subi.scard.view.fragment.home
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableField
 import androidx.databinding.ObservableList
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
@@ -20,7 +21,7 @@ import kotlinx.coroutines.withContext
 @SuppressLint("CheckResult")
 class HomeViewmodel : BaseViewModel() {
     var list_menu: ObservableList<CustomItem> = ObservableArrayList()
-
+    var uid = ObservableField("Af10infPygYHaonbtDz9lQdW7Zp1")
     init {
         list_menu.addAll(
             listOf(
