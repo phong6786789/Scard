@@ -7,15 +7,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button_login_google">sign in with google</string>
     <string name="button_login_fb">sign in with facebook</string>
-<<<<<<< HEAD
-=======
-    <string name="sex">Sex: </string>
-    <string name="height">Height:</string>
-    <string name="weight">Weight:</string>
-    <string name="blood_type">Blood Type:</string>
-    <string name="bust">Bust:</string>
-    <string name="waist">Waist:</string>
-    <string name="hip">Hip:</string>
+
     <string name="insertItem">Insert Item</string>
->>>>>>> 1b27cb6da90749edfc4f4905e23d6001d6371d32
+
 </resources>

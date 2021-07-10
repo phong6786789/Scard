@@ -16,7 +16,7 @@
         android:layout_marginTop="5sp"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
-        app:cardBackgroundColor="#009688">
+        app:cardBackgroundColor="#FDFDFD">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,34 +29,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
                 android:layout_marginLeft="100dp"
-                android:text="CHỨNG MINH NHÂN DÂN"
+                android:text="BẢO HIỂM Y TẾ"
                 android:textColor="#FF0606"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
-
             <TextView
-                android:id="@+id/description_txt"
+                android:id="@+id/description_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title_txt"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="Số: 201787226"
+                android:text="Số: 0801503677"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
-
             <TextView
-                android:id="@+id/type_txt"
+                android:id="@+id/type_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/description_txt"
+                android:layout_below="@id/description_text"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="Loại: Info"
+                android:text="Loại: Health"
                 android:textColor="#000"
                 android:textSize="18sp" />
         </RelativeLayout>
