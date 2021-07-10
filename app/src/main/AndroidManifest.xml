@@ -35,13 +35,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity
-            android:name=".view.MainActivity"
-            android:configChanges="orientation"
-            android:theme="@style/Theme.Scard" />
-=======
->>>>>>> 1b27cb6da90749edfc4f4905e23d6001d6371d32
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
