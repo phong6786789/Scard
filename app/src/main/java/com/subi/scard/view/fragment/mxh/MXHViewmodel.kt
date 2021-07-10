@@ -24,7 +24,7 @@ import kotlinx.coroutines.withContext
 
 @SuppressLint("CheckResult")
 class MXHViewmodel : BaseViewModel() {
-    val TAG = "HomeViewModel"
+    val TAG = "MXHViewmodel"
     val list: ObservableList<Item> = ObservableArrayList()
     var context: Context? = null
     var idUser = "111"
@@ -72,7 +72,9 @@ class MXHViewmodel : BaseViewModel() {
                 val res = BaseNetwork.getInstance().deleteItemById(id)
                 if(res.isSuccessful){
                     res.body()?.status?.let {
-                        Utils.log(TAG, "status: ${it}")
+                        if(it.equals("success")){
+                            load()
+                        }
                     }
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
@@ -118,9 +120,10 @@ class MXHViewmodel : BaseViewModel() {
                 val response = BaseNetwork.getInstance()
                     .getAllItemByIdUserAndType(idUser, Constants.ITEM_TYPE.SOCIAL)
                 withContext(Dispatchers.Main) {
+                    Utils.log(TAG, "response: ${response.body()}")
                     if (response.isSuccessful) {
+                        list.clear()
                         response.body()?.getAllList?.let {
-                            list.clear()
                             list.addAll(it)
                             Utils.log(TAG, "size: ${list.size}")
                         }

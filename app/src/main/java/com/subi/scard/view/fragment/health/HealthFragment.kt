@@ -1,5 +1,6 @@
 package com.subi.scard.view.fragment.health
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
@@ -26,29 +27,27 @@ class HealthFragment : BaseBindingFragment<FragmentHealthBinding, HealthViewmode
 
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
-
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            viewModel.idUser = currentUser.uid
-            viewModel.load()
-        } else {
-            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
-        }
-
-
         //Load list
 
         viewDataBinding?.rcvHome?.apply {
-            adapter = HealthAdapter(viewModel.list, onItemClickListener())
+            adapter = HealthAdapter(viewModel.list){clickDelete(it)}
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             hasFixedSize()
         }
     }
 
-    private fun onItemClickListener() = object : HealthAdapter.OnItemClickListener {
-        override fun onClickItem(value: Item) {
-
+    fun clickDelete(item: Item){
+        val builder = AlertDialog.Builder(context)
+        builder.setMessage("Do you want delete ${item.title}?")
+        builder.setNegativeButton("No"){ d, _ ->
+            d.dismiss()
         }
+        builder.setPositiveButton("Yes"){ d, _ ->
+            viewModel.deleteItem(item.id!!)
+            d.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {

@@ -22,9 +22,27 @@ object Constants {
     object ITEM_TYPE{
         const val SOCIAL = "SOCIAL"
         const val INFO = "INFO"
-        const val ATM = "ATM"
+        const val BANK = "BANK"
         const val HEALTH = "HEALTH"
+        const val FRIEND = "FRIEND"
     }
+
+    object INFO_TYPE{
+        const val INFO = "INFO"
+    }
+
+    object BANK_TYPE{
+        const val SACOMBANK = "SACOMBANK"
+    }
+
+    object HEALTH_TYPE{
+        const val GIA_DINH = "Gia Định"
+    }
+
+    object FRIEND_TYPE{
+        const val FRIEND = "FRIEND"
+    }
+
 
     object SOCIAL_TYPE{
         const val FACEBOOK = "facebook"

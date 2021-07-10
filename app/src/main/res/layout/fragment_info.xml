@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewmodel"
             type="com.subi.scard.view.fragment.info.InfoViewmodel" />
@@ -32,7 +31,15 @@
                     android:layout_height="match_parent" />
 
             </androidx.core.widget.NestedScrollView>
-
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:src="@drawable/ic_add"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="20dp"
+                android:onClick="@{()->viewmodel.insert()}"
+                android:backgroundTint="@color/blue_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/insertItem" />
         </FrameLayout>
     </LinearLayout>
 </layout>

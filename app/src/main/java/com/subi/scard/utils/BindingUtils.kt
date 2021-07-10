@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.R
 import com.subi.scard.model.Item
-import com.subi.scard.view.adapter.MXHAdapter
+import com.subi.scard.view.adapter.*
 
 object BindingUtils {
     @BindingAdapter("setImageItem")
@@ -34,6 +34,26 @@ object BindingUtils {
     fun setItemAdapter(recyclerView: RecyclerView, items: List<Item>?) {
         val adapter: RecyclerView.Adapter<*>? = recyclerView.adapter
         if (adapter != null && adapter is MXHAdapter) {
+            if (items != null) {
+                adapter.setNewData(items)
+            }
+        }
+        if (adapter != null && adapter is InfoAdapter) {
+            if (items != null) {
+                adapter.setNewData(items)
+            }
+        }
+        if (adapter != null && adapter is BankAdapter) {
+            if (items != null) {
+                adapter.setNewData(items)
+            }
+        }
+        if (adapter != null && adapter is HealthAdapter) {
+            if (items != null) {
+                adapter.setNewData(items)
+            }
+        }
+        if (adapter != null && adapter is FriendsAdapter) {
             if (items != null) {
                 adapter.setNewData(items)
             }
