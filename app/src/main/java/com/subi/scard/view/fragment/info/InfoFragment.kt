@@ -1,18 +1,16 @@
 package com.subi.scard.view.fragment.info
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.FirebaseAuth
 import com.subi.scard.BR
 import com.subi.scard.R
 import com.subi.scard.base.fragment.BaseBindingFragment
 import com.subi.scard.databinding.FragmentInfoBinding
 import com.subi.scard.model.Item
 import com.subi.scard.utils.Constants
-import com.subi.scard.utils.Utils
-import com.subi.scard.view.activity.loginGG.LoginActivity
 import com.subi.scard.view.adapter.InfoAdapter
 
 @Suppress("DEPRECATION")
@@ -27,28 +25,26 @@ class InfoFragment : BaseBindingFragment<FragmentInfoBinding, InfoViewmodel>(){
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
 
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            viewModel.idUser = currentUser.uid
-            viewModel.load()
-        } else {
-            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
-        }
-
-
         //Load list
-
         viewDataBinding?.rcvHome?.apply {
-            adapter = InfoAdapter(viewModel.list, onItemClickListener())
+            adapter = InfoAdapter(viewModel.list){clickDelete(it)}
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             hasFixedSize()
         }
     }
 
-    private fun onItemClickListener() = object : InfoAdapter.OnItemClickListener {
-        override fun onClickItem(value: Item) {
-
+    fun clickDelete(item: Item){
+        val builder = AlertDialog.Builder(context)
+        builder.setMessage("Do you want delete ${item.title}?")
+        builder.setNegativeButton("No"){ d, _ ->
+            d.dismiss()
         }
+        builder.setPositiveButton("Yes"){ d, _ ->
+            viewModel.deleteItem(item.id!!)
+            d.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {

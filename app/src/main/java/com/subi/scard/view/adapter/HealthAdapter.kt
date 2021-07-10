@@ -12,7 +12,7 @@ import com.subi.scard.model.Item
 
 class HealthAdapter(
     var items: List<Item>,
-    var onItemClickListener: OnItemClickListener?
+    val action:(Item) -> Unit
 ) : RecyclerView.Adapter<HealthAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
@@ -28,12 +28,16 @@ class HealthAdapter(
         holder.binData(items[position])
     }
 
-    class ViewHolder(var binding:ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding:ItemBinding) : RecyclerView.ViewHolder(binding.root) {
         @UiThread
         fun binData(item: Item) {
             binding.apply {
                 setVariable(BR.viewmodel, item)
                 executePendingBindings()
+                cardView.setOnLongClickListener {
+                    action(item)
+                    true
+                }
             }
         }
     }

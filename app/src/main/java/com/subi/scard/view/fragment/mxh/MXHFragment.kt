@@ -49,7 +49,6 @@ class MXHFragment : BaseBindingFragment<FragmentMXHBinding, MXHViewmodel>(){
         }
         builder.setPositiveButton("Yes"){ d, _ ->
             viewModel.deleteItem(item.id!!)
-            viewModel.load()
             d.dismiss()
         }
         val dialog = builder.create()
