@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+<<<<<<< HEAD
     <data>
 
     </data>
@@ -10,4 +11,8 @@
         android:layout_height="match_parent">
 
     </LinearLayout>
+=======
+
+
+>>>>>>> 131154551ef515bf5028c17a252bf6094656ec8c
 </layout>

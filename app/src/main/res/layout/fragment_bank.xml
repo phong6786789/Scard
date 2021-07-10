@@ -36,7 +36,10 @@
                 android:src="@drawable/ic_add"
                 android:layout_gravity="end|bottom"
                 android:layout_margin="20dp"
+<<<<<<< HEAD
                 android:onClick="@{()->viewmodel.insert()}"
+=======
+>>>>>>> 131154551ef515bf5028c17a252bf6094656ec8c
                 android:backgroundTint="@color/blue_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

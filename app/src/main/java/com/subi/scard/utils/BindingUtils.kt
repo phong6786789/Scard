@@ -1,13 +1,23 @@
 package com.subi.scard.utils
 
 
+import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.annotation.UiThread
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 import com.subi.scard.R
 import com.subi.scard.model.Item
+<<<<<<< HEAD
 import com.subi.scard.view.adapter.*
+=======
+import com.subi.scard.view.adapter.MXHAdapter
+import java.io.InputStream
+import java.lang.Exception
+import java.net.URL
+>>>>>>> 131154551ef515bf5028c17a252bf6094656ec8c
 
 object BindingUtils {
     @BindingAdapter("setImageItem")
@@ -64,5 +74,28 @@ object BindingUtils {
     @JvmStatic
     fun setImageResource(imageView: ImageView, image: Int) {
         imageView.setImageResource(image)
+    }
+
+    @BindingAdapter("setImageFromUrl")
+    @JvmStatic
+    fun setImageFromUrl(imageView: ImageView, url: String) {
+//        try {
+//            val imgUrl = "http://api.qrserver.com/v1/create-qr-code/?data=$url&size=100x100"
+//            try {
+//                val iStream = URL(imgUrl).content as InputStream
+//                val drawable = Drawable.createFromStream(iStream, "img");
+//                if (drawable!=null){
+//                    imageView.setImageDrawable(drawable)
+//                }
+//                else{
+//                    imageView.setImageResource(R.drawable.logo)
+//                }
+//            } catch (e:Exception) {
+//                e.printStackTrace()
+//            }
+//        }
+//        catch (e:Exception){
+//
+//        }
     }
 }
