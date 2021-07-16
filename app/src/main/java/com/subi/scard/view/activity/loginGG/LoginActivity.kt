@@ -124,7 +124,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         user?.let {
-            Utils.log("LOGINTEST","uid: "+ user.uid)
+            Utils.log("LOGINTEST", "uid: " + user.uid)
             checkUserById(it.uid)
         }
         dialog.dismiss()
@@ -233,7 +233,7 @@ class LoginActivity : AppCompatActivity() {
                     "respons: " + BaseNetwork.getInstance().checkUserById(idUser).body()?.status
                 )
 
-                fun showMess(message:String){
+                fun showMess(message: String) {
                     runOnUiThread {
                         var dialog: Dialog? = null
                         dialog =
@@ -253,15 +253,14 @@ class LoginActivity : AppCompatActivity() {
 
                 val status = BaseNetwork.getInstance().checkUserById(idUser).body()?.status
                 when (status) {
-                    "login" ->Utils.tempNext(this@LoginActivity, MainActivity::class.java)
+                    "login" -> Utils.tempNext(this@LoginActivity, MainActivity::class.java)
                     "success" -> Utils.tempNext(this@LoginActivity, MainActivity::class.java)
                     "failed" -> showMess("Đăng nhập thất bại!")
                 }
 
             } catch (e: Exception) {
                 Utils.log("LOGINTEST", "erro: " + e.message.toString())
-//                Utils.tempNext(this@LoginActivity, MainActivity::class.java)
-                            }
+            }
         }
     }
 }
