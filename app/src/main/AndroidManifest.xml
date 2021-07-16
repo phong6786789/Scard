@@ -14,8 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scard"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BankActivity"></activity>
-        <activity android:name=".view.HealthActivity" />
         <activity android:name=".view.activity.loginGG.LoginActivity" />
         <activity
             android:name=".view.activity.intro.IntroActivity"
@@ -24,16 +22,16 @@
             android:name=".view.PlashScreen"
             android:theme="@style/Theme.Scard">
 
-        </activity>
-        <activity
-            android:configChanges="orientation"
-            android:name=".view.MainActivity"
-            android:theme="@style/Theme.Scard" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:configChanges="orientation"
+            android:name=".view.MainActivity"
+            android:theme="@style/Theme.Scard" >
         </activity>
 
         <meta-data

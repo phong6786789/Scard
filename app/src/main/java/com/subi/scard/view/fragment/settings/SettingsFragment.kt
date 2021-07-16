@@ -1,16 +1,21 @@
 package com.subi.scard.view.fragment.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import com.subi.scard.BR
 import com.subi.scard.R
 import com.subi.scard.base.fragment.BaseBindingFragment
 import com.subi.scard.databinding.FragmentSettingsBinding
 import com.subi.scard.model.CustomItem
 import com.subi.scard.utils.Constants
+import com.subi.scard.utils.Utils
+import com.subi.scard.view.activity.loginGG.LoginActivity
 import com.subi.scard.view.adapter.CustomMenuAdapter
 import com.subi.scard.view.adapter.SettingAdapter
 
@@ -43,17 +48,18 @@ class SettingsFragment : BaseBindingFragment<FragmentSettingsBinding, SettingsVi
 
     private fun onItemClickListener() = object : SettingAdapter.OnItemClickListener {
         override fun onClickItem(value: CustomItem, i: Int) {
-            var idx: Int = when (i) {
+          when (i) {
                 0 -> R.id.infoFragment
                 1 -> R.id.MXHFragment
                 2 -> R.id.healthFragment
                 3 -> R.id.bankFragment
-                4 -> R.id.friendsFragment
-                5 -> R.id.moreFragment
-                else -> R.id.scanQRFragment
+                4 -> {
+                    FirebaseAuth.getInstance().signOut()
+                    startActivity(Intent(context, LoginActivity::class.java))
+                }
             }
             resetBottomNav()
-            findNavController().navigate(idx)
+//            findNavController().navigate(idx)
         }
 
     }

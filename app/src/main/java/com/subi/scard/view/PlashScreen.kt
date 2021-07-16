@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.WindowManager.LayoutParams.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.subi.scard.R
 import com.subi.scard.databinding.ActivityPlashScreenBinding
 import com.subi.scard.utils.Utils
@@ -33,7 +34,12 @@ class PlashScreen : AppCompatActivity() {
         //Next screen
         io.reactivex.Observable.timer(1000, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
             .subscribe {
-                Utils.tempNextNoClear(this, IntroActivity::class.java)
+                if (FirebaseAuth.getInstance().currentUser!=null){
+                    Utils.tempNext(this, MainActivity::class.java)
+                }
+                else{
+                    Utils.tempNextNoClear(this, IntroActivity::class.java)
+                }
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
     }

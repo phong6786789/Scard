@@ -50,9 +50,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
-        if (auth.currentUser!=null){
-            Utils.tempNext(this, MainActivity::class.java)
-        }
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 //        printKeyHash(this)
@@ -122,16 +119,12 @@ class LoginActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.d("chauAPI", it.message.toString())
                 updateUI(null)
-//                Toast.makeText(
-//                    baseContext,
-//                    "Login google failed",
-//                    Toast.LENGTH_SHORT
-//                ).show()
             }
     }
 
     private fun updateUI(user: FirebaseUser?) {
         user?.let {
+            Utils.log("LOGINTEST","uid: "+ user.uid)
             checkUserById(it.uid)
         }
         dialog.dismiss()
@@ -267,8 +260,8 @@ class LoginActivity : AppCompatActivity() {
 
             } catch (e: Exception) {
                 Utils.log("LOGINTEST", "erro: " + e.message.toString())
-                Utils.tempNext(this@LoginActivity, MainActivity::class.java) }
-
+//                Utils.tempNext(this@LoginActivity, MainActivity::class.java)
+                            }
         }
     }
 }

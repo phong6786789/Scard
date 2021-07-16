@@ -8,7 +8,7 @@ import retrofit2.http.*
 
 interface ScardApi {
     //USER
-    @POST("user/checkUserById2.php")
+    @POST("user/checkUserById.php")
     @FormUrlEncoded
     suspend fun checkUserById(
         @Field("idUser") idUser: String?
