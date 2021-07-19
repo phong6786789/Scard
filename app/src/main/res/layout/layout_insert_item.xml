@@ -1,39 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include
         android:id="@+id/toolbar"
         layout="@layout/tool_bar"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tên mạng xã hội"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"/>
+
     <Spinner
         android:id="@+id/spinnerItem"
-        android:spinnerMode="dialog"
-        android:layout_marginTop="10dp"
+        android:spinnerMode="dropdown"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:background="@drawable/spinner_bg"
+        android:elevation="10dp"
+        />
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content"
+        android:text="Link URL"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/edt_bg"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="5dp"
+        android:hint="Vui lòng nhập link URL"
+        android:textSize="18dp"
+        android:textColor="#000"
+        android:elevation="10dp"
+        android:layout_margin="10dp"
+        />
+
         <Button
             android:id="@+id/btnInsert"
-            android:layout_weight="1"
-            android:text="INSERT"
+            android:text="lưu"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:backgroundTint="@color/blue_main"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_weight="1"
-            android:text="CANCEL"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:backgroundTint="@color/blue_main"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_save"
+            android:elevation="10dp"
+            />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:text="CANCEL"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_save"/>
+
 </LinearLayout>
