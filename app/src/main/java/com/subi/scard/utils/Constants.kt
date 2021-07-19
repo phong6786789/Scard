@@ -36,7 +36,7 @@ object Constants {
     }
 
     object HEALTH_TYPE{
-        const val GIA_DINH = "Gia Định"
+        const val GIA_DINH = "Gia Đình"
     }
 
     object FRIEND_TYPE{
@@ -45,14 +45,14 @@ object Constants {
 
 
     object SOCIAL_TYPE{
-        const val FACEBOOK = "facebook"
-        const val ZALO = "zalo"
-        const val YOUTUBE = "youtube"
-        const val INSTAGRAM = "instagram"
-        const val SKYPE = "skype"
-        const val EMAIL = "email"
-        const val TWITTER = "twitter"
-        const val TIKTOK = "tiktok"
+        const val FACEBOOK = "Facebook"
+        const val ZALO = "Zalo"
+        const val YOUTUBE = "Youtube"
+        const val INSTAGRAM = "Instagram"
+        const val SKYPE = "Skype"
+        const val EMAIL = "Email"
+        const val TWITTER = "Twitter"
+        const val TIKTOK = "Tiktok"
 
     }
 }
