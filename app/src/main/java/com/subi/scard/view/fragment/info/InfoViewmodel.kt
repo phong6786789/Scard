@@ -1,23 +1,15 @@
 package com.subi.scard.view.fragment.info
 
-import android.R
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.Context
-import android.view.LayoutInflater
-import android.widget.ArrayAdapter
-import androidx.core.view.isVisible
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.FirebaseAuth
 import com.subi.pokemonproject.data.network.BaseNetwork
 import com.subi.scard.base.viewmodel.BaseViewModel
-import com.subi.scard.databinding.LayoutInsertItemBinding
 import com.subi.scard.model.Item
 import com.subi.scard.utils.Constants
 import com.subi.scard.utils.Utils
-import com.subi.scard.view.activity.loginGG.LoginActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -21,7 +21,7 @@ import kotlinx.coroutines.withContext
 @SuppressLint("CheckResult")
 class HomeViewmodel : BaseViewModel() {
     var list_menu: ObservableList<CustomItem> = ObservableArrayList()
-    var uid = ObservableField("Af10infPygYHaonbtDz9lQdW7Zp1")
+    var uid = ObservableField("")
     var name = ObservableField("")
     var image =  ObservableField("")
     init {
@@ -38,7 +38,8 @@ class HomeViewmodel : BaseViewModel() {
     }
 
     fun load(){
-        name.set(FirebaseAuth.getInstance().currentUser?.displayName)
+        uid.set(FirebaseAuth.getInstance().currentUser?.uid.toString())
+        name.set(FirebaseAuth.getInstance().currentUser?.displayName.toString())
         image.set(FirebaseAuth.getInstance().currentUser?.photoUrl.toString())
     }
 

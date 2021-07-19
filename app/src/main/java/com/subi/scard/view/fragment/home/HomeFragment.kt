@@ -19,7 +19,6 @@ import com.subi.scard.databinding.FragmentHomeMainBinding
 import com.subi.scard.model.CustomItem
 import com.subi.scard.utils.Constants
 import com.subi.scard.utils.Utils
-import com.subi.scard.view.activity.loginGG.LoginActivity
 import com.subi.scard.view.adapter.CustomMenuAdapter
 
 
@@ -28,7 +27,7 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
     View.OnClickListener {
     val TAG = "HomeFragmentTEST"
     override val bindingVariable: Int
-        get() = BR._all
+        get() = BR.viewmodel
     override val viewModel: HomeViewmodel
         get() = ViewModelProviders.of(this).get(HomeViewmodel::class.java)
     override val layoutResource: Int
@@ -38,11 +37,10 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
 
         val currentUser = FirebaseAuth.getInstance().currentUser
+        viewModel.load()
 
         if (currentUser != null) {
             Utils.log(TAG, "UID: ${FirebaseAuth.getInstance().currentUser?.uid.toString()}")
-//            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
-          viewModel.uid.set(FirebaseAuth.getInstance().currentUser?.uid.toString())
         }
 
         //Load list menu
@@ -56,8 +54,8 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
         //filp animation card
         viewDataBinding?.cardview2?.setOnClickListener {
             Utils.log(TAG, "card click")
-            val oa1 = ObjectAnimator.ofFloat( it, "scaleX", 1f, 0f)
-            val oa2 = ObjectAnimator.ofFloat( viewDataBinding?.cardview, "scaleX", 0f, 1f)
+            val oa1 = ObjectAnimator.ofFloat(it, "scaleX", 1f, 0f)
+            val oa2 = ObjectAnimator.ofFloat(viewDataBinding?.cardview, "scaleX", 0f, 1f)
             oa1.interpolator = DecelerateInterpolator()
             oa2.interpolator = AccelerateDecelerateInterpolator()
             oa1.addListener(object : AnimatorListenerAdapter() {
@@ -73,8 +71,8 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
 
         viewDataBinding?.cardview?.setOnClickListener {
             Utils.log(TAG, "card click")
-            val oa1 = ObjectAnimator.ofFloat( it, "scaleX", 1f, 0f)
-            val oa2 = ObjectAnimator.ofFloat( viewDataBinding?.cardview2, "scaleX", 0f, 1f)
+            val oa1 = ObjectAnimator.ofFloat(it, "scaleX", 1f, 0f)
+            val oa2 = ObjectAnimator.ofFloat(viewDataBinding?.cardview2, "scaleX", 0f, 1f)
             oa1.interpolator = DecelerateInterpolator()
             oa2.interpolator = AccelerateDecelerateInterpolator()
             oa1.addListener(object : AnimatorListenerAdapter() {
@@ -87,7 +85,6 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
             })
             oa1.start()
         }
-        viewModel.load()
     }
 
     private fun onItemClickListener() = object : CustomMenuAdapter.OnItemClickListener {

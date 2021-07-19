@@ -1,6 +1,7 @@
 package com.subi.scard.utils
 
 
+import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.annotation.UiThread
 import androidx.databinding.BindingAdapter
@@ -9,7 +10,9 @@ import com.squareup.picasso.Picasso
 import com.subi.scard.R
 import com.subi.scard.model.Item
 import com.subi.scard.view.adapter.*
+import java.io.InputStream
 import java.lang.Exception
+import java.net.URL
 
 object BindingUtils {
     @BindingAdapter("setImageItem")
@@ -77,23 +80,21 @@ object BindingUtils {
         catch (e:Exception){
 
         }
-//        try {
-//            val imgUrl = "http://api.qrserver.com/v1/create-qr-code/?data=$url&size=100x100"
-//            try {
-//                val iStream = URL(imgUrl).content as InputStream
-//                val drawable = Drawable.createFromStream(iStream, "img");
-//                if (drawable!=null){
-//                    imageView.setImageDrawable(drawable)
-//                }
-//                else{
-//                    imageView.setImageResource(R.drawable.logo)
-//                }
-//            } catch (e:Exception) {
-//                e.printStackTrace()
-//            }
-//        }
-//        catch (e:Exception){
-//
-//        }
+
     }
+
+    @BindingAdapter("setImageFromUID")
+    @JvmStatic
+    fun setImageFromUID(imageView: ImageView, uid: String) {
+        try {
+            val imgUrl = "http://api.qrserver.com/v1/create-qr-code/?data=$uid&size=70x70"
+            Picasso.get().load(imgUrl).placeholder(R.drawable.logo).error(R.drawable.logo).into(imageView)
+
+        }
+        catch (e:Exception){
+
+        }
+    }
+
+
 }

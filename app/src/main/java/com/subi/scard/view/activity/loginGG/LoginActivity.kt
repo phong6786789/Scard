@@ -35,7 +35,6 @@ import com.subi.scard.utils.*
 import com.subi.scard.view.MainActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import okhttp3.internal.Util
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 

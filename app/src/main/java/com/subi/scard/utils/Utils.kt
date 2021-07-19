@@ -1,16 +1,15 @@
 package com.subi.scard.utils
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
-import androidx.transition.Visibility
-import com.subi.scard.databinding.LayoutInsertItemBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.subi.scard.databinding.ProgressBarBinding
-import com.subi.scard.view.MainActivity
+import com.subi.scard.view.activity.loginGG.LoginActivity
 
 object Utils {
     fun <T> tempNext(ctx: Context, ofClass: Class<T>) {
@@ -25,7 +24,7 @@ object Utils {
         ContextCompat.startActivity(ctx, intent, null)
     }
 
-    fun log(tag: String, message: String) {
+    fun log(tag: String?, message: String) {
         Log.d(tag, message)
     }
 
@@ -50,8 +49,30 @@ object Utils {
     }
 
     //Clear all data
-    fun clearAllSharePrefs(context: Context){
+    fun clearAllSharePrefs(context: Context) {
         val sharedPrefs = SharedPrefs.getInstance()
         sharedPrefs.getSharedPref(context).edit().clear().apply()
+    }
+
+    fun logOut(context: Context) {
+        var dialog: Dialog? = null
+        dialog = ShowDialog.Builder(context).title("ĐĂNG XUẤT")
+            .message("Bạn có chắc chắn muốn đăng xuất?")
+            .setLeftButton("ĐĂNG XUẤT", object : LeftInterface {
+                override fun onClick() {
+                    FirebaseAuth.getInstance().signOut()
+                    tempNext(context, LoginActivity::class.java)
+                }
+
+            })
+            .setRightButton("KHÔNG", object : RightInterface {
+                override fun onClick() {
+                    dialog?.dismiss()
+                }
+
+            })
+            .miniDialog()
+
+        dialog?.show()
     }
 }

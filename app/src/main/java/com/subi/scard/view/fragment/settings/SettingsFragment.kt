@@ -1,13 +1,9 @@
 package com.subi.scard.view.fragment.settings
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 import com.subi.scard.BR
 import com.subi.scard.R
 import com.subi.scard.base.fragment.BaseBindingFragment
@@ -15,8 +11,6 @@ import com.subi.scard.databinding.FragmentSettingsBinding
 import com.subi.scard.model.CustomItem
 import com.subi.scard.utils.Constants
 import com.subi.scard.utils.Utils
-import com.subi.scard.view.activity.loginGG.LoginActivity
-import com.subi.scard.view.adapter.CustomMenuAdapter
 import com.subi.scard.view.adapter.SettingAdapter
 
 @Suppress("DEPRECATION")
@@ -53,12 +47,9 @@ class SettingsFragment : BaseBindingFragment<FragmentSettingsBinding, SettingsVi
                 1 -> R.id.MXHFragment
                 2 -> R.id.healthFragment
                 3 -> R.id.bankFragment
-                4 -> {
-                    FirebaseAuth.getInstance().signOut()
-                    startActivity(Intent(context, LoginActivity::class.java))
-                }
+                4 -> context?.let { Utils.logOut(it) }
             }
-            resetBottomNav()
+                resetBottomNav()
 //            findNavController().navigate(idx)
         }
 

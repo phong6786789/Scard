@@ -61,15 +61,15 @@
                         android:id="@+id/text_title_mini"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:text="@{title}"
                         android:textAlignment="center" />
 
                     <TextView
+                        android:textColor="@color/black"
+                        android:paddingVertical="16dp"
                         android:id="@+id/text_mini"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:ellipsize="end"
                         android:maxLines="4"
                         android:text="@{des}"
