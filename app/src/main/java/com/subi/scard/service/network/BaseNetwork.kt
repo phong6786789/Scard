@@ -2,10 +2,10 @@ package com.subi.pokemonproject.data.network
 
 import com.google.gson.GsonBuilder
 import com.subi.pokemonproject.data.respository.ScardRespository
+import com.subi.scard.service.network.ScardApi
 import com.subi.scard.utils.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 

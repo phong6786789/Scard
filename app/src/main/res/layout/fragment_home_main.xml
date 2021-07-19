@@ -59,8 +59,7 @@
                                 android:id="@+id/imageView"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/dog" />
+                                android:scaleType="centerCrop"/>
                         </androidx.cardview.widget.CardView>
                     </androidx.cardview.widget.CardView>
 
@@ -68,7 +67,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Phong Subi"
+                        android:text="@{viewmodel.name}"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -141,7 +140,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="PHONG SUBI"
+                                android:text="@{viewmodel.name}"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />
 
@@ -189,6 +188,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layoutAnimation="@anim/layout_animation"
             android:layout_marginTop="8dp"
             android:layout_below="@id/cardviewx"
             android:layout_width="match_parent"

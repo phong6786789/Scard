@@ -5,9 +5,11 @@ import android.widget.ImageView
 import androidx.annotation.UiThread
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.subi.scard.R
 import com.subi.scard.model.Item
 import com.subi.scard.view.adapter.*
+import java.lang.Exception
 
 object BindingUtils {
     @BindingAdapter("setImageItem")
@@ -69,6 +71,12 @@ object BindingUtils {
     @BindingAdapter("setImageFromUrl")
     @JvmStatic
     fun setImageFromUrl(imageView: ImageView, url: String) {
+        try {
+            Picasso.get().load(url).placeholder(R.drawable.logo).error(R.drawable.logo).into(imageView)
+        }
+        catch (e:Exception){
+
+        }
 //        try {
 //            val imgUrl = "http://api.qrserver.com/v1/create-qr-code/?data=$url&size=100x100"
 //            try {

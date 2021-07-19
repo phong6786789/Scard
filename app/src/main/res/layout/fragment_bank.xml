@@ -26,6 +26,7 @@
                 android:padding="8dp">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:layoutAnimation="@anim/layout_animation"
                     android:id="@+id/rcv_home"
                     setItemAdapter="@{viewmodel.list}"
                     android:layout_width="match_parent"

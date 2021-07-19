@@ -1,4 +1,4 @@
-package com.subi.pokemonproject.data.network
+package com.subi.scard.service.network
 
 import com.subi.scard.model.ItemModel
 import com.subi.scard.model.Status

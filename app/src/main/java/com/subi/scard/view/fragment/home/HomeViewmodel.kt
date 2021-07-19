@@ -22,6 +22,8 @@ import kotlinx.coroutines.withContext
 class HomeViewmodel : BaseViewModel() {
     var list_menu: ObservableList<CustomItem> = ObservableArrayList()
     var uid = ObservableField("Af10infPygYHaonbtDz9lQdW7Zp1")
+    var name = ObservableField("")
+    var image =  ObservableField("")
     init {
         list_menu.addAll(
             listOf(
@@ -33,6 +35,11 @@ class HomeViewmodel : BaseViewModel() {
                 CustomItem(6, R.drawable.ic_more, "Thêm")
             )
         )
+    }
+
+    fun load(){
+        name.set(FirebaseAuth.getInstance().currentUser?.displayName)
+        image.set(FirebaseAuth.getInstance().currentUser?.photoUrl.toString())
     }
 
 }

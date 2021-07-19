@@ -87,6 +87,7 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
             })
             oa1.start()
         }
+        viewModel.load()
     }
 
     private fun onItemClickListener() = object : CustomMenuAdapter.OnItemClickListener {
