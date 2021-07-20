@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.subi.scard.R
-import com.subi.scard.databinding.DialogConfirmBinding
 import com.subi.scard.databinding.ProgressBarBinding
 import com.subi.scard.view.activity.loginGG.LoginActivity
 
@@ -61,10 +60,9 @@ object Utils {
         sharedPrefs.setStringValue(context, Constants.USER.ID_USER, key)
     }
 
-    fun getIdUser(context: Context): String? {
+    fun getIdUser(context: Context): String {
         val sharedPrefs = SharedPrefs.getInstance()
-        val stringValue = sharedPrefs.getStringValue(context, Constants.USER.ID_USER, null)
-        return stringValue
+        return sharedPrefs.getStringValue(context, Constants.USER.ID_USER, "")?:""
     }
 
     //Clear all data
@@ -79,8 +77,10 @@ object Utils {
             .message("Bạn có chắc chắn muốn đăng xuất?")
             .setLeftButton("ĐĂNG XUẤT", object : LeftInterface {
                 override fun onClick() {
+                    SharedPrefs.getInstance().deleteAll(context)
                     FirebaseAuth.getInstance().signOut()
                     tempNext(context, LoginActivity::class.java)
+                    dialog?.dismiss()
                 }
 
             })
@@ -92,6 +92,21 @@ object Utils {
             })
             .miniDialog()
 
+        dialog?.show()
+    }
+
+    fun showMess(context: Context, message: String) {
+        var dialog: Dialog? = null
+        dialog =
+            ShowDialog.Builder(context)
+                .title("Thông báo")
+                .message(message)
+                .setRightButton("ĐÓNG", object : RightInterface {
+                    override fun onClick() {
+                        dialog?.dismiss()
+                    }
+                })
+                .miniDialog()
         dialog?.show()
     }
 }

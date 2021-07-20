@@ -232,29 +232,17 @@ class LoginActivity : AppCompatActivity() {
                     "respons: " + BaseNetwork.getInstance().checkUserById(idUser).body()?.status
                 )
 
-                fun showMess(message: String) {
-                    runOnUiThread {
-                        var dialog: Dialog? = null
-                        dialog =
-                            ShowDialog.Builder(this@LoginActivity)
-                                .title("Thông báo")
-                                .message(message)
-                                .setRightButton("ĐÓNG", object : RightInterface {
-                                    override fun onClick() {
-                                        dialog?.dismiss()
-                                    }
-
-                                })
-                                .miniDialog()
-                        dialog?.show()
-                    }
-                }
-
                 val status = BaseNetwork.getInstance().checkUserById(idUser).body()?.status
                 when (status) {
-                    "login" -> Utils.tempNext(this@LoginActivity, MainActivity::class.java)
-                    "success" -> Utils.tempNext(this@LoginActivity, MainActivity::class.java)
-                    "failed" -> showMess("Đăng nhập thất bại!")
+                    "login" -> {
+                        Utils.saveIdUser(this@LoginActivity, idUser)
+                        Utils.tempNext(this@LoginActivity, MainActivity::class.java)
+                    }
+                    "success" -> {
+                        Utils.saveIdUser(this@LoginActivity, idUser)
+                        Utils.tempNext(this@LoginActivity, MainActivity::class.java)
+                    }
+                    "failed" -> Utils.showMess(this@LoginActivity, "Đăng nhập thất bại!")
                 }
 
             } catch (e: Exception) {

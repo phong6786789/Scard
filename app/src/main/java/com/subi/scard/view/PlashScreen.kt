@@ -34,13 +34,13 @@ class PlashScreen : AppCompatActivity() {
         //Next screen
         io.reactivex.Observable.timer(1000, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
             .subscribe {
-                if (FirebaseAuth.getInstance().currentUser!=null){
+                val uid = Utils.getIdUser(this)
+                if (uid != null) {
                     Utils.tempNext(this, MainActivity::class.java)
-                }
-                else{
+                } else {
                     Utils.tempNextNoClear(this, IntroActivity::class.java)
                 }
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
     }
 }

@@ -1,6 +1,7 @@
 package com.subi.scard.view.fragment.mxh
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +16,13 @@ import com.subi.scard.databinding.FragmentMXHBinding
 import com.subi.scard.databinding.LayoutInsertItemBinding
 import com.subi.scard.model.Item
 import com.subi.scard.utils.Constants
+import com.subi.scard.utils.LeftInterface
+import com.subi.scard.utils.RightInterface
+import com.subi.scard.utils.ShowDialog
 import com.subi.scard.view.adapter.MXHAdapter
 
 @Suppress("DEPRECATION")
-class MXHFragment : BaseBindingFragment<FragmentMXHBinding, MXHViewmodel>(){
+class MXHFragment : BaseBindingFragment<FragmentMXHBinding, MXHViewmodel>() {
     override val bindingVariable: Int
         get() = BR.viewmodel
     override val viewModel: MXHViewmodel
@@ -28,31 +32,39 @@ class MXHFragment : BaseBindingFragment<FragmentMXHBinding, MXHViewmodel>(){
 
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
-
         //Load list
         viewDataBinding?.rcvHome?.apply {
-            adapter = MXHAdapter(viewModel.list){clickDelete(it)}
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            adapter = MXHAdapter(viewModel.list) { clickDelete(it) }
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             hasFixedSize()
         }
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
         viewModel.context = context
+        viewModel.load()
     }
 
-    fun clickDelete(item: Item){
-        val builder = AlertDialog.Builder(context)
-        builder.setMessage("Do you want delete ${item.title}?")
-        builder.setNegativeButton("No"){ d, _ ->
-            d.dismiss()
+    fun clickDelete(item: Item) {
+        var dialogx: Dialog? = null
+        dialogx = context?.let {
+            ShowDialog.Builder(it).title("XOÁ DỮ LIỆU")
+                .message("Bạn có chắc chắn muốn xoá ${item.title}?")
+                .setLeftButton("XOÁ", object : LeftInterface {
+                    override fun onClick() {
+                        viewModel.deleteItem(item.id!!)
+                        dialogx?.dismiss()
+                    }
+                })
+                .setRightButton("KHÔNG", object : RightInterface {
+                    override fun onClick() {
+                        dialogx?.dismiss()
+                    }
+                })
+                .miniDialog()
         }
-        builder.setPositiveButton("Yes"){ d, _ ->
-            viewModel.deleteItem(item.id!!)
-            d.dismiss()
-        }
-        val dialog = builder.create()
-        dialog.show()
+        dialogx?.show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

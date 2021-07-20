@@ -24,7 +24,6 @@ class MXHViewmodel : BaseViewModel() {
     val TAG = "MXHViewmodel"
     val list: ObservableList<Item> = ObservableArrayList()
     var context: Context? = null
-    var idUser = "111"
     val listSocail = arrayOf(
         Constants.SOCIAL_TYPE.EMAIL,
         Constants.SOCIAL_TYPE.FACEBOOK,
@@ -36,25 +35,37 @@ class MXHViewmodel : BaseViewModel() {
         Constants.SOCIAL_TYPE.ZALO
     )
 
-    init {
-        load()
-    }
-
     fun insert() {
         context?.let {
-            val builder = AlertDialog.Builder(context)
-            val binding = LayoutInsertItemBinding.inflate(LayoutInflater.from(context))
-            binding.toolbar.imageLeft.isVisible = false
+            val builder = AlertDialog.Builder(it)
+            val binding = LayoutInsertItemBinding.inflate(LayoutInflater.from(it))
+            binding.tvTitle.text = "THÊM MXH"
             val spinnerAdapter =
                 ArrayAdapter(it, android.R.layout.simple_expandable_list_item_1, listSocail)
             binding.spinnerItem.adapter = spinnerAdapter
             builder.setView(binding.root)
             val dialog = builder.create()
 
-            binding.btnInsert.setOnClickListener {
-                val title = binding.spinnerItem.selectedItem.toString()
-                insertItem(Item("0", title, title, Constants.ITEM_TYPE.SOCIAL, "111", "qwa"))
-                dialog.dismiss()
+            binding.btnInsert.setOnClickListener { v ->
+
+                val link = binding.edtLink.text.toString()
+                if (link.isNotEmpty()) {
+                    val title = binding.spinnerItem.selectedItem.toString()
+                    insertItem(
+                        Item(
+                            "0",
+                            title,
+                            link,
+                            Constants.ITEM_TYPE.SOCIAL,
+                            Utils.getIdUser(it),
+                            "0"
+                        )
+                    )
+                    dialog.dismiss()
+                } else {
+                    Utils.showMess(it, "Không được để trống!")
+                }
+
             }
             binding.btnCancel.setOnClickListener {
                 dialog.dismiss()
@@ -63,21 +74,20 @@ class MXHViewmodel : BaseViewModel() {
         }
     }
 
-    fun deleteItem(id: String){
+    fun deleteItem(id: String) {
         viewModelScope.launch {
             try {
                 val res = BaseNetwork.getInstance().deleteItemById(id)
-                if(res.isSuccessful){
+                if (res.isSuccessful) {
                     res.body()?.status?.let {
-                        if(it.equals("success")){
+                        if (it.equals("success")) {
                             load()
                         }
                     }
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
                 }
-            }
-            catch (e: Exception){
+            } catch (e: Exception) {
                 Utils.log(TAG, "erro: ${e.message}")
             }
         }
@@ -94,7 +104,7 @@ class MXHViewmodel : BaseViewModel() {
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
                 }
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Utils.log(TAG, "erro: ${e.message}")
             }
         }
@@ -102,20 +112,13 @@ class MXHViewmodel : BaseViewModel() {
 
 
     fun load() {
-        //Check have account current
-//        val currentUser = FirebaseAuth.getInstance().currentUser
-//        if (currentUser != null) {
-//            idUser = currentUser.uid
-//        } else {
-//            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
-//        }
-
+        val idUser = context?.let { Utils.getIdUser(it) }
         //Get data
         viewModelScope.launch {
             try {
-                Utils.log(TAG, "Call data list")
+                Utils.log(TAG, "uid: $idUser")
                 val response = BaseNetwork.getInstance()
-                    .getAllItemByIdUserAndType(idUser, Constants.ITEM_TYPE.SOCIAL)
+                    .getAllItemByIdUserAndType(idUser?:"", Constants.ITEM_TYPE.SOCIAL)
                 withContext(Dispatchers.Main) {
                     Utils.log(TAG, "response: ${response.body()}")
                     if (response.isSuccessful) {

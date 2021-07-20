@@ -138,6 +138,10 @@ class SharedPrefs {
         editor.commit()
     }
 
+    fun deleteAll(context: Context){
+        getSharedPref(context).edit().clear().apply()
+    }
+
     /**
      * Get My Shared preference.
      *

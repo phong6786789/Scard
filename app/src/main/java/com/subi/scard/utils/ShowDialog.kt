@@ -111,7 +111,7 @@ class ShowDialog(
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
             if (dialog?.window != null) {
-                dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             }
 
             dialog?.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)

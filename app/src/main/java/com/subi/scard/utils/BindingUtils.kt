@@ -1,6 +1,7 @@
 package com.subi.scard.utils
 
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.annotation.UiThread
@@ -15,19 +16,20 @@ import java.lang.Exception
 import java.net.URL
 
 object BindingUtils {
+    @SuppressLint("DefaultLocale")
     @BindingAdapter("setImageItem")
     @JvmStatic
     fun setImageItem(imageView: ImageView, title: String) {
 
         var type = when (title.toLowerCase()) {
-            Constants.SOCIAL_TYPE.FACEBOOK -> R.drawable.icon_fb
-            Constants.SOCIAL_TYPE.ZALO -> R.drawable.icon_zalo
-            Constants.SOCIAL_TYPE.INSTAGRAM -> R.drawable.icon_instagram
-            Constants.SOCIAL_TYPE.TIKTOK -> R.drawable.icon_tiktok
-            Constants.SOCIAL_TYPE.YOUTUBE -> R.drawable.icon_ytb
-            Constants.SOCIAL_TYPE.EMAIL -> R.drawable.icon_gmail
-            Constants.SOCIAL_TYPE.TWITTER -> R.drawable.icon_twitter
-            Constants.SOCIAL_TYPE.SKYPE -> R.drawable.icon_skype
+            Constants.SOCIAL_TYPE.FACEBOOK.toLowerCase() -> R.drawable.icon_fb
+            Constants.SOCIAL_TYPE.ZALO.toLowerCase() -> R.drawable.icon_zalo
+            Constants.SOCIAL_TYPE.INSTAGRAM.toLowerCase() -> R.drawable.icon_instagram
+            Constants.SOCIAL_TYPE.TIKTOK.toLowerCase() -> R.drawable.icon_tiktok
+            Constants.SOCIAL_TYPE.YOUTUBE.toLowerCase() -> R.drawable.icon_ytb
+            Constants.SOCIAL_TYPE.EMAIL.toLowerCase() -> R.drawable.icon_gmail
+            Constants.SOCIAL_TYPE.TWITTER.toLowerCase() -> R.drawable.icon_twitter
+            Constants.SOCIAL_TYPE.SKYPE.toLowerCase() -> R.drawable.icon_skype
             else -> R.mipmap.ic_launcher
         }
         imageView.setImageResource(type)
