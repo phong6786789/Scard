@@ -12,6 +12,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ObservableField
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -33,6 +34,7 @@ import com.subi.scard.R
 import com.subi.scard.databinding.ActivityLoginBinding
 import com.subi.scard.utils.*
 import com.subi.scard.view.MainActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.internal.Util
@@ -47,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var fbCallbackManager: CallbackManager
     private lateinit var dialog: AlertDialog
     var status: ObservableField<String>? = ObservableField()
+    var v = 0f
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
@@ -67,12 +70,30 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient.signOut()
 
 
-        binding.buttonLoginGg.setOnClickListener {
+        binding.fabGoogle.setOnClickListener {
             signInGoogle()
         }
-        binding.buttonLoginFb.setOnClickListener {
+        binding.fabFb.setOnClickListener {
             signInFb()
         }
+
+        //hiệu ứng chuyển động login, signup
+        val adapter = LoginAdapter(
+            supportFragmentManager,
+            FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+        )
+        view_pager.setAdapter(adapter)
+        tab_layout.setupWithViewPager(view_pager)
+        fab_fb.setTranslationY(300f)
+        fab_google.setTranslationY(300f)
+        tab_layout.setTranslationX(800f)
+
+        fab_fb.setAlpha(v)
+        fab_google.setAlpha(v)
+        tab_layout.setAlpha(v)
+        fab_fb.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(400).start()
+        fab_google.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(600).start()
+        tab_layout.animate().translationX(0f).alpha(1f).setDuration(800).setStartDelay(400).start()
 
     }
 
