@@ -90,12 +90,12 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
     private fun onItemClickListener() = object : CustomMenuAdapter.OnItemClickListener {
         override fun onClickItem(value: CustomItem, i: Int) {
             var idx: Int = when (i) {
-                0 -> R.id.infoFragment
-                1 -> R.id.MXHFragment
-                2 -> R.id.healthFragment
-                3 -> R.id.bankFragment
-                4 -> R.id.friendsFragment
-                5 -> R.id.moreFragment
+                0 -> R.id.action_homeFragment_to_infoFragment
+                1 -> R.id.action_homeFragment_to_MXHFragment
+                2 -> R.id.action_homeFragment_to_healthFragment
+                3 -> R.id.action_homeFragment_to_bankFragment
+                4 -> R.id.action_homeFragment_to_friendsFragment
+                5 -> R.id.action_homeFragment_to_moreFragment
                 else -> R.id.scanQRFragment
             }
             resetBottomNav()

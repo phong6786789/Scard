@@ -9,12 +9,62 @@
         android:id="@+id/homeFragment"
         android:name="com.subi.scard.view.fragment.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home_main" />
+        tools:layout="@layout/fragment_home_main" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_homeFragment_to_friendsFragment"
+            app:destination="@id/friendsFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_homeFragment_to_MXHFragment"
+            app:destination="@id/MXHFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_homeFragment_to_bankFragment"
+            app:destination="@id/bankFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_homeFragment_to_healthFragment"
+            app:destination="@id/healthFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_homeFragment_to_moreFragment"
+            app:destination="@id/moreFragment" />
+    </fragment>
     <fragment
         android:id="@+id/scanQRFragment"
         android:name="com.subi.scard.view.fragment.qr_code.ScanQRFragment"
         android:label="fragment_scan_q_r"
-        tools:layout="@layout/fragment_scan_q_r" />
+        tools:layout="@layout/fragment_scan_q_r" >
+        <action
+            android:id="@+id/action_scanQRFragment_to_showCardFragment"
+            app:destination="@id/showCardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/friendsFragment"
         android:name="com.subi.scard.view.fragment.friends.FriendsFragment"

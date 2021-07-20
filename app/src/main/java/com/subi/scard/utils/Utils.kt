@@ -4,10 +4,15 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.subi.scard.R
+import com.subi.scard.databinding.DialogConfirmBinding
 import com.subi.scard.databinding.ProgressBarBinding
 import com.subi.scard.view.activity.loginGG.LoginActivity
 
@@ -35,6 +40,20 @@ object Utils {
         binding.textMessage.text = message
         builder.setView(binding.root)
         return builder.create()
+    }
+
+    fun loading(context: Context): Dialog {
+        var dialog = Dialog(context)
+        dialog.setContentView(R.layout.loading)
+        dialog.setCancelable(false)
+        val window = dialog.window
+        window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        return dialog
     }
 
     fun saveIdUser(context: Context, key: String) {

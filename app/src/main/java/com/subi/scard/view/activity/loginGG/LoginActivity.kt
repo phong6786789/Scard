@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
     private lateinit var fbCallbackManager: CallbackManager
-    private lateinit var dialog: AlertDialog
+    private lateinit var dialog: Dialog
     var status: ObservableField<String>? = ObservableField()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
 //        printKeyHash(this)
         //Set no title
         supportActionBar?.hide()
-        dialog = Utils.showProgressBar(this, "Loading...")
+        dialog = Utils.loading(this)
 
         instanceGoogleSignIn()
         instanceFacebookSignIn()
@@ -65,9 +65,11 @@ class LoginActivity : AppCompatActivity() {
 
         binding.buttonLoginGg.setOnClickListener {
             signInGoogle()
+            dialog.show()
         }
         binding.buttonLoginFb.setOnClickListener {
             signInFb()
+            dialog.show()
         }
 
     }
@@ -76,7 +78,6 @@ class LoginActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         fbCallbackManager.onActivityResult(requestCode, resultCode, data)
 
-        dialog.show()
         when (requestCode) {
             SNS_REQUEST_CODE_GOOGLE -> {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -126,7 +127,6 @@ class LoginActivity : AppCompatActivity() {
             Utils.log("LOGINTEST", "uid: " + user.uid)
             checkUserById(it.uid)
         }
-        dialog.dismiss()
     }
 
     protected fun signInFb() {
@@ -220,11 +220,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        dialog.dismiss()
         super.onResume()
     }
 
     fun checkUserById(idUser: String) {
+        dialog.dismiss()
         GlobalScope.launch {
             try {
                 Utils.log(
