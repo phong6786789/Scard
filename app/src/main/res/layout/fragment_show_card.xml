@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="72dp"
-            android:text="Chau Dang"
+            android:text="@{viewmodel.fullname}"
             android:textColor="@color/white"
             android:textSize="25dp"
             android:textStyle="bold"
@@ -39,6 +39,7 @@
 
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/textView2"
             android:layout_width="171dp"
             android:layout_height="24dp"
@@ -53,8 +54,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:scaleType="centerCrop"
                 app:cardCornerRadius="75dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,11 +66,11 @@
 
 
                 <ImageView
+                    setImageFromUrl="@{viewmodel.avatar}"
                     android:id="@+id/imageView"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/dog" />
+                    android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -53,6 +53,12 @@ class ShowCardViewmodel: BaseViewModel() {
                         response2.body()?.getAllList?.let {
                             listInfo.addAll(it)
                             Utils.log(TAG, "size: ${listInfo.size}")
+                            for(x in it){
+                                if (x.id=="INFO${x.idUser}"){
+                                    fullname.set(x.title)
+                                    avatar.set(x.description)
+                                }
+                            }
                         }
                     } else {
                         Utils.log(TAG, "failed: ${response2.errorBody()}")
@@ -65,7 +71,7 @@ class ShowCardViewmodel: BaseViewModel() {
                     Utils.log(TAG, "response3: ${response2.body()}")
                     if (response3.isSuccessful) {
                         listBank.clear()
-                        response2.body()?.getAllList?.let {
+                        response3.body()?.getAllList?.let {
                             listBank.addAll(it)
                             Utils.log(TAG, "size: ${listBank.size}")
                         }
@@ -80,7 +86,7 @@ class ShowCardViewmodel: BaseViewModel() {
                     Utils.log(TAG, "response4: ${response4.body()}")
                     if (response4.isSuccessful) {
                         listHealth.clear()
-                        response2.body()?.getAllList?.let {
+                        response4.body()?.getAllList?.let {
                             listHealth.addAll(it)
                             Utils.log(TAG, "size: ${listHealth.size}")
                         }
