@@ -39,7 +39,7 @@ class FriendsFragment : BaseBindingFragment<FragmentFriendsBinding, FriendsViewm
     }
 
     fun clickItem(item: Item){
-        val bundle = bundleOf("id" to item.idUser)
+        val bundle = bundleOf("id" to item.id?.replace(Constants.FRIEND_TYPE.FRIEND,""))
         findNavController().navigate(R.id.action_friendsFragment_to_showCardFragment, bundle)
     }
 
