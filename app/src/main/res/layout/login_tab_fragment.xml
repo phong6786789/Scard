@@ -56,7 +56,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass"
         app:layout_constraintVertical_bias="0"
-        android:elevation="8dp"/>
+        android:elevation="8dp"
+        tools:ignore="OnClick" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
