@@ -30,8 +30,7 @@
                     android:id="@+id/rcv_home"
                     setItemAdapter="@{viewmodel.list}"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
+                    android:layout_height="match_parent"/>
 
             </androidx.core.widget.NestedScrollView>
             <com.google.android.material.floatingactionbutton.FloatingActionButton

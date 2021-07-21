@@ -1,7 +1,6 @@
 package com.subi.scard.view.activity.loginGG
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageInfo
@@ -80,19 +79,20 @@ class LoginActivity : AppCompatActivity() {
             supportFragmentManager,
             FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
         )
-        view_pager.setAdapter(adapter)
-        tab_layout.setupWithViewPager(view_pager)
-        fab_fb.setTranslationY(300f)
-        fab_google.setTranslationY(300f)
-        tab_layout.setTranslationX(800f)
+        binding.apply {
+            viewPager.setAdapter(adapter)
+            tabLayout.setupWithViewPager(viewPager)
+            fabFb.setTranslationY(300f)
+            fabGoogle.setTranslationY(300f)
+            tabLayout.setTranslationX(800f)
 
-        fab_fb.setAlpha(v)
-        fab_google.setAlpha(v)
-        tab_layout.setAlpha(v)
-        fab_fb.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(400).start()
-        fab_google.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(600).start()
-        tab_layout.animate().translationX(0f).alpha(1f).setDuration(800).setStartDelay(400).start()
-
+            fabFb.setAlpha(v)
+            fabGoogle.setAlpha(v)
+            tabLayout.setAlpha(v)
+            fabFb.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(400).start()
+            fabGoogle.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(600).start()
+            tabLayout.animate().translationX(0f).alpha(1f).setDuration(800).setStartDelay(400).start()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -241,6 +241,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
+        dialog.dismiss()
         super.onResume()
     }
 

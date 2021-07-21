@@ -1,81 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <EditText
-        android:id="@+id/email_signup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edt_bg"
-        android:hint="Email"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24"
-        app:layout_constraintWidth_percent=".8"
-        android:elevation="8dp"/>
+    <data>
 
-    <EditText
-        android:id="@+id/pass_signup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_signup"
-        app:layout_constraintWidth_percent=".8"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias=".5"
-        android:hint="Mật khẩu"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edt_bg"
-        android:elevation="8dp"/>
+    </data>
 
-    <EditText
-        android:id="@+id/pass_again"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pass_signup"
-        app:layout_constraintWidth_percent=".8"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias=".5"
-        android:hint="Nhập lại mật khẩu"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edt_bg"
-        android:elevation="8dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/email_signup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edt_bg"
+            android:hint="Email"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.24"
+            app:layout_constraintWidth_percent=".8"
+            android:elevation="8dp" />
+
+        <EditText
+            android:id="@+id/pass_signup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email_signup"
+            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintHorizontal_bias=".5"
+            android:hint="Mật khẩu"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edt_bg"
+            android:elevation="8dp" />
+
+        <EditText
+            android:id="@+id/pass_again"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pass_signup"
+            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintHorizontal_bias=".5"
+            android:hint="Nhập lại mật khẩu"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edt_bg"
+            android:elevation="8dp" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_signup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Đăng ký"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:fontFamily="@font/baloo2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".85"
-        app:layout_constraintWidth_percent=".8"
-        android:background="@drawable/btn_bg"
-        android:textColor="#fff"
-        android:elevation="8dp"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_signup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:fontFamily="@font/baloo2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".85"
+            app:layout_constraintWidth_percent=".8"
+            android:background="@drawable/btn_bg"
+            android:textColor="#fff"
+            android:elevation="8dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
