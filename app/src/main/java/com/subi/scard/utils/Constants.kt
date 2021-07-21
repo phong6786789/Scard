@@ -17,6 +17,7 @@ object Constants {
         const val INFO = "Cá nhân"
         const val HEALTH = "Y tế"
         const val MORE = "Chức năng khác"
+        const val SHOW = "Thông tin"
     }
 
     object ITEM_TYPE{

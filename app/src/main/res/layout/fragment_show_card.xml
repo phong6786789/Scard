@@ -82,12 +82,14 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
               <androidx.recyclerview.widget.RecyclerView
+                  setItemAdapter="@{viewmodel.listSocial}"
                   android:layout_marginBottom="8dp"
                   android:id="@+id/rcv_social"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"/>
 
               <androidx.recyclerview.widget.RecyclerView
+                  setItemAdapter="@{viewmodel.listHealth}"
                   android:layout_marginBottom="8dp"
                   android:id="@+id/rcv_health"
                   android:layout_below="@id/contrains_top"
@@ -95,6 +97,7 @@
                   android:layout_height="wrap_content"/>
 
               <androidx.recyclerview.widget.RecyclerView
+                  setItemAdapter="@{viewmodel.listBank}"
                   android:layout_marginBottom="8dp"
                   android:id="@+id/rcv_bank"
                   android:layout_below="@id/contrains_top"
@@ -102,6 +105,7 @@
                   android:layout_height="wrap_content"/>
 
               <androidx.recyclerview.widget.RecyclerView
+                  setItemAdapter="@{viewmodel.listInfo}"
                   android:layout_marginBottom="8dp"
                   android:id="@+id/rcv_info"
                   android:layout_below="@id/contrains_top"

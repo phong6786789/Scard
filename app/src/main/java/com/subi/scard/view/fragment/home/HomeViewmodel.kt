@@ -41,6 +41,8 @@ class HomeViewmodel : BaseViewModel() {
         uid.set(FirebaseAuth.getInstance().currentUser?.uid.toString())
         name.set(FirebaseAuth.getInstance().currentUser?.displayName.toString())
         image.set(FirebaseAuth.getInstance().currentUser?.photoUrl.toString())
+        //Auto add User
+
     }
 
 }

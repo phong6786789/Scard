@@ -33,7 +33,6 @@ import com.subi.scard.R
 import com.subi.scard.databinding.ActivityLoginBinding
 import com.subi.scard.utils.*
 import com.subi.scard.view.MainActivity
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.security.MessageDigest
@@ -80,15 +79,15 @@ class LoginActivity : AppCompatActivity() {
             FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
         )
         binding.apply {
-            viewPager.setAdapter(adapter)
+            viewPager.adapter = adapter
             tabLayout.setupWithViewPager(viewPager)
-            fabFb.setTranslationY(300f)
-            fabGoogle.setTranslationY(300f)
-            tabLayout.setTranslationX(800f)
+            fabFb.translationY = 300f
+            fabGoogle.translationY = 300f
+            tabLayout.translationX = 800f
 
-            fabFb.setAlpha(v)
-            fabGoogle.setAlpha(v)
-            tabLayout.setAlpha(v)
+            fabFb.alpha = v
+            fabGoogle.alpha = v
+            tabLayout.alpha = v
             fabFb.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(400).start()
             fabGoogle.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(600).start()
             tabLayout.animate().translationX(0f).alpha(1f).setDuration(800).setStartDelay(400).start()
@@ -228,7 +227,7 @@ class LoginActivity : AppCompatActivity() {
                 key = String(Base64.encode(md.digest(), 0))
 
                 // String key = new String(Base64.encodeBytes(md.digest()));
-                Log.e("Key Hash=", key!!)
+                Log.e("Key Hash=", key)
             }
         } catch (e1: PackageManager.NameNotFoundException) {
             Log.e("Name not found", e1.toString())

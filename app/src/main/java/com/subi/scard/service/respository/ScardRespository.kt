@@ -1,8 +1,8 @@
 package com.subi.pokemonproject.data.respository
 
-import com.subi.scard.service.network.ScardApi
 import com.subi.scard.model.ItemModel
 import com.subi.scard.model.Status
+import com.subi.scard.service.network.ScardApi
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -20,6 +20,7 @@ class ScardRespository @Inject constructor(
             : Response<ItemModel> = scardApi.getAllItemByIdUserAndType(idUser, type)
 
     suspend fun insertItem(
+        id:String?,
         title: String?,
         description: String?,
         type: String?,
@@ -27,7 +28,7 @@ class ScardRespository @Inject constructor(
         status: String?
     )
             : Response<ItemModel> =
-        scardApi.insertItem(title, description, type, idUser, status)
+        scardApi.insertItem(id, title, description, type, idUser, status)
 
     suspend fun editItemById(
         id: String?,

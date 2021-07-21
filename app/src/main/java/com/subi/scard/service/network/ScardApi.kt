@@ -26,6 +26,7 @@ interface ScardApi {
 
     @GET("item/insertItem.php")
     suspend fun insertItem(
+        @Query("id") id: String?,
         @Query("title") title: String?,
         @Query("description") description: String?,
         @Query("type") type: String?,

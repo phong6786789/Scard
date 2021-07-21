@@ -86,7 +86,7 @@ class HealthViewmodel : BaseViewModel() {
         viewModelScope.launch {
             try {
                 val res = BaseNetwork.getInstance().insertItem(
-                    item.title, item.description, item.type, item.idUser, item.status
+                   item.id, item.title, item.description, item.type, item.idUser, item.status
                 )
                 if (res.isSuccessful) {
                     load()

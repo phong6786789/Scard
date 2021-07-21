@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
@@ -64,9 +65,8 @@ class ScanQRFragment : BaseBindingFragment<FragmentScanQRBinding, QRViewmodel>()
     }
 
     override fun handleResult(rawResult: Result?) {
-        //Trả kết quả về
-        Toast.makeText(context, rawResult?.contents.toString(), Toast.LENGTH_LONG).show()
-        findNavController().navigate(R.id.action_scanQRFragment_to_showCardFragment)
+        val bundle = bundleOf("id" to rawResult?.contents.toString())
+        findNavController().navigate(R.id.action_scanQRFragment_to_showCardFragment, bundle)
     }
 
     private fun initViews() {

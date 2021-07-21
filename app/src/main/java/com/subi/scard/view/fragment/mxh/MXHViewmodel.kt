@@ -40,6 +40,7 @@ class MXHViewmodel : BaseViewModel() {
             val builder = AlertDialog.Builder(it)
             val binding = LayoutInsertItemBinding.inflate(LayoutInflater.from(it))
             binding.tvTitle.text = "THÊM MXH"
+
             val spinnerAdapter =
                 ArrayAdapter(it, android.R.layout.simple_expandable_list_item_1, listSocail)
             binding.spinnerItem.adapter = spinnerAdapter
@@ -53,7 +54,7 @@ class MXHViewmodel : BaseViewModel() {
                     val title = binding.spinnerItem.selectedItem.toString()
                     insertItem(
                         Item(
-                            "0",
+                            title + Utils.getIdUser(it),
                             title,
                             link,
                             Constants.ITEM_TYPE.SOCIAL,
@@ -97,7 +98,7 @@ class MXHViewmodel : BaseViewModel() {
         viewModelScope.launch {
             try {
                 val res = BaseNetwork.getInstance().insertItem(
-                    item.title, item.description, item.type, item.idUser, item.status
+                    item.id, item.title, item.description, item.type, item.idUser, item.status
                 )
                 if (res.isSuccessful) {
                     load()
@@ -116,9 +117,8 @@ class MXHViewmodel : BaseViewModel() {
         //Get data
         viewModelScope.launch {
             try {
-                Utils.log(TAG, "uid: $idUser")
                 val response = BaseNetwork.getInstance()
-                    .getAllItemByIdUserAndType(idUser?:"", Constants.ITEM_TYPE.SOCIAL)
+                    .getAllItemByIdUserAndType(idUser ?: "", Constants.ITEM_TYPE.SOCIAL)
                 withContext(Dispatchers.Main) {
                     Utils.log(TAG, "response: ${response.body()}")
                     if (response.isSuccessful) {
@@ -135,6 +135,5 @@ class MXHViewmodel : BaseViewModel() {
                 Utils.log(TAG, "erro: ${e.message}")
             }
         }
-
     }
 }
