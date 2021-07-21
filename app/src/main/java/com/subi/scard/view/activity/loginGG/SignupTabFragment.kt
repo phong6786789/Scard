@@ -1,4 +1,4 @@
-package com.example.textkl
+package com.subi.scard.view.activity.loginGG
 
 import android.os.Bundle
 import android.view.LayoutInflater

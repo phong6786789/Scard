@@ -34,7 +34,6 @@ import com.subi.scard.R
 import com.subi.scard.databinding.ActivityLoginBinding
 import com.subi.scard.utils.*
 import com.subi.scard.view.MainActivity
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.internal.Util
@@ -77,23 +76,23 @@ class LoginActivity : AppCompatActivity() {
             signInFb()
         }
 
-        //hiệu ứng chuyển động login, signup
-        val adapter = LoginAdapter(
-            supportFragmentManager,
-            FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
-        )
-        view_pager.setAdapter(adapter)
-        tab_layout.setupWithViewPager(view_pager)
-        fab_fb.setTranslationY(300f)
-        fab_google.setTranslationY(300f)
-        tab_layout.setTranslationX(800f)
+    //hiệu ứng chuyển động login, signup, fabFb, fabGoogle
+        val adapter = LoginAdapter(supportFragmentManager, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
 
-        fab_fb.setAlpha(v)
-        fab_google.setAlpha(v)
-        tab_layout.setAlpha(v)
-        fab_fb.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(400).start()
-        fab_google.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(600).start()
-        tab_layout.animate().translationX(0f).alpha(1f).setDuration(800).setStartDelay(400).start()
+        binding.viewPager.setAdapter(adapter)
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
+
+        binding.fabFb.setTranslationY(300f)
+        binding.fabGoogle.setTranslationY(300f)
+        binding.tabLayout.setTranslationX(800f)
+
+        binding.fabFb.setAlpha(v)
+        binding.fabGoogle.setAlpha(v)
+        binding.tabLayout.setAlpha(v)
+
+        binding.fabFb.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(400).start()
+        binding.fabGoogle.animate().translationY(0f).alpha(1f).setDuration(1000).setStartDelay(600).start()
+        binding.tabLayout.animate().translationX(0f).alpha(1f).setDuration(800).setStartDelay(400).start()
 
     }
 
