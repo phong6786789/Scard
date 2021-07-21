@@ -30,7 +30,7 @@
                     android:id="@+id/tv_tiktok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tiktok"
+                    android:text="TikTok"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="32dp"
                     android:textColor="@color/white"
