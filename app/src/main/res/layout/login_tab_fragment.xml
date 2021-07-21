@@ -28,6 +28,7 @@
             android:background="@drawable/edt_bg"
             android:elevation="8dp" />
 
+
         <EditText
             android:id="@+id/pass"
             android:layout_width="0dp"

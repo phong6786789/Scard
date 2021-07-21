@@ -23,15 +23,15 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_info">
+                android:background="@drawable/round_visa">
 
                 <TextView
                     android:id="@+id/txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CĂN CƯỚC CÔNG DÂN"
+                    android:text="Vietcombank"
                     android:textSize="25sp"
-                    android:textColor="#F11212"
+                    android:textColor="@color/white"
                     android:padding="25dp"
                     app:fontFamily="@font/baloo2"
                     />
@@ -40,15 +40,15 @@
                     android:id="@+id/txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Số:"
-                    android:textColor="@color/black"
+                    android:text="Số thẻ:"
+                    android:textColor="@color/white"
                     android:paddingLeft="25dp"
                     android:layout_below="@+id/txt1"
                     android:textStyle="bold"
                     />
 
                 <TextView
-                    android:id="@+id/txt_soCanCuoc"
+                    android:id="@+id/txt_soTheVisa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt2"
@@ -56,7 +56,7 @@
                     android:layout_marginBottom="0dp"
                     android:layout_marginLeft="5dp"
                     android:text="0123456789"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -64,14 +64,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Họ và tên:"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:paddingLeft="25dp"
                     android:layout_below="@+id/txt2"
                     android:textStyle="bold"
                     />
 
                 <TextView
-                    android:id="@+id/txt_hoTenCanCuoc"
+                    android:id="@+id/txt_hoTenVisa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt3"
@@ -79,7 +79,7 @@
                     android:layout_marginBottom="0dp"
                     android:layout_marginLeft="5dp"
                     android:text="Lý Trí Tài"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold"/>
 
 
@@ -88,10 +88,10 @@
         </androidx.cardview.widget.CardView>
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/ubnd_logo"
-            android:layout_marginTop="2dp"
+            android:id="@+id/img_item_visa"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/visa"
             android:layout_marginRight="33dp"
             android:layout_alignParentRight="true"
             android:elevation="8dp"/>

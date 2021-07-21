@@ -126,7 +126,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHeight_percent=".78"
             app:layout_constraintVertical_bias="1"
-            android:background="@drawable/view_bg">
+            android:background="@drawable/view_bg"
+            >
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/view_pager"
@@ -153,6 +154,7 @@
                 app:tabRippleColor="@color/blue_main"
                 app:tabIndicatorColor="@color/blue_main"
                 app:tabSelectedTextColor="@color/blue_main"
+                app:tabTextColor="@color/blue_main"
                 app:tabMode="fixed"
                 />
 

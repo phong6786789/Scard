@@ -15,13 +15,13 @@
         android:theme="@style/Theme.Scard"
         android:usesCleartextTraffic="true">
         <activity android:name=".view.activity.loginGG.LoginActivity" />
+
         <activity
             android:name=".view.activity.intro.IntroActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".view.PlashScreen"
             android:theme="@style/Theme.Scard">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,6 +32,7 @@
             android:configChanges="orientation"
             android:name=".view.MainActivity"
             android:theme="@style/Theme.Scard" >
+
         </activity>
 
         <meta-data
