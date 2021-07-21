@@ -60,9 +60,9 @@ object Utils {
         sharedPrefs.setStringValue(context, Constants.USER.ID_USER, key)
     }
 
-    fun getIdUser(context: Context): String {
+    fun getIdUser(context: Context): String? {
         val sharedPrefs = SharedPrefs.getInstance()
-        return sharedPrefs.getStringValue(context, Constants.USER.ID_USER, "")?:""
+        return sharedPrefs.getStringValue(context, Constants.USER.ID_USER, "")
     }
 
     //Clear all data

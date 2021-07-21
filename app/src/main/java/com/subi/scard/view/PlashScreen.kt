@@ -35,7 +35,7 @@ class PlashScreen : AppCompatActivity() {
         io.reactivex.Observable.timer(1000, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
             .subscribe {
                 val uid = Utils.getIdUser(this)
-                if (uid != null) {
+                if (!uid.isNullOrEmpty()) {
                     Utils.tempNext(this, MainActivity::class.java)
                 } else {
                     Utils.tempNextNoClear(this, IntroActivity::class.java)
