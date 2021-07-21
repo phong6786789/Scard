@@ -34,7 +34,7 @@ class MXHFragment : BaseBindingFragment<FragmentMXHBinding, MXHViewmodel>() {
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
         //Load list
         viewDataBinding?.rcvHome?.apply {
-            adapter = MXHAdapter(viewModel.list) { clickDelete(it) }
+            adapter = MXHAdapter(context, viewModel.list) { clickDelete(it) }
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             hasFixedSize()

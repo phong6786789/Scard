@@ -8,6 +8,7 @@ import androidx.annotation.UiThread
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.BR
 import com.subi.scard.databinding.ItemBinding
+import com.subi.scard.databinding.ItemFriendBinding
 import com.subi.scard.model.Item
 
 class FriendsAdapter(
@@ -16,7 +17,7 @@ class FriendsAdapter(
 ) : RecyclerView.Adapter<FriendsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-       ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemFriendBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                                                                                               )
 
     override fun getItemCount(): Int {
@@ -28,15 +29,14 @@ class FriendsAdapter(
         holder.binData(items[position])
     }
 
-    inner class ViewHolder(var binding:ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding:ItemFriendBinding) : RecyclerView.ViewHolder(binding.root) {
         @UiThread
         fun binData(item: Item) {
             binding.apply {
                 setVariable(BR.viewmodel, item)
                 executePendingBindings()
-                cardView.setOnLongClickListener {
+                cardView.setOnClickListener {
                     action(item)
-                    true
                 }
             }
         }

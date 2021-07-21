@@ -2,10 +2,13 @@ package com.subi.scard.utils
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
+import android.text.ClipboardManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -109,4 +112,11 @@ object Utils {
                 .miniDialog()
         dialog?.show()
     }
+
+     fun copyToClipboard(context: Context, text: String) {
+         val clipboard =
+             context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+         val clip = ClipData.newPlainText("Đã copy", text)
+         clipboard.setPrimaryClip(clip)
+     }
 }

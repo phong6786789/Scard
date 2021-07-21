@@ -11,6 +11,7 @@ import android.view.WindowManager
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.subi.scard.BR
 import com.subi.scard.R
 import com.subi.scard.base.fragment.BaseBindingFragment
@@ -26,6 +27,7 @@ import kotlin.properties.Delegates
 
 @Suppress("DEPRECATION")
 class ShowCardFragment : BaseBindingFragment<FragmentShowCardBinding, ShowCardViewmodel>() {
+    var bottomNavigation: MeowBottomNavigation?=null
     override val bindingVariable: Int
         get() = BR.viewmodel
     override val viewModel: ShowCardViewmodel
@@ -35,11 +37,11 @@ class ShowCardFragment : BaseBindingFragment<FragmentShowCardBinding, ShowCardVi
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
         val id = arguments?.getString("id").toString()
-        viewModel.load(id)
-
+        isShowCard = true
+        context?.let { viewModel.load(it, id) }
         viewDataBinding?.apply {
             rcvSocial.apply {
-                adapter = MXHAdapter(viewModel.listSocial) { clickDelete(it) }
+                adapter = MXHAdapter(context,viewModel.listSocial) { clickDelete(it) }
                 layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 hasFixedSize()
@@ -70,9 +72,15 @@ class ShowCardFragment : BaseBindingFragment<FragmentShowCardBinding, ShowCardVi
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
         activity?.title = Constants.TITLE.SHOW
+        //Ẩn bottomNav
+        bottomNavigation = activity?.findViewById(R.id.bottomNavigation)
+        bottomNavigation?.visibility = View.GONE
     }
 
     fun clickDelete(value: Item) {
 
+    }
+    companion object{
+        var isShowCard = false
     }
 }

@@ -1,6 +1,7 @@
 package com.subi.scard.view.adapter
 
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.BR
 import com.subi.scard.databinding.ItemBinding
 import com.subi.scard.model.Item
+import com.subi.scard.view.fragment.show_card.ShowCardFragment
 
 class HealthAdapter(
     var items: List<Item>,
@@ -37,6 +39,11 @@ class HealthAdapter(
                 cardView.setOnLongClickListener {
                     action(item)
                     true
+                }
+                if (ShowCardFragment.isShowCard){
+                    cardView.setCardBackgroundColor(Color.TRANSPARENT);
+                    cardView.cardElevation = 0F;
+                    tvTitle.setTextColor(Color.WHITE)
                 }
             }
         }

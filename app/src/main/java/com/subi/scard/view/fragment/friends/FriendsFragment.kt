@@ -3,7 +3,9 @@ package com.subi.scard.view.fragment.friends
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.subi.scard.BR
@@ -28,26 +30,17 @@ class FriendsFragment : BaseBindingFragment<FragmentFriendsBinding, FriendsViewm
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
 
         //Load list
-
+        viewModel.load(context?.let { Utils.getIdUser(it) } ?:"")
         viewDataBinding?.rcvHome?.apply {
-            adapter = FriendsAdapter(viewModel.list){clickDelete(it)}
+            adapter = FriendsAdapter(viewModel.list){clickItem(it)}
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             hasFixedSize()
         }
     }
 
-    fun clickDelete(item: Item){
-        val builder = AlertDialog.Builder(context)
-        builder.setMessage("Do you want delete ${item.title}?")
-        builder.setNegativeButton("No"){ d, _ ->
-            d.dismiss()
-        }
-        builder.setPositiveButton("Yes"){ d, _ ->
-            viewModel.deleteItem(item.id!!)
-            d.dismiss()
-        }
-        val dialog = builder.create()
-        dialog.show()
+    fun clickItem(item: Item){
+        val bundle = bundleOf("id" to item.idUser)
+        findNavController().navigate(R.id.action_friendsFragment_to_showCardFragment, bundle)
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {

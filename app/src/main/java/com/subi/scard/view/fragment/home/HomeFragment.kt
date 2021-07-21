@@ -20,6 +20,7 @@ import com.subi.scard.model.CustomItem
 import com.subi.scard.utils.Constants
 import com.subi.scard.utils.Utils
 import com.subi.scard.view.adapter.CustomMenuAdapter
+import com.subi.scard.view.fragment.show_card.ShowCardFragment
 
 
 @Suppress("DEPRECATION")
@@ -35,7 +36,7 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
 
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
-
+        ShowCardFragment.isShowCard = false
         val currentUser = FirebaseAuth.getInstance().currentUser
         viewModel.load()
 

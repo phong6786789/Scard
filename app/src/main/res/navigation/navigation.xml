@@ -62,13 +62,25 @@
         android:label="fragment_scan_q_r"
         tools:layout="@layout/fragment_scan_q_r" >
         <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             android:id="@+id/action_scanQRFragment_to_showCardFragment"
             app:destination="@id/showCardFragment" />
     </fragment>
     <fragment
         android:id="@+id/friendsFragment"
         android:name="com.subi.scard.view.fragment.friends.FriendsFragment"
-        android:label="FriendsFragment" />
+        android:label="FriendsFragment" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_friendsFragment_to_showCardFragment"
+            app:destination="@id/showCardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/showCardFragment"
         android:name="com.subi.scard.view.fragment.show_card.ShowCardFragment"
