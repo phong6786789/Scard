@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.subi.pokemonproject.data.network.BaseNetwork
 import com.subi.scard.base.viewmodel.BaseViewModel
 import com.subi.scard.model.Item
+import com.subi.scard.utils.ChauManager
 import com.subi.scard.utils.Constants
 import com.subi.scard.utils.Utils
 import kotlinx.coroutines.Dispatchers
@@ -21,36 +22,79 @@ class InfoViewmodel : BaseViewModel() {
     var context: Context? = null
     var idUser = "111"
 
-    init {
-        load()
+    val listInfo = arrayOf(
+        Constants.INFO_TYPE.INFO,
+    )
+
+    fun insertItem() {
+        ChauManager.setupViewInsert(context!!, listInfo, Constants.ITEM_TYPE.INFO) {
+            insert(it)
+        }
     }
 
-    fun deleteItem(id: String){
+    fun editItem(item: Item) {
+
+        val listSpinner = mutableListOf<String>()
+
+        listInfo.forEach { mList ->
+            var check = true
+            for (i in 0 until list.size) {
+                if (mList == list[i].title) {
+                    check = false
+                    break
+                }
+            }
+            if(check) listSpinner.add(mList)
+        }
+
+        listSpinner.add(0, item.title!!)
+
+        ChauManager.setupViewEdit(context!!, listSpinner, Constants.ITEM_TYPE.INFO, item) {
+            edit(it)
+        }
+    }
+
+    private fun edit(item: Item) {
         viewModelScope.launch {
             try {
-                val res = BaseNetwork.getInstance().deleteItemById(id)
-                if(res.isSuccessful){
+                val res = BaseNetwork.getInstance().editItemById(
+                    item.id, item.title, item.description, item.type, item.idUser, item.status
+                )
+                if (res.isSuccessful) {
                     res.body()?.status?.let {
-                        if(it.equals("success")){
+                        if (it.equals("success")) {
                             load()
                         }
                     }
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
                 }
-            }
-            catch (e: Exception){
+            } catch (e: Exception) {
                 Utils.log(TAG, "erro: ${e.message}")
             }
         }
     }
 
-    fun insert(){
-        val title = Constants.INFO_TYPE.INFO
-        insertItem(Item("0", title, title, Constants.ITEM_TYPE.INFO, "111", "qwa"))
+    fun deleteItem(id: String) {
+        viewModelScope.launch {
+            try {
+                val res = BaseNetwork.getInstance().deleteItemById(id)
+                if (res.isSuccessful) {
+                    res.body()?.status?.let {
+                        if (it.equals("success")) {
+                            load()
+                        }
+                    }
+                } else {
+                    Utils.log(TAG, "failed: ${res.errorBody()}")
+                }
+            } catch (e: Exception) {
+                Utils.log(TAG, "erro: ${e.message}")
+            }
+        }
     }
 
-    fun insertItem(item: Item) {
+    private fun insert(item: Item) {
         viewModelScope.launch {
             try {
                 val res = BaseNetwork.getInstance().insertItem(
@@ -61,33 +105,26 @@ class InfoViewmodel : BaseViewModel() {
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
                 }
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Utils.log(TAG, "erro: ${e.message}")
             }
         }
     }
 
     fun load() {
-        //Check have account current
-//        val currentUser = FirebaseAuth.getInstance().currentUser
-//        if (currentUser != null) {
-//            idUser = currentUser.uid
-//        } else {
-//            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
-//        }
+        val idUser = context?.let { Utils.getIdUser(it) }
         //Get data
         viewModelScope.launch {
             try {
-                Utils.log(TAG, "Call data list")
                 val response = BaseNetwork.getInstance()
-                    .getAllItemByIdUserAndType(idUser, Constants.ITEM_TYPE.INFO)
+                    .getAllItemByIdUserAndType(idUser ?: "111", Constants.ITEM_TYPE.INFO)
                 withContext(Dispatchers.Main) {
                     Utils.log(TAG, "response: ${response.body()}")
                     if (response.isSuccessful) {
                         list.clear()
                         response.body()?.getAllList?.let {
                             list.addAll(it)
-                            Utils.log(TAG, "size: ${list.toString()}")
+                            Utils.log(TAG, "size: ${list.size}")
                         }
                     } else {
                         Utils.log(TAG, "failed: ${response.errorBody()}")
@@ -97,6 +134,5 @@ class InfoViewmodel : BaseViewModel() {
                 Utils.log(TAG, "erro: ${e.message}")
             }
         }
-
     }
 }

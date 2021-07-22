@@ -1,0 +1,299 @@
+package com.subi.scard.utils
+
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Context
+import android.graphics.*
+import android.text.Editable
+import android.view.LayoutInflater
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.subi.scard.R
+import com.subi.scard.databinding.LayoutInsertItemBinding
+import com.subi.scard.model.Item
+import io.ghyeok.stickyswitch.widget.StickySwitch
+
+class ChauManager {
+
+    companion object {
+        @SuppressLint("SetTextI18n")
+        fun setupViewInsert(
+            context: Context,
+            list: Array<String>,
+            type: String,
+            insert: (Item) -> Unit
+        ) {
+            val builder = AlertDialog.Builder(context)
+            val binding = LayoutInsertItemBinding.inflate(LayoutInflater.from(context))
+
+            when (type) {
+                Constants.ITEM_TYPE.SOCIAL -> {
+                    binding.apply {
+                        tvTitle.text = "THÊM MXH"
+                        tvLayoutInsertItemDes.text = "Link URL"
+                        tvLayoutInsertItemTitle.text = "Tên mạng xã hội"
+                        edtLink.hint = "Vui lòng nhập link URL"
+                    }
+                }
+                Constants.ITEM_TYPE.INFO -> {
+                    binding.apply {
+                        tvTitle.text = "THÊM THÔNG TIN"
+                        tvLayoutInsertItemTitle.text = "Loại INFO"
+                        tvLayoutInsertItemDes.text = "Thông tin cá nhân"
+                        edtLink.hint = "Vui lòng nhập thông tin"
+                    }
+                }
+                Constants.ITEM_TYPE.HEALTH -> {
+                    binding.apply {
+                        tvTitle.text = "THÊM BỆNH VIỆN"
+                        tvLayoutInsertItemTitle.text = "BỆNH VIỆN"
+                        tvLayoutInsertItemDes.text = "Thông tin bệnh viện"
+                        edtLink.hint = "Vui lòng nhập thông tin"
+                    }
+                }
+            }
+
+            val customDropDownAdapter = CustomDropDownAdapter(context, list)
+
+            binding.spinnerItem.adapter = customDropDownAdapter
+            builder.setView(binding.root)
+            val dialog = builder.create()
+
+            binding.btnInsert.setOnClickListener {
+                val link = binding.edtLink.text.toString()
+
+                val direction = binding.stickySwitch.getDirection().name
+
+                val status = if (direction == "LEFT") 0 else 1
+                if (link.isNotEmpty()) {
+                    val title = binding.spinnerItem.selectedItem.toString()
+                    insert(
+                        Item(
+                            title + Utils.getIdUser(context),
+                            title,
+                            link,
+                            type,
+                            Utils.getIdUser(context),
+                            status.toString()
+                        )
+                    )
+                    dialog.dismiss()
+                } else {
+                    Utils.showMess(context, "Không được để trống!")
+                }
+            }
+            binding.btnCancel.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+
+        @SuppressLint("SetTextI18n")
+        fun setupViewEdit(
+            context: Context,
+            list: MutableList<String>,
+            type: String,
+            item: Item,
+            edit: (Item) -> Unit
+        ) {
+            val builder = AlertDialog.Builder(context)
+            val binding = LayoutInsertItemBinding.inflate(LayoutInflater.from(context))
+
+            binding.btnInsert.text = "SỬA"
+            binding.edtLink.setText(item.description)
+
+            when (type) {
+                Constants.ITEM_TYPE.SOCIAL -> {
+                    binding.apply {
+                        tvTitle.text = "SỬA MXH"
+                        tvLayoutInsertItemDes.text = "Link URL"
+                        tvLayoutInsertItemTitle.text = "Tên mạng xã hội"
+
+                    }
+                }
+                Constants.ITEM_TYPE.INFO -> {
+                    binding.apply {
+                        tvTitle.text = "SỬA THÔNG TIN INFO"
+                        tvLayoutInsertItemTitle.text = "Loại INFO"
+                        tvLayoutInsertItemDes.text = "Thông tin cá nhân"
+                    }
+                }
+                Constants.ITEM_TYPE.HEALTH -> {
+                    binding.apply {
+                        tvTitle.text = "SỬA THÔNG TIN HEALTH"
+                        tvLayoutInsertItemTitle.text = "BỆNH VIỆN"
+                        tvLayoutInsertItemDes.text = "Thông tin bệnh viện"
+                    }
+                }
+            }
+
+            var position = 0
+
+            for (i in 0..list.size) {
+                if (list[i].equals(item.title)) {
+                    position = i
+                    break
+                }
+            }
+
+            //set vi tri item cho spinner
+            val customDropDownAdapter = CustomDropDownAdapter(context, list.toTypedArray())
+            binding.spinnerItem.adapter = customDropDownAdapter
+            binding.spinnerItem.setSelection(position)
+
+            //set public private cho status
+            binding.stickySwitch.setDirection(if (item.status.equals("0")) StickySwitch.Direction.LEFT else StickySwitch.Direction.RIGHT, false)
+
+            builder.setView(binding.root)
+            val dialog = builder.create()
+
+            binding.btnInsert.setOnClickListener { v ->
+                val link = binding.edtLink.text.toString()
+
+                val direction = binding.stickySwitch.getDirection().name
+
+                val status = if (direction == "LEFT") 0 else 1
+
+                if (link.isNotEmpty()) {
+                    val title = binding.spinnerItem.selectedItem.toString()
+                    edit(
+                        Item(
+                            item.id,
+                            title,
+                            link,
+                            type,
+                            Utils.getIdUser(context),
+                            status.toString()
+                        )
+                    )
+                    dialog.dismiss()
+                } else {
+                    Utils.showMess(context, "Không được để trống!")
+                }
+            }
+            binding.btnCancel.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+
+        fun setupItemTouchHelper(
+            listItem: MutableList<Item>,
+            context: Context,
+            onDelete: (String) -> Unit,
+            onEdit: (Item) -> Unit,
+            onLoad: (Int) -> Unit
+        ): ItemTouchHelper.SimpleCallback = object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            val p = Paint()
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val item = listItem.get(position)
+                //Xoá item
+                if (direction == ItemTouchHelper.LEFT) {
+                    onLoad(position)
+                    var dialogx: Dialog? = null
+                    dialogx = context.let {
+                        ShowDialog.Builder(it).title("XOÁ DỮ LIỆU")
+                            .message("Bạn có chắc chắn muốn xoá ${item.title}?")
+                            .setLeftButton("XOÁ", object : LeftInterface {
+                                override fun onClick() {
+                                    onDelete(item.id!!)
+                                    dialogx?.dismiss()
+                                }
+                            })
+                            .setRightButton("KHÔNG", object : RightInterface {
+                                override fun onClick() {
+                                    dialogx?.dismiss()
+                                }
+                            })
+                            .miniDialog()
+                    }
+                    dialogx?.show()
+                    //Sửa item
+                } else if (direction == ItemTouchHelper.RIGHT) {
+                    onEdit(item)
+                }
+            }
+
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                    val itemView = viewHolder.itemView
+                    val height = itemView.bottom.toFloat() - itemView.top.toFloat()
+                    val width = height / 3
+
+                    if (dX < 0) {
+                        p.color = Color.WHITE
+                        val background = RectF(
+                            itemView.right.toFloat() + dX,
+                            itemView.top.toFloat(),
+                            itemView.right.toFloat(),
+                            itemView.bottom.toFloat()
+                        )
+                        c.drawRect(background, p)
+                        val icon =
+                            BitmapFactory.decodeResource(context.resources, R.drawable.trash)
+                        val margin = (dX / 5 - width) / 2
+                        val iconDest = RectF(
+                            itemView.right.toFloat() + margin,
+                            itemView.top.toFloat() + width,
+                            itemView.right.toFloat() + (margin + width),
+                            itemView.bottom.toFloat() - width
+                        )
+                        c.drawBitmap(icon, null, iconDest, p)
+                    }
+                    if (dX > 0) {
+                        p.color = Color.WHITE
+                        val background = RectF(
+                            itemView.left.toFloat(),
+                            itemView.top.toFloat(),
+                            itemView.left.toFloat() + dX,
+                            itemView.bottom.toFloat()
+                        )
+                        c.drawRect(background, p)
+                        val icon = BitmapFactory.decodeResource(context.resources, R.drawable.edit)
+                        val margin = (dX / 5 - width) / 2
+                        val iconDest = RectF(
+                            margin,
+                            itemView.top.toFloat() + width,
+                            margin + width,
+                            itemView.bottom.toFloat() - width
+                        )
+                        c.drawBitmap(icon, null, iconDest, p)
+                    }
+                } else {
+                    c.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
+                }
+                super.onChildDraw(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX / 5,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+            }
+        }
+    }
+
+
+}
