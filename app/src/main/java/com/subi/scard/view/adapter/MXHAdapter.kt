@@ -9,10 +9,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.view.animation.ScaleAnimation
 import androidx.annotation.UiThread
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.BR
-import com.subi.scard.databinding.ItemBinding
+import com.subi.scard.databinding.ItemMxhBinding
 import com.subi.scard.model.Item
 import com.subi.scard.utils.Constants
 import com.subi.scard.view.fragment.show_card.ShowCardFragment
@@ -25,7 +28,7 @@ class MXHAdapter(
 ) : RecyclerView.Adapter<MXHAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-        ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemMxhBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun getItemCount(): Int {
@@ -35,9 +38,10 @@ class MXHAdapter(
     @UiThread
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binData(context, items[position])
+        setFadeAnimation(holder.itemView)
     }
 
-    inner class ViewHolder(var binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding: ItemMxhBinding) : RecyclerView.ViewHolder(binding.root) {
         @UiThread
         fun binData(context: Context, item: Item) {
             binding.apply {
@@ -113,5 +117,26 @@ class MXHAdapter(
 
     interface OnItemClickListener {
         fun onClickItem(value: Item)
+    }
+
+    private fun setScaleAnimation(view: View) {
+        val anim = ScaleAnimation(
+            0.0f,
+            1.0f,
+            0.0f,
+            1.0f,
+            Animation.RELATIVE_TO_SELF,
+            0.5f,
+            Animation.RELATIVE_TO_SELF,
+            0.5f
+        )
+        anim.duration = 1000
+        view.startAnimation(anim)
+    }
+
+    private fun setFadeAnimation(view: View) {
+        val anim = AlphaAnimation(0.0f, 1.0f)
+        anim.duration = 1000
+        view.startAnimation(anim)
     }
 }

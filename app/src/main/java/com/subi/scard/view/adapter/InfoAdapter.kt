@@ -5,12 +5,12 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import androidx.annotation.UiThread
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.BR
-import com.subi.scard.databinding.ItemBinding
+import com.subi.scard.databinding.ItemSocialBinding
 import com.subi.scard.model.Item
-import com.subi.scard.utils.Utils
 import com.subi.scard.view.fragment.show_card.ShowCardFragment
 
 class InfoAdapter(
@@ -19,7 +19,7 @@ class InfoAdapter(
 ) : RecyclerView.Adapter<InfoAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-       ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+       ItemSocialBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                                                                                               )
 
     override fun getItemCount(): Int {
@@ -29,9 +29,10 @@ class InfoAdapter(
     @UiThread
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binData(items[position])
+        setFadeAnimation(holder.itemView)
     }
 
-    inner class ViewHolder(var binding:ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding:ItemSocialBinding) : RecyclerView.ViewHolder(binding.root) {
         @UiThread
         fun binData(item: Item) {
             binding.apply {
@@ -64,5 +65,10 @@ class InfoAdapter(
 
     interface OnItemClickListener {
         fun onClickItem(value: Item)
+    }
+    private fun setFadeAnimation(view: View) {
+        val anim = AlphaAnimation(0.0f, 1.0f)
+        anim.duration = 1000
+        view.startAnimation(anim)
     }
 }

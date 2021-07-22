@@ -76,7 +76,7 @@ class FriendsFragment : BaseBindingFragment<FragmentFriendsBinding, FriendsViewm
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val item = viewModel.list[position]
-                //Xoá item
+                //Xoá item_mxh
                 if (direction == ItemTouchHelper.LEFT) {
                     adapterX?.notifyItemChanged(position)
                     var dialogx: Dialog? = null
@@ -85,7 +85,7 @@ class FriendsFragment : BaseBindingFragment<FragmentFriendsBinding, FriendsViewm
                             .message("Bạn có chắc chắn muốn xoá ${item.title}?")
                             .setLeftButton("XOÁ", object : LeftInterface {
                                 override fun onClick() {
-                                    viewModel.deleteItem(item.id!!)
+                                    context?.let { it1 -> viewModel.deleteItem(it1, item) }
                                     dialogx?.dismiss()
                                 }
                             })
@@ -97,7 +97,7 @@ class FriendsFragment : BaseBindingFragment<FragmentFriendsBinding, FriendsViewm
                             .miniDialog()
                     }
                     dialogx?.show()
-                    //Sửa item
+                    //Sửa item_mxh
                 } else if (direction == ItemTouchHelper.RIGHT) {
                     adapterX?.notifyItemChanged(position)
 

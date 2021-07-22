@@ -76,7 +76,7 @@ class HealthFragment : BaseBindingFragment<FragmentHealthBinding, HealthViewmode
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val item = viewModel.list[position]
-                //Xoá item
+                //Xoá item_mxh
                 if (direction == ItemTouchHelper.LEFT) {
                     adapterX?.notifyItemChanged(position)
                     var dialogx: Dialog? = null
@@ -97,7 +97,7 @@ class HealthFragment : BaseBindingFragment<FragmentHealthBinding, HealthViewmode
                             .miniDialog()
                     }
                     dialogx?.show()
-                    //Sửa item
+                    //Sửa item_mxh
                 } else if (direction == ItemTouchHelper.RIGHT) {
                     adapterX?.notifyItemChanged(position)
 

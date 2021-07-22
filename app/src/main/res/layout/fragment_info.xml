@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.core.widget.NestedScrollView
+            <ScrollView
+                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="8dp">
@@ -30,9 +31,9 @@
                     android:layoutAnimation="@anim/layout_animation"
                     setItemAdapter="@{viewmodel.list}"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content" />
 
-            </androidx.core.widget.NestedScrollView>
+            </ScrollView>
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:visibility="gone"
                 android:src="@drawable/ic_add"

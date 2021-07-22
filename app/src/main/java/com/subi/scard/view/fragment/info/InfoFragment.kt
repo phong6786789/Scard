@@ -78,7 +78,7 @@ class InfoFragment : BaseBindingFragment<FragmentInfoBinding, InfoViewmodel>(){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val item = viewModel.list[position]
-                //Xoá item
+                //Xoá item_mxh
                 if (direction == ItemTouchHelper.LEFT) {
                     adapterX?.notifyItemChanged(position)
                     var dialogx: Dialog? = null
@@ -99,7 +99,7 @@ class InfoFragment : BaseBindingFragment<FragmentInfoBinding, InfoViewmodel>(){
                             .miniDialog()
                     }
                     dialogx?.show()
-                    //Sửa item
+                    //Sửa item_mxh
                 } else if (direction == ItemTouchHelper.RIGHT) {
                     adapterX?.notifyItemChanged(position)
 

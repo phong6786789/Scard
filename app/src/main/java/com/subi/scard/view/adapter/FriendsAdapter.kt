@@ -1,13 +1,13 @@
 package com.subi.scard.view.adapter
 
 
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import androidx.annotation.UiThread
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.BR
-import com.subi.scard.databinding.ItemBinding
 import com.subi.scard.databinding.ItemFriendBinding
 import com.subi.scard.model.Item
 
@@ -27,6 +27,7 @@ class FriendsAdapter(
     @UiThread
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binData(items[position])
+        setFadeAnimation(holder.itemView)
     }
 
     inner class ViewHolder(var binding:ItemFriendBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -53,5 +54,10 @@ class FriendsAdapter(
 
     interface OnItemClickListener {
         fun onClickItem(value: Item)
+    }
+    private fun setFadeAnimation(view: View) {
+        val anim = AlphaAnimation(0.0f, 1.0f)
+        anim.duration = 1000
+        view.startAnimation(anim)
     }
 }

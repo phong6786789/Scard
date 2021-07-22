@@ -43,14 +43,14 @@ class FriendsViewmodel: BaseViewModel() {
         }
     }
 
-    fun deleteItem(id: String) {
+    fun deleteItem(context: Context, item: Item) {
         viewModelScope.launch {
             try {
-                val res = BaseNetwork.getInstance().deleteItemById(id)
+                val res = BaseNetwork.getInstance().deleteItemById(item.id?:"")
                 if (res.isSuccessful) {
                     res.body()?.status?.let {
-                        if (it.equals("success")) {
-                            load(id)
+                        if (it == "success") {
+                            Utils.getIdUser(context)?.let { it1 -> load(it1) }
                         }
                     }
                 } else {

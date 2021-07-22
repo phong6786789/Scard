@@ -47,6 +47,7 @@ class MXHFragment : BaseBindingFragment<FragmentMXHBinding, MXHViewmodel>() {
             hasFixedSize()
             val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
             itemTouchHelper.attachToRecyclerView(this)
+            scheduleLayoutAnimation()
         }
     }
 
@@ -85,7 +86,7 @@ class MXHFragment : BaseBindingFragment<FragmentMXHBinding, MXHViewmodel>() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val item = viewModel.list[position]
-                //Xoá item
+                //Xoá item_mxh
                 if (direction == ItemTouchHelper.LEFT) {
                     adapterMXH?.notifyItemChanged(position)
                     var dialogx: Dialog? = null
@@ -106,7 +107,7 @@ class MXHFragment : BaseBindingFragment<FragmentMXHBinding, MXHViewmodel>() {
                             .miniDialog()
                     }
                     dialogx?.show()
-                    //Sửa item
+                    //Sửa item_mxh
                 } else if (direction == ItemTouchHelper.RIGHT) {
                     adapterMXH?.notifyItemChanged(position)
 

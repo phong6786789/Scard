@@ -2,13 +2,14 @@ package com.subi.scard.view.adapter
 
 
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import androidx.annotation.UiThread
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.BR
-import com.subi.scard.databinding.ItemBinding
+import com.subi.scard.databinding.ItemMxhBinding
 import com.subi.scard.model.Item
 import com.subi.scard.view.fragment.show_card.ShowCardFragment
 
@@ -18,7 +19,7 @@ class BankAdapter(
 ) : RecyclerView.Adapter<BankAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-       ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemMxhBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                                                                                               )
 
     override fun getItemCount(): Int {
@@ -28,9 +29,10 @@ class BankAdapter(
     @UiThread
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binData(items[position])
+        setFadeAnimation(holder.itemView)
     }
 
-    inner class ViewHolder(var binding:ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding: ItemMxhBinding) : RecyclerView.ViewHolder(binding.root) {
         @UiThread
         fun binData(item: Item) {
             binding.apply {
@@ -63,5 +65,10 @@ class BankAdapter(
         fun onClickItem(value: Item){
 
         }
+    }
+    private fun setFadeAnimation(view: View) {
+        val anim = AlphaAnimation(0.0f, 1.0f)
+        anim.duration = 1000
+        view.startAnimation(anim)
     }
 }

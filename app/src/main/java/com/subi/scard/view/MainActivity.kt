@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setupBottomNav()
     }
 
-    //Thêm item bottom
+    //Thêm item_mxh bottom
     private fun setupBottomNav() {
         binding.bottomNavigation.add(
             MeowBottomNavigation.Model(
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.show(1)
 
 
-        //onclick item fragment
+        //onclick item_mxh fragment
         binding.bottomNavigation.setOnClickMenuListener {
             when (it.id) {
                 0 -> findNavController(R.id.fragment).navigate(R.id.scanQRFragment)
