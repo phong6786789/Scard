@@ -38,6 +38,7 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
         ShowCardFragment.isShowCard = false
         val currentUser = FirebaseAuth.getInstance().currentUser
+        viewModel.context = requireContext()
         viewModel.load()
 
         if (currentUser != null) {

@@ -14,6 +14,7 @@ import com.subi.scard.base.viewmodel.BaseViewModel
 import com.subi.scard.model.CustomItem
 import com.subi.scard.model.Item
 import com.subi.scard.utils.Constants
+import com.subi.scard.utils.SharedPrefs
 import com.subi.scard.utils.Utils
 import com.subi.scard.view.activity.loginGG.LoginActivity
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +27,7 @@ class HomeViewmodel : BaseViewModel() {
     var uid = ObservableField("")
     var name = ObservableField("")
     var image =  ObservableField("")
+    var context:Context?=null
     init {
         list_menu.addAll(
             listOf(
@@ -41,8 +43,11 @@ class HomeViewmodel : BaseViewModel() {
 
     fun load(){
         val idx = FirebaseAuth.getInstance().currentUser?.uid.toString()
-        val namex = FirebaseAuth.getInstance().currentUser?.displayName.toString()
+        var namex = FirebaseAuth.getInstance().currentUser?.displayName.toString()
         val imagex = FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
+        if (namex.isEmpty()){
+            namex = context?.let { SharedPrefs.getInstance().getStringValue(it, "mail", "") }.toString()
+        }
         uid.set(idx)
         name.set(namex)
         image.set(imagex)
