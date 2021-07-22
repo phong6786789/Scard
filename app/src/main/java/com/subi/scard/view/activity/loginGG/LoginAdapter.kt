@@ -21,8 +21,8 @@ class LoginAdapter(fm: FragmentManager?, totalTabs: Int) : FragmentStatePagerAda
     override fun getPageTitle(position: Int): CharSequence? {
         var title = ""
         when (position) {
-            0 -> title = "Login"
-            1 -> title = "Signup"
+            0 -> title = "Đăng nhập"
+            1 -> title = "Đăng ký"
         }
         return title
     }
