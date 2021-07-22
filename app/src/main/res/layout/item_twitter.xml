@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.subi.scard.model.Item" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:cardCornerRadius="20dp"
+            android:layout_margin="20dp"
+            app:cardElevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_twitter"
+                >
+
+                <TextView
+                    android:id="@+id/tv_twitte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="twitter"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="32dp"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    app:fontFamily="@font/baloo2" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</layout>
