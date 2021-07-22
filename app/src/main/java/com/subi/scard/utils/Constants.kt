@@ -37,11 +37,12 @@ object Constants {
     }
 
     object HEALTH_TYPE{
-        const val GIA_DINH = "Gia Đình"
+        const val GIA_DINH = "Gia Định"
     }
 
     object FRIEND_TYPE{
         const val FRIEND = "FRIEND"
+        const val PHONG_GA = "Phong Gà"
     }
 
 

@@ -52,6 +52,22 @@ class ChauManager {
                         edtLink.hint = "Vui lòng nhập thông tin"
                     }
                 }
+                Constants.ITEM_TYPE.FRIEND -> {
+                    binding.apply {
+                        tvTitle.text = "THÊM BẠN BÈ"
+                        tvLayoutInsertItemTitle.text = "Tên bạn"
+                        tvLayoutInsertItemDes.text = "Thông tin bạn"
+                        edtLink.hint = "Vui lòng nhập thông tin"
+                    }
+                }
+                Constants.ITEM_TYPE.BANK -> {
+                    binding.apply {
+                        tvTitle.text = "THÊM NGÂN HÀNG"
+                        tvLayoutInsertItemTitle.text = "Tên ngân hàng"
+                        tvLayoutInsertItemDes.text = "Thông tin ngân hàng"
+                        edtLink.hint = "Vui lòng nhập thông tin"
+                    }
+                }
             }
 
             val customDropDownAdapter = CustomDropDownAdapter(context, list)
@@ -109,7 +125,6 @@ class ChauManager {
                         tvTitle.text = "SỬA MXH"
                         tvLayoutInsertItemDes.text = "Link URL"
                         tvLayoutInsertItemTitle.text = "Tên mạng xã hội"
-
                     }
                 }
                 Constants.ITEM_TYPE.INFO -> {
@@ -124,6 +139,20 @@ class ChauManager {
                         tvTitle.text = "SỬA THÔNG TIN HEALTH"
                         tvLayoutInsertItemTitle.text = "BỆNH VIỆN"
                         tvLayoutInsertItemDes.text = "Thông tin bệnh viện"
+                    }
+                }
+                Constants.ITEM_TYPE.FRIEND -> {
+                    binding.apply {
+                        tvTitle.text = "SỬA THÔNG TIN FRIEND"
+                        tvLayoutInsertItemTitle.text = "Tên bạn"
+                        tvLayoutInsertItemDes.text = "Thông tin bạn"
+                    }
+                }
+                Constants.ITEM_TYPE.BANK -> {
+                    binding.apply {
+                        tvTitle.text = "SỬA THÔNG TIN BANK"
+                        tvLayoutInsertItemTitle.text = "Tên Ngân Hàng"
+                        tvLayoutInsertItemDes.text = "Thông tin ngân hàng"
                     }
                 }
             }
@@ -148,7 +177,7 @@ class ChauManager {
             builder.setView(binding.root)
             val dialog = builder.create()
 
-            binding.btnInsert.setOnClickListener { v ->
+            binding.btnInsert.setOnClickListener {
                 val link = binding.edtLink.text.toString()
 
                 val direction = binding.stickySwitch.getDirection().name
