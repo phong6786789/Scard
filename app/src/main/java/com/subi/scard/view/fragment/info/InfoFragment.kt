@@ -40,6 +40,8 @@ class InfoFragment : BaseBindingFragment<FragmentInfoBinding, InfoViewmodel>(){
             adapter = adapterX
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             hasFixedSize()
+            val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
+            itemTouchHelper.attachToRecyclerView(this)
         }
     }
 
