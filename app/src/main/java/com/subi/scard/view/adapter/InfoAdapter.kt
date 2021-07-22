@@ -3,6 +3,7 @@ package com.subi.scard.view.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.UiThread
 import androidx.recyclerview.widget.RecyclerView
@@ -41,7 +42,10 @@ class InfoAdapter(
                     true
                 }
                 if (ShowCardFragment.isShowCard){
+                    cardView3.visibility = View.VISIBLE
                     cardView.setCardBackgroundColor(Color.TRANSPARENT);
+                    lnBackground.setBackgroundResource(0);
+                    tvTitle.textSize = 18f
                     cardView.cardElevation = 0F;
                     tvTitle.setTextColor(Color.WHITE)
                 }

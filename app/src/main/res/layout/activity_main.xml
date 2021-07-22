@@ -8,6 +8,7 @@
     </data>
 
     <RelativeLayout
+        android:background="@color/white"
         android:id="@+id/view_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -26,7 +27,7 @@
             tools:layout_editor_absoluteY="196dp" />
         <com.etebarian.meowbottomnavigation.MeowBottomNavigation
             android:id="@+id/bottomNavigation"
-            android:background="@android:color/transparent"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

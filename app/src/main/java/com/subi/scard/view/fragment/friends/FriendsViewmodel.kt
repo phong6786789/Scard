@@ -42,4 +42,23 @@ class FriendsViewmodel: BaseViewModel() {
             }
         }
     }
+
+    fun deleteItem(id: String) {
+        viewModelScope.launch {
+            try {
+                val res = BaseNetwork.getInstance().deleteItemById(id)
+                if (res.isSuccessful) {
+                    res.body()?.status?.let {
+                        if (it.equals("success")) {
+                            load(id)
+                        }
+                    }
+                } else {
+                    Utils.log(TAG, "failed: ${res.errorBody()}")
+                }
+            } catch (e: Exception) {
+                Utils.log(TAG, "erro: ${e.message}")
+            }
+        }
+    }
 }

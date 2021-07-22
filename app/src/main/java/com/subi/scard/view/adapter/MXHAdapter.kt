@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.UiThread
 import androidx.recyclerview.widget.RecyclerView
@@ -44,9 +45,12 @@ class MXHAdapter(
                 executePendingBindings()
 
                 if (ShowCardFragment.isShowCard){
+                    cardView3.visibility = View.VISIBLE
                     cardView.setCardBackgroundColor(Color.TRANSPARENT);
                     cardView.cardElevation = 0F;
                     tvTitle.setTextColor(Color.WHITE)
+                    lnBackground.setBackgroundResource(0)
+                    tvTitle.textSize = 18f
                 }
 
                 cardView.setOnLongClickListener {

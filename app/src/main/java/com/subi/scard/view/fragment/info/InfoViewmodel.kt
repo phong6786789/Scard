@@ -68,13 +68,6 @@ class InfoViewmodel : BaseViewModel() {
     }
 
     fun load() {
-        //Check have account current
-//        val currentUser = FirebaseAuth.getInstance().currentUser
-//        if (currentUser != null) {
-//            idUser = currentUser.uid
-//        } else {
-//            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
-//        }
         //Get data
         viewModelScope.launch {
             try {

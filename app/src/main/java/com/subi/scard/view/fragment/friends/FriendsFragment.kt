@@ -21,6 +21,7 @@ import com.subi.scard.utils.*
 import com.subi.scard.view.activity.loginGG.LoginActivity
 import com.subi.scard.view.adapter.FriendsAdapter
 import com.subi.scard.view.adapter.HealthAdapter
+import com.subi.scard.view.fragment.show_card.ShowCardFragment
 
 @Suppress("DEPRECATION")
 class FriendsFragment : BaseBindingFragment<FragmentFriendsBinding, FriendsViewmodel>() {
@@ -33,7 +34,7 @@ class FriendsFragment : BaseBindingFragment<FragmentFriendsBinding, FriendsViewm
     var adapterX: FriendsAdapter? = null
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
-
+        ShowCardFragment.isShowCard = true
         //Load list
         viewModel.load(context?.let { Utils.getIdUser(it) } ?:"")
         viewDataBinding?.rcvHome?.apply {
@@ -84,7 +85,7 @@ class FriendsFragment : BaseBindingFragment<FragmentFriendsBinding, FriendsViewm
                             .message("Bạn có chắc chắn muốn xoá ${item.title}?")
                             .setLeftButton("XOÁ", object : LeftInterface {
                                 override fun onClick() {
-//                                    viewModel.deleteItem(item.id!!)
+                                    viewModel.deleteItem(item.id!!)
                                     dialogx?.dismiss()
                                 }
                             })

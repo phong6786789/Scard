@@ -39,7 +39,11 @@ class ShowCardViewmodel: BaseViewModel() {
                     if (response.isSuccessful) {
                         listSocial.clear()
                         response.body()?.getAllList?.let {
-                            listSocial.addAll(it)
+                            for (x in it){
+                                if (x.status=="0"){
+                                    listSocial.add(x)
+                                }
+                            }
                             Utils.log(TAG, "size: ${listSocial.size}")
                         }
                     } else {
@@ -54,7 +58,11 @@ class ShowCardViewmodel: BaseViewModel() {
                     if (response2.isSuccessful) {
                         listInfo.clear()
                         response2.body()?.getAllList?.let {
-                            listInfo.addAll(it)
+                            for (x in it){
+                                if (x.status=="0"){
+                                    listInfo.add(x)
+                                }
+                            }
                             Utils.log(TAG, "size: ${listInfo.size}")
                             for(x in it){
                                 if (x.id=="INFO${x.idUser}"){
@@ -92,7 +100,11 @@ class ShowCardViewmodel: BaseViewModel() {
                     if (response3.isSuccessful) {
                         listBank.clear()
                         response3.body()?.getAllList?.let {
-                            listBank.addAll(it)
+                            for (x in it){
+                                if (x.status=="0"){
+                                    listBank.add(x)
+                                }
+                            }
                             Utils.log(TAG, "size: ${listBank.size}")
                         }
                     } else {
@@ -107,7 +119,11 @@ class ShowCardViewmodel: BaseViewModel() {
                     if (response4.isSuccessful) {
                         listHealth.clear()
                         response4.body()?.getAllList?.let {
-                            listHealth.addAll(it)
+                            for (x in it){
+                                if (x.status=="0"){
+                                    listHealth.add(x)
+                                }
+                            }
                             Utils.log(TAG, "size: ${listHealth.size}")
                         }
                     } else {

@@ -18,9 +18,9 @@ import java.net.URL
 
 object BindingUtils {
     @SuppressLint("DefaultLocale")
-    @BindingAdapter("setImageItem")
+    @BindingAdapter("setImageBackground")
     @JvmStatic
-    fun setImageItem(imageView: LinearLayout, title: String) {
+    fun setImageBackground(imageView: LinearLayout, title: String) {
 
         var type = when (title.toLowerCase()) {
             Constants.SOCIAL_TYPE.FACEBOOK.toLowerCase() -> R.drawable.round_fb
@@ -34,6 +34,25 @@ object BindingUtils {
             else -> R.mipmap.ic_launcher
         }
         imageView.setBackgroundResource(type)
+    }
+
+    @SuppressLint("DefaultLocale")
+    @BindingAdapter("setImageItem")
+    @JvmStatic
+    fun setImageItem(imageView: ImageView, title: String) {
+
+        val type = when (title.toLowerCase()) {
+            Constants.SOCIAL_TYPE.FACEBOOK.toLowerCase() -> R.drawable.icon_fb
+            Constants.SOCIAL_TYPE.ZALO.toLowerCase() -> R.drawable.icon_zalo
+            Constants.SOCIAL_TYPE.INSTAGRAM.toLowerCase() -> R.drawable.icon_instagram
+            Constants.SOCIAL_TYPE.TIKTOK.toLowerCase() -> R.drawable.icon_tiktok
+            Constants.SOCIAL_TYPE.YOUTUBE.toLowerCase() -> R.drawable.icon_youtube
+            Constants.SOCIAL_TYPE.EMAIL.toLowerCase() -> R.drawable.icon_gmail
+            Constants.SOCIAL_TYPE.TWITTER.toLowerCase() -> R.drawable.icon_twitter
+            Constants.SOCIAL_TYPE.SKYPE.toLowerCase() -> R.drawable.icon_skype
+            else -> R.mipmap.ic_launcher
+        }
+        imageView.setImageResource(type)
     }
 
     @BindingAdapter("setItemAdapter")

@@ -16,6 +16,7 @@
         <include layout="@layout/tool_bar" />
 
         <FrameLayout
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -25,7 +26,6 @@
                 android:padding="8dp">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:background="@color/white"
                     android:id="@+id/rcv_home"
                     android:layoutAnimation="@anim/layout_animation"
                     setItemAdapter="@{viewmodel.list}"
