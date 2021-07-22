@@ -22,7 +22,8 @@
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:background="@color/bg_main">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_home"
@@ -36,10 +37,12 @@
                 android:layout_gravity="end|bottom"
                 android:layout_margin="20dp"
                 android:onClick="@{()->viewmodel.insert()}"
-                android:backgroundTint="@color/blue_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/insertItem" />
+                android:contentDescription="@string/insertItem"
+                android:backgroundTint="#fff"
+                android:elevation="35dp"
+                app:borderWidth="0dp"/>
         </FrameLayout>
     </LinearLayout>
 </layout>
