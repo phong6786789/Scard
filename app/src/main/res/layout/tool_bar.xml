@@ -22,18 +22,18 @@
         app:tint="@color/white" />
 
     <ImageView
+        android:visibility="gone"
         android:layout_centerVertical="true"
         android:id="@+id/imageRight"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:padding="6dp"
-        android:visibility="gone"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
         android:clickable="true"
         android:focusable="true"
         android:background="@drawable/effect_click"
-        android:src="@drawable/ic_baseline_credit_card_24"
+        android:src="@drawable/ic_add"
         app:tint="@color/white" />
 
     <TextView

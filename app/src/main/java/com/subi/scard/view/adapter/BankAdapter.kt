@@ -60,6 +60,8 @@ class BankAdapter(
     }
 
     interface OnItemClickListener {
-        fun onClickItem(value: Item)
+        fun onClickItem(value: Item){
+
+        }
     }
 }

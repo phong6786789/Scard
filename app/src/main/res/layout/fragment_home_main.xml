@@ -80,7 +80,7 @@
                     android:layout_height="25dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_love"
+                    android:src="@drawable/ic_love_on"
                     android:visibility="gone" />
             </RelativeLayout>
         </FrameLayout>

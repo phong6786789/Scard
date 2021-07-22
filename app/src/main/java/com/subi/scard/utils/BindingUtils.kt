@@ -4,6 +4,7 @@ package com.subi.scard.utils
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.annotation.UiThread
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -19,20 +20,20 @@ object BindingUtils {
     @SuppressLint("DefaultLocale")
     @BindingAdapter("setImageItem")
     @JvmStatic
-    fun setImageItem(imageView: ImageView, title: String) {
+    fun setImageItem(imageView: LinearLayout, title: String) {
 
         var type = when (title.toLowerCase()) {
-            Constants.SOCIAL_TYPE.FACEBOOK.toLowerCase() -> R.drawable.icon_fb
-            Constants.SOCIAL_TYPE.ZALO.toLowerCase() -> R.drawable.icon_zalo
-            Constants.SOCIAL_TYPE.INSTAGRAM.toLowerCase() -> R.drawable.icon_instagram
-            Constants.SOCIAL_TYPE.TIKTOK.toLowerCase() -> R.drawable.icon_tiktok
-            Constants.SOCIAL_TYPE.YOUTUBE.toLowerCase() -> R.drawable.icon_ytb
-            Constants.SOCIAL_TYPE.EMAIL.toLowerCase() -> R.drawable.icon_gmail
-            Constants.SOCIAL_TYPE.TWITTER.toLowerCase() -> R.drawable.icon_twitter
-            Constants.SOCIAL_TYPE.SKYPE.toLowerCase() -> R.drawable.icon_skype
+            Constants.SOCIAL_TYPE.FACEBOOK.toLowerCase() -> R.drawable.round_fb
+            Constants.SOCIAL_TYPE.ZALO.toLowerCase() -> R.drawable.round_zalo
+            Constants.SOCIAL_TYPE.INSTAGRAM.toLowerCase() -> R.drawable.round_instagram
+            Constants.SOCIAL_TYPE.TIKTOK.toLowerCase() -> R.drawable.round_tiktok
+            Constants.SOCIAL_TYPE.YOUTUBE.toLowerCase() -> R.drawable.round_youtube
+            Constants.SOCIAL_TYPE.EMAIL.toLowerCase() -> R.drawable.round_mail
+            Constants.SOCIAL_TYPE.TWITTER.toLowerCase() -> R.drawable.round_twitter
+            Constants.SOCIAL_TYPE.SKYPE.toLowerCase() -> R.drawable.round_skype
             else -> R.mipmap.ic_launcher
         }
-        imageView.setImageResource(type)
+        imageView.setBackgroundResource(type)
     }
 
     @BindingAdapter("setItemAdapter")

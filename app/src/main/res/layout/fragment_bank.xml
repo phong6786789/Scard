@@ -26,6 +26,7 @@
                 android:padding="8dp">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:background="@color/white"
                     android:layoutAnimation="@anim/layout_animation"
                     android:id="@+id/rcv_home"
                     setItemAdapter="@{viewmodel.list}"
@@ -35,6 +36,7 @@
             </androidx.core.widget.NestedScrollView>
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:src="@drawable/ic_add"
+                android:visibility="gone"
                 android:layout_gravity="end|bottom"
                 android:layout_margin="20dp"
                 android:backgroundTint="@color/blue_main"

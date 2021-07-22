@@ -7,7 +7,9 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.subi.scard.R
+import com.subi.scard.databinding.BottomSheetBinding
 import com.subi.scard.databinding.DialogConfirmBinding
 
 interface OnButtonDialog {
@@ -101,7 +103,7 @@ class ShowDialog(
 
 
         fun miniDialog(): Dialog? {
-            val dialog= context?.let { Dialog(it) }
+            val dialog = context?.let { Dialog(it) }
             val binding = DialogConfirmBinding.inflate(LayoutInflater.from(context))
             dialog?.setContentView(binding.root)
             dialog?.setCancelable(false)
@@ -120,7 +122,7 @@ class ShowDialog(
             val btn_left = binding.btnCloseMini
             val btn_right = binding.btnOkMini
             binding.left = this.leftButton
-            binding.right =this.rightButton
+            binding.right = this.rightButton
             binding.des = this.message
             binding.title = this.title
             binding.left = this.leftButton
@@ -129,7 +131,7 @@ class ShowDialog(
 //            btn_right.text = this.leftButton
 //            btn_right.text = this.rightButton
 
-            if (this.leftButton.isNullOrEmpty()){
+            if (this.leftButton.isNullOrEmpty()) {
                 btn_left.visibility = View.GONE
             }
 
@@ -141,6 +143,36 @@ class ShowDialog(
                 rightListener?.onClick()
             }
             return dialog
+        }
+
+        fun bottom_sheet(): Dialog? {
+            val dialog = context?.let { BottomSheetDialog(it) }
+            val binding = BottomSheetBinding.inflate(LayoutInflater.from(context))
+            dialog?.setContentView(binding.root)
+            dialog?.setCancelable(true)
+            val window = dialog?.window
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            dialog?.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
+
+            binding.apply {
+                tvEdit.setOnClickListener {
+                    leftListener?.onClick()
+                }
+
+                tvDelete.setOnClickListener {
+                    rightListener?.onClick()
+                }
+
+                tvClose.setOnClickListener {
+                    dialog?.dismiss()
+                }
+            }
+            return dialog;
         }
     }
 }
