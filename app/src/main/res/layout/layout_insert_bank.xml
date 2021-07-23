@@ -1,189 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/tool_bar"/>
-    <TextView
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Chọn loại thẻ"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"/>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
-        android:visibility="gone"
+    <data>
+        <variable
+            name="link"
+            type="String" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="10dp">
-
+        android:layout_height="match_parent">
         <LinearLayout
-            android:id="@+id/ln_visa"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:gravity="center"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/img_visa"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/visa"
-                android:background="@drawable/bg_loaithe"
-                android:elevation="5dp"
-                />
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/tool_bar"/>
+
             <TextView
-                android:layout_width="wrap_content"
+                android:text="Tên ngân hàng"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Visa"
-                android:textSize="18dp"
-                android:textColor="#000"/>
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerItem"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/spinner_bg"
+                android:elevation="10dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:text="Số thẻ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_maSo"
+                android:hint="Nhập số thẻ"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edt_bg"
+                android:elevation="10dp"
+                android:inputType="number"
+                android:paddingLeft="20dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="20dp"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:text="Họ và tên"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_hoTen"
+                android:hint="Nhập họ và tên"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edt_bg"
+                android:elevation="10dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="20dp"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <io.ghyeok.stickyswitch.widget.StickySwitch
+                android:id="@+id/sticky_switch"
+                android:layout_marginTop="15dp"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:ss_animationDuration="500"
+                app:ss_iconPadding="15dp"
+                app:ss_iconSize="25dp"
+                app:ss_leftIcon="@drawable/ic_open_lock"
+                app:ss_leftText="Công khai"
+                app:ss_rightIcon="@drawable/ic_lock"
+                app:ss_rightText="Mình tôi"
+                app:ss_sliderBackgroundColor="@color/blue_main"
+                app:ss_switchColor="@color/blue4_main"
+                app:ss_textColor="@color/black"
+                app:ss_textSize="11sp"
+                app:ss_selectedTextSize="12sp"
+                app:ss_animationType="curved"/>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ln_mastercard"
-            android:layout_toRightOf="@id/ln_visa"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp">
+        <Button
+            android:id="@+id/btnInsert"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/blue_main"
+            android:elevation="10dp"
+            android:text="THÊM"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/img_masterCard"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/mastercard"
-                android:background="@drawable/bg_loaithe"
-                android:elevation="5dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MasterCard"
-                android:textSize="18dp"
-                android:textColor="#000"/>
-        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:id="@+id/ln_jcb"
-            android:layout_toRightOf="@+id/ln_mastercard"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/img_jcb"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/jcb"
-                android:background="@drawable/bg_loaithe"
-                android:elevation="5dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="JCB"
-                android:textSize="18dp"
-                android:textColor="#000"/>
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tên ngân hàng"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"/>
-
-    <Spinner
-        android:id="@+id/spinner_bank"
-        android:spinnerMode="dropdown"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/spinner_bg"
-        android:elevation="10dp"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Số thẻ"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_soThe"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/edt_bg"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingEnd="5dp"
-        android:hint="Vui lòng nhập số thẻ"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:elevation="10dp"
-        android:layout_margin="10dp"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Họ và tên"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_hoTen"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/edt_bg"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingEnd="5dp"
-        android:hint="Vui lòng nhập họ và tên"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:elevation="10dp"
-        android:layout_margin="10dp"
-        />
-
-    <Button
-        android:id="@+id/btn_luu"
-        android:text="lưu"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_save"
-        android:elevation="10dp"
-        />
-
-
-</LinearLayout>
+</layout>

@@ -39,6 +39,16 @@ class CustomDropDownAdapter(val context: Context, var dataSource: Array<String>)
             Constants.SOCIAL_TYPE.EMAIL.toLowerCase() -> R.drawable.icon_gmail
             Constants.SOCIAL_TYPE.TWITTER.toLowerCase() -> R.drawable.icon_twitter
             Constants.SOCIAL_TYPE.SKYPE.toLowerCase() -> R.drawable.icon_skype
+
+            Constants.INFO_TYPE.CCCD.toLowerCase() -> R.drawable.ubnd_logo
+            Constants.INFO_TYPE.PASSPORT.toLowerCase() -> R.drawable.passport
+
+            Constants.BANK_TYPE.AGRIBANK.toLowerCase() -> R.drawable.icon_agri
+            Constants.BANK_TYPE.SACOMBANK.toLowerCase() -> R.drawable.icon_scb
+            Constants.BANK_TYPE.VIETCOMBANK.toLowerCase() -> R.drawable.icon_vcb
+            Constants.BANK_TYPE.VIETTINBANK.toLowerCase() -> R.drawable.icon_vtb
+            Constants.BANK_TYPE.TECHCOMBANK.toLowerCase() -> R.drawable.icon_tcb
+
             else -> R.mipmap.ic_launcher
         }
 

@@ -1,17 +1,16 @@
 package com.subi.scard.view.adapter
 
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import androidx.annotation.UiThread
 import androidx.recyclerview.widget.RecyclerView
-import com.subi.scard.BR
-import com.subi.scard.databinding.ItemSocialBinding
+import com.subi.scard.R
+import com.subi.scard.databinding.ItemInfoBinding
 import com.subi.scard.model.Item
-import com.subi.scard.view.fragment.show_card.ShowCardFragment
+import com.subi.scard.utils.Constants
 
 class InfoAdapter(
     var items: List<Item>,
@@ -19,7 +18,7 @@ class InfoAdapter(
 ) : RecyclerView.Adapter<InfoAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-       ItemSocialBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+       ItemInfoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                                                                                               )
 
     override fun getItemCount(): Int {
@@ -32,24 +31,33 @@ class InfoAdapter(
         setFadeAnimation(holder.itemView)
     }
 
-    inner class ViewHolder(var binding:ItemSocialBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding:ItemInfoBinding) : RecyclerView.ViewHolder(binding.root) {
         @UiThread
         fun binData(item: Item) {
             binding.apply {
-                setVariable(BR.viewmodel, item)
-                executePendingBindings()
                 cardView.setOnLongClickListener {
                     action(item)
                     true
                 }
-                if (ShowCardFragment.isShowCard){
-                    cardView3.visibility = View.VISIBLE
-                    cardView.setCardBackgroundColor(Color.TRANSPARENT);
-                    lnBackground.setBackgroundResource(0);
-                    tvTitle.textSize = 18f
-                    cardView.cardElevation = 0F;
-                    tvTitle.setTextColor(Color.WHITE)
+
+                val des = item.description?.split("@")
+
+                title = item.title
+                hoTen = des?.get(1)
+                maSo = des?.get(0)
+
+                when(item.title){
+                    Constants.INFO_TYPE.CCCD ->{
+                        layout.setBackgroundResource(R.drawable.round_info)
+                    }
+                    Constants.INFO_TYPE.PASSPORT ->{
+                        layout.setBackgroundResource(R.drawable.bg_passport)
+                    }
+
+                    else -> cardView.setCardBackgroundColor(R.drawable.bg)
                 }
+
+
             }
         }
     }

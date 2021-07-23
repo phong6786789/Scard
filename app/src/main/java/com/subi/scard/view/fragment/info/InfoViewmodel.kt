@@ -28,8 +28,10 @@ class InfoViewmodel : BaseViewModel() {
     )
 
     fun insertItem() {
-        ChauManager.setupViewInsertNew(context!!, listInfo, Constants.ITEM_TYPE.INFO) {
-            insert(it)
+        context?.let {
+            ChauManager.setupViewInsertNew(it, listInfo, Constants.ITEM_TYPE.INFO) {
+                insert(it)
+            }
         }
     }
 
@@ -50,7 +52,7 @@ class InfoViewmodel : BaseViewModel() {
 
         listSpinner.add(0, item.title!!)
 
-        ChauManager.setupViewEdit(context!!, listSpinner, Constants.ITEM_TYPE.INFO, item) {
+        ChauManager.setupViewEditNew(context!!, listSpinner, Constants.ITEM_TYPE.INFO, item) {
             edit(it)
         }
     }

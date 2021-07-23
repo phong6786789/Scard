@@ -25,6 +25,9 @@ class BankViewmodel : BaseViewModel() {
     val listBank = arrayOf(
         Constants.BANK_TYPE.SACOMBANK,
         Constants.BANK_TYPE.VIETCOMBANK,
+        Constants.BANK_TYPE.AGRIBANK,
+        Constants.BANK_TYPE.TECHCOMBANK,
+        Constants.BANK_TYPE.VIETTINBANK,
     )
 
     fun deleteItem(id: String){
@@ -64,7 +67,7 @@ class BankViewmodel : BaseViewModel() {
 
         listSpinner.add(0, item.title!!)
 
-        ChauManager.setupViewEdit(context!!, listSpinner, Constants.ITEM_TYPE.BANK, item) {
+        ChauManager.setupViewEditNew(context!!, listSpinner, Constants.ITEM_TYPE.BANK, item) {
             edit(it)
         }
     }
@@ -91,7 +94,7 @@ class BankViewmodel : BaseViewModel() {
     }
 
     fun insertItem() {
-        ChauManager.setupViewInsert(context!!, listBank, Constants.ITEM_TYPE.BANK) {
+        ChauManager.setupViewInsertNew(context!!, listBank, Constants.ITEM_TYPE.BANK) {
             insert(it)
         }
     }

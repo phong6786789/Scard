@@ -1,8 +1,8 @@
 package com.subi.scard.utils
 
 object Constants {
-    //    const val BASE_URL = "http://192.168.1.29:8083/scard/"
-    const val BASE_URL = "http://192.168.1.177/scard/"
+        const val BASE_URL = "http://192.168.1.29:8083/scard/"
+//    const val BASE_URL = "http://192.168.1.177/scard/"
     object USER {
         const val ID_USER = "idUser"
         const val STATUS = "status"
@@ -39,8 +39,11 @@ object Constants {
     }
 
     object BANK_TYPE {
-        const val SACOMBANK = "SACOMBANK"
-        const val VIETCOMBANK = "VIETCOMBANK"
+        const val SACOMBANK = "Sacombank"
+        const val AGRIBANK = "Agribank"
+        const val VIETTINBANK = "ViettinBank"
+        const val VIETCOMBANK = "Vietcombank"
+        const val TECHCOMBANK = "Techcombank"
     }
 
     object HEALTH_TYPE {

@@ -5,12 +5,16 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.graphics.*
+import android.graphics.drawable.ColorDrawable
 import android.text.Editable
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.CursorTreeAdapter
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.R
+import com.subi.scard.databinding.LayoutInsertBankBinding
+import com.subi.scard.databinding.LayoutInsertHealthBinding
 import com.subi.scard.databinding.LayoutInsertInfoBinding
 import com.subi.scard.databinding.LayoutInsertItemBinding
 import com.subi.scard.model.Item
@@ -114,7 +118,7 @@ class ChauManager {
             type: String,
             item: Item,
             edit: (Item) -> Unit
-        ) {
+         ) {
             val builder = AlertDialog.Builder(context)
             val binding = LayoutInsertItemBinding.inflate(LayoutInflater.from(context))
 
@@ -332,14 +336,68 @@ class ChauManager {
             type: String,
             insert: (Item) -> Unit
         ) {
-
             when (type) {
                 Constants.ITEM_TYPE.INFO -> {
-                    val builder = AlertDialog.Builder(context)
+                    val dialog = Dialog(context)
                     val binding = LayoutInsertInfoBinding.inflate(LayoutInflater.from(context))
+                    dialog.setContentView(binding.root)
+                    val window = dialog.window
+                    window?.setLayout(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                    if (dialog.window != null) {
+                        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    }
 
-                    builder.setView(binding.root)
-                    val dialog = builder.create()
+                    dialog.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
+
+                    val customDropDownAdapter = CustomDropDownAdapter(context, list)
+                    binding.spinnerItem.adapter = customDropDownAdapter
+
+                    binding.btnInsert.setOnClickListener {
+                        val maSo = binding.edtMaSo.text.toString()
+                        val hoTen = binding.edtHoTen.text.toString()
+
+                        val direction = binding.stickySwitch.getDirection().name
+
+                        val status = if (direction == "LEFT") 0 else 1
+                        if (maSo.isNotEmpty() && hoTen.isNotEmpty()) {
+                            val title = binding.spinnerItem.selectedItem.toString()
+                            insert(
+                                Item(
+                                    title + Utils.getIdUser(context),
+                                    title,
+                                    "$maSo@$hoTen",
+                                    type,
+                                    Utils.getIdUser(context),
+                                    status.toString()
+                                )
+                            )
+                            dialog.dismiss()
+                        } else {
+                            Utils.showMess(context, "Không được để trống!")
+                        }
+                    }
+                    binding.toolbar.imageLeft.setOnClickListener {
+                        dialog.dismiss()
+                    }
+                    dialog.show()
+                }
+                Constants.ITEM_TYPE.BANK -> {
+                    val dialog = Dialog(context)
+                    val binding = LayoutInsertBankBinding.inflate(LayoutInflater.from(context))
+                    dialog.setContentView(binding.root)
+                    val window = dialog.window
+                    window?.setLayout(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                    if (dialog.window != null) {
+                        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    }
+
+                    dialog.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
 
                     val customDropDownAdapter = CustomDropDownAdapter(context, list)
                     binding.spinnerItem.adapter = customDropDownAdapter
@@ -374,8 +432,157 @@ class ChauManager {
                     dialog.show()
                 }
             }
+        }
+
+        fun setupViewEditNew(
+            context: Context,
+            list: MutableList<String>,
+            type: String,
+            item: Item,
+            edit: (Item) -> Unit
+        ) {
+
+            when (type) {
+                Constants.ITEM_TYPE.INFO -> {
+                    val dialog = Dialog(context)
+                    val binding = LayoutInsertInfoBinding.inflate(LayoutInflater.from(context))
+                    dialog.setContentView(binding.root)
+                    val window = dialog.window
+                    window?.setLayout(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                    if (dialog.window != null) {
+                        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    }
+
+                    dialog.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
 
 
+                    val des = item.description?.split("@")
+
+                    binding.toolbar.textTitle.text = "SỬA THÔNG TIN"
+
+                    binding.btnInsert.text = "SỬA"
+                    binding.edtHoTen.setText(des?.get(1))
+                    binding.edtMaSo.setText(des?.get(0))
+
+                    binding.stickySwitch.setDirection(if (item.status.equals("0")) StickySwitch.Direction.LEFT else StickySwitch.Direction.RIGHT, false)
+
+                    var position = 0
+
+                    for (i in 0..list.size) {
+                        if (list[i].equals(item.title)) {
+                            position = i
+                            break
+                        }
+                    }
+
+                    //set vi tri item cho spinner
+                    val customDropDownAdapter = CustomDropDownAdapter(context, list.toTypedArray())
+                    binding.spinnerItem.adapter = customDropDownAdapter
+                    binding.spinnerItem.setSelection(position)
+
+                    binding.btnInsert.setOnClickListener {
+                        val maSo = binding.edtMaSo.text.toString()
+                        val hoTen = binding.edtHoTen.text.toString()
+
+                        val direction = binding.stickySwitch.getDirection().name
+
+                        val status = if (direction == "LEFT") 0 else 1
+                        if (maSo.isNotEmpty() && hoTen.isNotEmpty()) {
+                            val title = binding.spinnerItem.selectedItem.toString()
+                            edit(
+                                Item(
+                                    item.id,
+                                    title,
+                                    "$maSo@$hoTen",
+                                    type,
+                                    Utils.getIdUser(context),
+                                    status.toString()
+                                )
+                            )
+                            dialog.dismiss()
+                        } else {
+                            Utils.showMess(context, "Không được để trống!")
+                        }
+                    }
+                    binding.toolbar.imageLeft.setOnClickListener {
+                        dialog.dismiss()
+                    }
+                    dialog.show()
+                }
+                Constants.ITEM_TYPE.BANK -> {
+                    val dialog = Dialog(context)
+                    val binding = LayoutInsertBankBinding.inflate(LayoutInflater.from(context))
+                    dialog.setContentView(binding.root)
+                    val window = dialog.window
+                    window?.setLayout(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                    if (dialog.window != null) {
+                        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    }
+
+                    dialog.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
+
+
+                    val des = item.description?.split("@")
+
+                    binding.toolbar.textTitle.text = "SỬA THÔNG TIN"
+
+                    binding.btnInsert.text = "SỬA"
+                    binding.edtHoTen.setText(des?.get(1))
+                    binding.edtMaSo.setText(des?.get(0))
+
+                    binding.stickySwitch.setDirection(if (item.status.equals("0")) StickySwitch.Direction.LEFT else StickySwitch.Direction.RIGHT, false)
+
+                    var position = 0
+
+                    for (i in 0..list.size) {
+                        if (list[i].equals(item.title)) {
+                            position = i
+                            break
+                        }
+                    }
+
+                    //set vi tri item cho spinner
+                    val customDropDownAdapter = CustomDropDownAdapter(context, list.toTypedArray())
+                    binding.spinnerItem.adapter = customDropDownAdapter
+                    binding.spinnerItem.setSelection(position)
+
+                    binding.btnInsert.setOnClickListener {
+                        val maSo = binding.edtMaSo.text.toString()
+                        val hoTen = binding.edtHoTen.text.toString()
+
+                        val direction = binding.stickySwitch.getDirection().name
+
+                        val status = if (direction == "LEFT") 0 else 1
+                        if (maSo.isNotEmpty() && hoTen.isNotEmpty()) {
+                            val title = binding.spinnerItem.selectedItem.toString()
+                            edit(
+                                Item(
+                                    item.id,
+                                    title,
+                                    "$maSo@$hoTen",
+                                    type,
+                                    Utils.getIdUser(context),
+                                    status.toString()
+                                )
+                            )
+                            dialog.dismiss()
+                        } else {
+                            Utils.showMess(context, "Không được để trống!")
+                        }
+                    }
+                    binding.toolbar.imageLeft.setOnClickListener {
+                        dialog.dismiss()
+                    }
+                    dialog.show()
+                }
+
+            }
         }
     }
 

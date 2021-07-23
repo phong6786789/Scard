@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="maSo"
+            name="soThe"
             type="String" />
         <variable
             name="hoTen"
@@ -27,6 +27,7 @@
 
             <RelativeLayout
                 android:id="@+id/layout"
+                android:background="@drawable/round_mastercard"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -36,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{title}"
                     android:textSize="23sp"
-                    android:textColor="#F11212"
+                    android:textColor="#FFF"
                     android:padding="25dp"
                     app:fontFamily="@font/baloo2"
                     />
@@ -45,8 +46,8 @@
                     android:id="@+id/txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Số:"
-                    android:textColor="@color/black"
+                    android:text="Số thẻ:"
+                    android:textColor="@color/white"
                     android:paddingLeft="25dp"
                     android:layout_below="@+id/txt1"
                     android:textStyle="bold"
@@ -60,8 +61,8 @@
                     android:layout_below="@+id/txt1"
                     android:layout_marginBottom="0dp"
                     android:layout_marginLeft="5dp"
-                    android:text="@{maSo}"
-                    android:textColor="@color/black"
+                    android:text="@{soThe}"
+                    android:textColor="@color/white"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -69,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Họ và tên:"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:paddingLeft="25dp"
                     android:layout_below="@+id/txt2"
                     android:textStyle="bold"
@@ -84,7 +85,7 @@
                     android:layout_marginBottom="0dp"
                     android:layout_marginLeft="5dp"
                     android:text="@{hoTen}"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold"/>
 
 
@@ -93,10 +94,9 @@
         </androidx.cardview.widget.CardView>
 
         <ImageView
-            android:id="@+id/imageInfo"
+            android:id="@+id/imageBank"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/ubnd_logo"
             android:layout_marginTop="10dp"
             android:layout_marginRight="33dp"
             android:layout_alignParentRight="true"
