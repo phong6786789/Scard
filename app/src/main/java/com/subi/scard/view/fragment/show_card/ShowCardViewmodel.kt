@@ -32,6 +32,46 @@ class ShowCardViewmodel: BaseViewModel() {
         viewModelScope.launch {
             try {
                 Utils.log(TAG, "uid: $idUser")
+
+                //Set ảnh đại diện và thông tin cá nhân
+                val responseUser = BaseNetwork.getInstance()
+                    .getAllItemByIdUserAndType(idUser, Constants.ITEM_TYPE.AVATAR)
+                withContext(Dispatchers.Main) {
+                    Utils.log(TAG, "response: ${responseUser.body()}")
+                    if (responseUser.isSuccessful) {
+                        listSocial.clear()
+                        var user : Item? =null
+                        responseUser.body()?.getAllList?.let {
+                            for (xz in it){
+                                 user = xz
+                            }
+                            fullname.set(user?.title)
+                                    avatar.set(user?.description)
+                                    //Tránh trường hợp add friend chính bản thân
+                                    if (user?.idUser!=Utils.getIdUser(context)){
+                                        viewModelScope.launch {
+                                            try {
+                                                val res = BaseNetwork.getInstance().insertItem(
+                                                    (Constants.FRIEND_TYPE.FRIEND+idUser), user?.title, user?.description, Constants.FRIEND_TYPE.FRIEND, Utils.getIdUser(context), "0"
+                                                )
+                                                if (res.isSuccessful) {
+                                                    Utils.log(TAG+"hehe", "success: ${res.body()?.status}")
+                                                } else {
+                                                    Utils.log(TAG+"hehe", "failed: ${res.errorBody()}")
+                                                }
+                                            } catch (e: Exception) {
+                                                Utils.log(TAG+"hehe", "erro: ${e.message}")
+                                            }
+                                        }
+                                    }
+                            Utils.log(TAG, "size: ${listSocial.size}")
+                        }
+                    } else {
+                        Utils.log(TAG, "failed: ${responseUser.errorBody()}")
+                    }
+                }
+
+
                 val response = BaseNetwork.getInstance()
                     .getAllItemByIdUserAndType(idUser, Constants.ITEM_TYPE.SOCIAL)
                 withContext(Dispatchers.Main) {
@@ -64,29 +104,29 @@ class ShowCardViewmodel: BaseViewModel() {
                                 }
                             }
                             Utils.log(TAG, "size: ${listInfo.size}")
-                            for(x in it){
-                                if (x.id=="INFO${x.idUser}"){
-                                    fullname.set(x.title)
-                                    avatar.set(x.description)
-                                    //Tránh trường hợp add friend chính bản thân
-                                    if (x.idUser!=Utils.getIdUser(context)){
-                                        viewModelScope.launch {
-                                            try {
-                                                val res = BaseNetwork.getInstance().insertItem(
-                                                    (Constants.FRIEND_TYPE.FRIEND+idUser), x.title, x.description, Constants.FRIEND_TYPE.FRIEND, Utils.getIdUser(context), "0"
-                                                )
-                                                if (res.isSuccessful) {
-                                                    Utils.log(TAG+"hehe", "success: ${res.body()?.status}")
-                                                } else {
-                                                    Utils.log(TAG+"hehe", "failed: ${res.errorBody()}")
-                                                }
-                                            } catch (e: Exception) {
-                                                Utils.log(TAG+"hehe", "erro: ${e.message}")
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+//                            for(x in it){
+//                                if (x.id=="INFO${x.idUser}"){
+//                                    fullname.set(x.title)
+//                                    avatar.set(x.description)
+//                                    //Tránh trường hợp add friend chính bản thân
+//                                    if (x.idUser!=Utils.getIdUser(context)){
+//                                        viewModelScope.launch {
+//                                            try {
+//                                                val res = BaseNetwork.getInstance().insertItem(
+//                                                    (Constants.FRIEND_TYPE.FRIEND+idUser), x.title, x.description, Constants.FRIEND_TYPE.FRIEND, Utils.getIdUser(context), "0"
+//                                                )
+//                                                if (res.isSuccessful) {
+//                                                    Utils.log(TAG+"hehe", "success: ${res.body()?.status}")
+//                                                } else {
+//                                                    Utils.log(TAG+"hehe", "failed: ${res.errorBody()}")
+//                                                }
+//                                            } catch (e: Exception) {
+//                                                Utils.log(TAG+"hehe", "erro: ${e.message}")
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }
                         }
                     } else {
                         Utils.log(TAG, "failed: ${response2.errorBody()}")
@@ -130,6 +170,7 @@ class ShowCardViewmodel: BaseViewModel() {
                         Utils.log(TAG, "failed: ${response4.errorBody()}")
                     }
                 }
+
             } catch (e: Exception) {
                 Utils.log(TAG, "erro: ${e.message}")
             }

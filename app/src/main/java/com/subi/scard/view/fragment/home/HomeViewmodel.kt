@@ -26,8 +26,9 @@ class HomeViewmodel : BaseViewModel() {
     var list_menu: ObservableList<CustomItem> = ObservableArrayList()
     var uid = ObservableField("")
     var name = ObservableField("")
-    var image =  ObservableField("")
-    var context:Context?=null
+    var image = ObservableField("")
+    var context: Context? = null
+
     init {
         list_menu.addAll(
             listOf(
@@ -41,33 +42,33 @@ class HomeViewmodel : BaseViewModel() {
         )
     }
 
-    fun load(){
+    fun load() {
         val idx = FirebaseAuth.getInstance().currentUser?.uid.toString()
         var namex = FirebaseAuth.getInstance().currentUser?.displayName.toString()
         val imagex = FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
-        Log.d("testX",
-            context?.let { SharedPrefs.getInstance().getStringValue(it, "mail", "")}.toString()
+        Log.d(
+            "testX",
+            context?.let { SharedPrefs.getInstance().getStringValue(it, "mail", "") }.toString()
         )
-        if (namex.isEmpty()){
-            namex = context?.let { SharedPrefs.getInstance().getStringValue(it, "mail", "") }.toString()
+        if (namex.isEmpty()) {
+            namex =
+                context?.let { SharedPrefs.getInstance().getStringValue(it, "mail", "") }.toString()
         }
         uid.set(idx)
         name.set(namex)
         image.set(imagex)
         //Auto add info of User
-        if(!idx.equals("null")){
-            viewModelScope.launch {
-                Log.d("TAG", "test: ${FirebaseAuth.getInstance().currentUser?.email.toString()}")
-                val res = BaseNetwork.getInstance().insertItem(
-                    (Constants.INFO_TYPE.INFO+idx), namex, imagex, Constants.INFO_TYPE.INFO, idx, "0"
-                )
-                if (res.isSuccessful) {
-                    Utils.log("TAG", "success: ${res.body()?.status}")
-                } else {
-                    Utils.log("TAG", "failed: ${res.body()}")
-                }
-
+        viewModelScope.launch {
+            Log.d("TAG", "test: ${FirebaseAuth.getInstance().currentUser?.email.toString()}")
+            val res = BaseNetwork.getInstance().insertItem(
+                (Constants.INFO_TYPE.INFO + idx), namex, imagex, Constants.ITEM_TYPE.AVATAR, idx, "0"
+            )
+            if (res.isSuccessful) {
+                Utils.log("TAG", "success: ${res.body()?.status}")
+            } else {
+                Utils.log("TAG", "failed: ${res.body()}")
             }
+
         }
     }
 

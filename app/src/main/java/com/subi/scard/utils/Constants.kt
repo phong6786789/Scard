@@ -29,10 +29,13 @@ object Constants {
         const val BANK = "BANK"
         const val HEALTH = "HEALTH"
         const val FRIEND = "FRIEND"
+        const val AVATAR = "AVATAR"
     }
 
     object INFO_TYPE {
         const val INFO = "INFO"
+        const val CCCD = "CĂN CƯỚC CÔNG DÂN"
+        const val PASSPORT = "PASSPORT"
     }
 
     object BANK_TYPE {

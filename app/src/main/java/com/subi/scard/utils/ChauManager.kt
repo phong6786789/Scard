@@ -11,6 +11,7 @@ import android.widget.CursorTreeAdapter
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.R
+import com.subi.scard.databinding.LayoutInsertInfoBinding
 import com.subi.scard.databinding.LayoutInsertItemBinding
 import com.subi.scard.model.Item
 import io.ghyeok.stickyswitch.widget.StickySwitch
@@ -323,6 +324,58 @@ class ChauManager {
                     isCurrentlyActive
                 )
             }
+        }
+
+        fun setupViewInsertNew(
+            context: Context,
+            list: Array<String>,
+            type: String,
+            insert: (Item) -> Unit
+        ) {
+
+            when (type) {
+                Constants.ITEM_TYPE.INFO -> {
+                    val builder = AlertDialog.Builder(context)
+                    val binding = LayoutInsertInfoBinding.inflate(LayoutInflater.from(context))
+
+                    builder.setView(binding.root)
+                    val dialog = builder.create()
+
+                    val customDropDownAdapter = CustomDropDownAdapter(context, list)
+                    binding.spinnerItem.adapter = customDropDownAdapter
+
+                    binding.btnInsert.setOnClickListener {
+                        val maSo = binding.edtMaSo.text.toString()
+                        val hoTen = binding.edtHoTen.text.toString()
+
+                        val direction = binding.stickySwitch.getDirection().name
+
+                        val status = if (direction == "LEFT") 0 else 1
+                        if (maSo.isNotEmpty() && hoTen.isNotEmpty()) {
+                            val title = binding.spinnerItem.selectedItem.toString()
+                            insert(
+                                Item(
+                                    title + Utils.getIdUser(context),
+                                    title,
+                                    "$maSo@$hoTen",
+                                    type,
+                                    Utils.getIdUser(context),
+                                    status.toString()
+                                )
+                            )
+                            dialog.dismiss()
+                        } else {
+                            Utils.showMess(context, "Không được để trống!")
+                        }
+                    }
+                    binding.toolbar.imageLeft.setOnClickListener {
+                        dialog.dismiss()
+                    }
+                    dialog.show()
+                }
+            }
+
+
         }
     }
 
