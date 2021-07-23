@@ -8,6 +8,8 @@ object Constants {
         const val STATUS = "status"
     }
 
+    const val HOTEN = "HOTEN"
+
     object TITLE {
         const val HOME = "S-CARD"
         const val SETTINGS = "Cài đặt"
@@ -39,7 +41,10 @@ object Constants {
     }
 
     object HEALTH_TYPE {
-        const val GIA_DINH = "Gia Định"
+        const val BHYT = "Bảo hiểm y tế"
+        const val CSSK = "Chăm sóc sức khoẻ"
+        const val COVI = "Phiếu tiêm chủng Vacxin"
+        const val TEST = "Giấy đã test Covid"
     }
 
     object FRIEND_TYPE {

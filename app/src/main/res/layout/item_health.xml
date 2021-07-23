@@ -14,6 +14,7 @@
         android:layout_height="190dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             app:cardCornerRadius="20dp"
@@ -29,7 +30,7 @@
                     android:id="@+id/txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BẢO HIỂM Y TẾ"
+                    android:text="@{viewmodel.title}"
                     android:textSize="26sp"
                     android:textColor="@color/white"
                     android:padding="25dp"
@@ -55,7 +56,6 @@
                     android:layout_below="@+id/txt1"
                     android:layout_marginBottom="0dp"
                     android:layout_marginLeft="5dp"
-                    android:text="0123456789"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
 
@@ -63,7 +63,7 @@
                     android:id="@+id/txt3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nơi khám:"
+                    android:text="Họ tên:"
                     android:textColor="@color/white"
                     android:paddingLeft="25dp"
                     android:layout_below="@+id/txt2"
@@ -78,7 +78,6 @@
                     android:layout_below="@+id/txt2"
                     android:layout_marginBottom="0dp"
                     android:layout_marginLeft="5dp"
-                    android:text="Bệnh viện Chọ Rẫy"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
 

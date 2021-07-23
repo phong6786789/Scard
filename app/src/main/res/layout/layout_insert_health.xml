@@ -1,74 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/tool_bar"/>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mã số"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+    <data>
+        <variable
+            name="title1"
+            type="String" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_maSoBH"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/edt_bg"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingEnd="5dp"
-        android:hint="Vui lòng nhập mã số bảo hiểm"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:elevation="10dp"
-        android:layout_margin="10dp"
-        />
+        <variable
+            name="edt1"
+            type="String" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nơi khám"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+        <variable
+            name="title2"
+            type="String" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_noiKham"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/edt_bg"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingEnd="5dp"
-        android:hint="Vui lòng nhập nơi đăng ký khám"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:elevation="10dp"
-        android:layout_margin="10dp"
-        />
+        <variable
+            name="edt2"
+            type="String" />
+    </data>
 
-    <Button
-        android:id="@+id/btn_luuHealth"
-        android:text="lưu"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_save"
-        android:elevation="10dp"
-        />
-</LinearLayout>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_above="@id/btn_luuHealth"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/tool_bar"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chọn loại y tế"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp" />
+            <Spinner
+                android:id="@+id/spinnerItem"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/spinner_bg"
+                android:elevation="10dp"
+                android:spinnerMode="dropdown" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{title1}"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_maSoBH"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edt_bg"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingEnd="5dp"
+                android:hint="@{edt1}"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:elevation="10dp"
+                android:layout_margin="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{title2}"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_noiKham"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edt_bg"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:inputType="text"
+                android:paddingEnd="5dp"
+                android:hint="@{edt2}"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:elevation="10dp"
+                android:layout_margin="10dp" />
+
+            <io.ghyeok.stickyswitch.widget.StickySwitch
+                android:id="@+id/sticky_switch"
+                android:layout_marginTop="10dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:ss_animationDuration="500"
+                app:ss_iconPadding="20dp"
+                app:ss_leftIcon="@drawable/ic_open_lock"
+                app:ss_leftText="Công khai"
+                app:ss_rightIcon="@drawable/ic_lock"
+                app:ss_rightText="Mình tôi"
+                app:ss_sliderBackgroundColor="@color/blue_main"
+                app:ss_switchColor="@color/blue4_main"
+                app:ss_textColor="@color/black"
+                app:ss_textSize="15sp"
+                app:ss_animationType="curved"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_alignParentBottom="true"
+            android:background="@color/blue_main"
+            android:id="@+id/btn_luuHealth"
+            android:text="THÊM"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:elevation="10dp" />
+    </RelativeLayout>
+</layout>
