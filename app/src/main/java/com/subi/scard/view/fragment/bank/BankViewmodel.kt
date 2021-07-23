@@ -24,6 +24,7 @@ class BankViewmodel : BaseViewModel() {
 
     val listBank = arrayOf(
         Constants.BANK_TYPE.SACOMBANK,
+        Constants.BANK_TYPE.VIETCOMBANK,
     )
 
     fun deleteItem(id: String){

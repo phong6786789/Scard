@@ -36,8 +36,8 @@
 
             </androidx.core.widget.NestedScrollView>
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:onClick="@{()->viewmodel.insertItem()}"
                 android:src="@drawable/ic_add"
-                android:visibility="gone"
                 android:layout_gravity="end|bottom"
                 android:layout_margin="20dp"
                 android:backgroundTint="@color/blue_main"

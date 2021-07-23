@@ -24,6 +24,7 @@ class InfoViewmodel : BaseViewModel() {
 
     val listInfo = arrayOf(
         Constants.INFO_TYPE.INFO,
+    
     )
 
     fun insertItem() {

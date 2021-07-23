@@ -76,9 +76,5 @@ class BankFragment : BaseBindingFragment<FragmentBankBinding, BankViewmodel>(){
         super.onViewCreated(view, savedInstanceState)
         toolbarTitleAndBack(Constants.TITLE.BANK)
         right?.visibility = View.VISIBLE
-        //Button add
-        right?.setOnClickListener {
-            viewModel.insertItem()
-        }
     }
 }

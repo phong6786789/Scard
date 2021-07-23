@@ -35,6 +35,7 @@ object Constants {
 
     object BANK_TYPE {
         const val SACOMBANK = "SACOMBANK"
+        const val VIETCOMBANK = "VIETCOMBANK"
     }
 
     object HEALTH_TYPE {
