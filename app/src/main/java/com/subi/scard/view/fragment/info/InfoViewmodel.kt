@@ -23,11 +23,12 @@ class InfoViewmodel : BaseViewModel() {
     var idUser = "111"
 
     val listInfo = arrayOf(
-        Constants.INFO_TYPE.INFO,
+        Constants.INFO_TYPE.CCCD,
+        Constants.INFO_TYPE.PASSPORT,
     )
 
     fun insertItem() {
-        ChauManager.setupViewInsert(context!!, listInfo, Constants.ITEM_TYPE.INFO) {
+        ChauManager.setupViewInsertNew(context!!, listInfo, Constants.ITEM_TYPE.INFO) {
             insert(it)
         }
     }

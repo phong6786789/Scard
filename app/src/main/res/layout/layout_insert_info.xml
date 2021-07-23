@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="link"
+            type="String" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/tool_bar"/>
+
+            <TextView
+                android:text="Chọn loại thẻ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerItem"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/spinner_bg"
+                android:elevation="10dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:text="Mã thẻ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_maSo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edt_bg"
+                android:elevation="10dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="20dp"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:text="Họ và tên"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_hoTen"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edt_bg"
+                android:elevation="10dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="20dp"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <io.ghyeok.stickyswitch.widget.StickySwitch
+                android:id="@+id/sticky_switch"
+                android:layout_marginTop="15dp"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:ss_animationDuration="500"
+                app:ss_iconPadding="15dp"
+                app:ss_iconSize="25dp"
+                app:ss_leftIcon="@drawable/ic_open_lock"
+                app:ss_leftText="Công khai"
+                app:ss_rightIcon="@drawable/ic_lock"
+                app:ss_rightText="Mình tôi"
+                app:ss_sliderBackgroundColor="@color/blue_main"
+                app:ss_switchColor="@color/blue4_main"
+                app:ss_textColor="@color/black"
+                app:ss_textSize="11sp"
+                app:ss_selectedTextSize="12sp"
+                app:ss_animationType="curved"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnInsert"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/blue_main"
+            android:elevation="10dp"
+            android:text="THÊM"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -30,7 +30,8 @@ object Constants {
     }
 
     object INFO_TYPE {
-        const val INFO = "INFO"
+        const val CCCD = "CĂN CƯỚC CÔNG DÂN"
+        const val PASSPORT = "PASSPORT"
     }
 
     object BANK_TYPE {
