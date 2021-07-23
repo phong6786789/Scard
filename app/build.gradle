@@ -98,4 +98,6 @@ dependencies {
     //Thư viện ảnh
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    //StickySwitch
+    implementation 'com.github.GwonHyeok:StickySwitch:0.0.16'
 }

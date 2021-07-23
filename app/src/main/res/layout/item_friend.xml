@@ -16,7 +16,7 @@
         android:layout_marginHorizontal="8dp"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal"
-        android:layout_height="80dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:padding="8dp"
@@ -31,10 +31,11 @@
                 app:cardCornerRadius="30dp">
 
                 <ImageView
+                    android:background="@drawable/linear_bg"
                     android:id="@+id/iv_icon"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitCenter"
                     setImageFromUrl="@{viewmodel.description}" />
             </androidx.cardview.widget.CardView>
 

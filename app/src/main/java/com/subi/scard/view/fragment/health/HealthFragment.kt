@@ -35,20 +35,41 @@ class HealthFragment : BaseBindingFragment<FragmentHealthBinding, HealthViewmode
         //Load list
 
         viewDataBinding?.rcvHome?.apply {
-            adapterX = HealthAdapter(viewModel.list){clickDelete(it)}
+            adapterX = HealthAdapter(viewModel.list){clickItem(it)}
                 adapter = adapterX
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             hasFixedSize()
-            val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
+            val itemTouchHelper = ItemTouchHelper(
+                ChauManager.setupItemTouchHelper(
+                    viewModel.list,
+                    requireContext(),
+                    { clickDelete(it) },
+                    { clickEdit(it) },
+                    { clickLoadRecycView(it) })
+            )
             itemTouchHelper.attachToRecyclerView(this)
         }
     }
 
-    fun clickDelete(item: Item) {
+    fun clickItem(item: Item) {
+
+    }
+
+    fun clickDelete(id: String) {
+        viewModel.deleteItem(id)
+    }
+
+    fun clickEdit(item: Item) {
+        viewModel.editItem(item)
+    }
+
+    fun clickLoadRecycView(position: Int) {
+        adapterX?.notifyItemChanged(position)
     }
 
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
         viewModel.context = context
+        viewModel.load()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,7 +78,7 @@ class HealthFragment : BaseBindingFragment<FragmentHealthBinding, HealthViewmode
         right?.visibility = View.VISIBLE
         //Button add
         right?.setOnClickListener {
-            viewModel.insert()
+            viewModel.insertItem()
         }
     }
 

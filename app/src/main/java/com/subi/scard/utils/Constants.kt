@@ -1,13 +1,14 @@
 package com.subi.scard.utils
 
 object Constants {
+    //    const val BASE_URL = "http://192.168.1.29:8083/scard/"
     const val BASE_URL = "http://192.168.1.177/scard/"
-    object USER{
+    object USER {
         const val ID_USER = "idUser"
         const val STATUS = "status"
     }
 
-    object TITLE{
+    object TITLE {
         const val HOME = "S-CARD"
         const val SETTINGS = "Cài đặt"
         const val QR = "Quét QR S-CARD"
@@ -20,7 +21,7 @@ object Constants {
         const val SHOW = "Thông tin"
     }
 
-    object ITEM_TYPE{
+    object ITEM_TYPE {
         const val SOCIAL = "SOCIAL"
         const val INFO = "INFO"
         const val BANK = "BANK"
@@ -28,24 +29,25 @@ object Constants {
         const val FRIEND = "FRIEND"
     }
 
-    object INFO_TYPE{
+    object INFO_TYPE {
         const val INFO = "INFO"
     }
 
-    object BANK_TYPE{
+    object BANK_TYPE {
         const val SACOMBANK = "SACOMBANK"
     }
 
-    object HEALTH_TYPE{
-        const val GIA_DINH = "Gia Đình"
+    object HEALTH_TYPE {
+        const val GIA_DINH = "Gia Định"
     }
 
-    object FRIEND_TYPE{
+    object FRIEND_TYPE {
         const val FRIEND = "FRIEND"
+        const val PHONG_GA = "Phong Gà"
     }
 
 
-    object SOCIAL_TYPE{
+    object SOCIAL_TYPE {
         const val FACEBOOK = "Facebook"
         const val ZALO = "Zalo"
         const val YOUTUBE = "Youtube"
