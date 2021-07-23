@@ -3,6 +3,8 @@ package com.subi.scard.view.fragment.more
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import androidx.databinding.ObservableList
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
@@ -20,36 +22,14 @@ class MoreViewmodel : BaseViewModel() {
     val TAG = "HomeViewModel"
     val list: ObservableList<Item> = ObservableArrayList()
     var context: Context? = null
-    var idUser = ""
-
+    var isEmty = ObservableBoolean(true)
+    var emty = ObservableField("Tạm thời chưa có chức năng khác")
     fun load() {
-        //Check have account current
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            idUser = currentUser.uid
+        val idUser = context?.let { Utils.getIdUser(it) }
+        if (!list.isEmpty()) {
+            isEmty.set(false)
         } else {
-            context?.let { Utils.tempNext(it, LoginActivity::class.java) }
-        }
-        //Get data
-        viewModelScope.launch {
-            try {
-                Utils.log(TAG, "Call data list")
-                val response = BaseNetwork.getInstance().getAllItemByIdUser(idUser)
-                withContext(Dispatchers.Main) {
-                    if (response.isSuccessful) {
-                        val item = response.body()?.getAllList
-                        if (item != null) {
-                            list.clear()
-                            list.addAll(item)
-                            Utils.log(TAG, "size: ${list.size}")
-                        }
-                    } else {
-                        Utils.log(TAG, "failed: ${response.errorBody()}\n")
-                    }
-                }
-            } catch (e: Exception) {
-                Utils.log(TAG, "erro: ${e.message}")
-            }
+            isEmty.set(true)
         }
 
     }

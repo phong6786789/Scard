@@ -3,6 +3,8 @@ package com.subi.scard.view.fragment.bank
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import androidx.databinding.ObservableList
 import androidx.lifecycle.viewModelScope
 import com.subi.pokemonproject.data.network.BaseNetwork
@@ -14,6 +16,7 @@ import com.subi.scard.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.ObjectStreamField
 
 @SuppressLint("CheckResult")
 class BankViewmodel : BaseViewModel() {
@@ -21,6 +24,8 @@ class BankViewmodel : BaseViewModel() {
     val list: ObservableList<Item> = ObservableArrayList()
     var context: Context? = null
     var idUser = "111"
+    var isEmty = ObservableBoolean(true)
+    var emty = ObservableField("Bạn chưa có thẻ ngân hàng nào")
 
     val listBank = arrayOf(
         Constants.BANK_TYPE.SACOMBANK,
@@ -131,6 +136,12 @@ class BankViewmodel : BaseViewModel() {
                         response.body()?.getAllList?.let {
                             list.addAll(it)
                             Utils.log(TAG, "size: ${list.size}")
+                        }
+                        if (!list.isEmpty()){
+                                isEmty.set(false)
+                        }
+                        else{
+                            isEmty.set(true)
                         }
                     } else {
                         Utils.log(TAG, "failed: ${response.errorBody()}")

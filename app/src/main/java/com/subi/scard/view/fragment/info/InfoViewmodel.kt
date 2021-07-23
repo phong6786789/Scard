@@ -3,6 +3,8 @@ package com.subi.scard.view.fragment.info
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import androidx.databinding.ObservableList
 import androidx.lifecycle.viewModelScope
 import com.subi.pokemonproject.data.network.BaseNetwork
@@ -20,8 +22,8 @@ class InfoViewmodel : BaseViewModel() {
     val TAG = "HomeViewModel"
     val list: ObservableList<Item> = ObservableArrayList()
     var context: Context? = null
-    var idUser = "111"
-
+    var isEmty = ObservableBoolean(true)
+    var emty = ObservableField("Bạn chưa có thẻ cá nhân nào")
     val listInfo = arrayOf(
         Constants.INFO_TYPE.CCCD,
         Constants.INFO_TYPE.PASSPORT,
@@ -128,6 +130,12 @@ class InfoViewmodel : BaseViewModel() {
                         response.body()?.getAllList?.let {
                             list.addAll(it)
                             Utils.log(TAG, "size: ${list.size}")
+                        }
+                        if (!list.isEmpty()){
+                            isEmty.set(false)
+                        }
+                        else{
+                            isEmty.set(true)
                         }
                     } else {
                         Utils.log(TAG, "failed: ${response.errorBody()}")
