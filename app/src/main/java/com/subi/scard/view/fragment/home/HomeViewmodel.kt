@@ -45,6 +45,9 @@ class HomeViewmodel : BaseViewModel() {
         val idx = FirebaseAuth.getInstance().currentUser?.uid.toString()
         var namex = FirebaseAuth.getInstance().currentUser?.displayName.toString()
         val imagex = FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
+        Log.d("testX",
+            context?.let { SharedPrefs.getInstance().getStringValue(it, "mail", "")}.toString()
+        )
         if (namex.isEmpty()){
             namex = context?.let { SharedPrefs.getInstance().getStringValue(it, "mail", "") }.toString()
         }

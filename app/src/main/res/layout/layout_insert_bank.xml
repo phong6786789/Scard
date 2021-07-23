@@ -8,6 +8,7 @@
         android:id="@+id/toolbar"
         layout="@layout/tool_bar"/>
     <TextView
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Chọn loại thẻ"
@@ -18,6 +19,7 @@
         android:paddingLeft="10dp"/>
 
     <RelativeLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

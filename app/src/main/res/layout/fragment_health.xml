@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -34,6 +35,15 @@
                     android:layout_height="match_parent" />
 
             </androidx.core.widget.NestedScrollView>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:src="@drawable/ic_add"
+                android:onClick="@{()->viewmodel.insertItem()}"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/blue_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/insertItem" />
         </FrameLayout>
     </LinearLayout>
 </layout>

@@ -60,10 +60,11 @@ class LoginTabFragment : Fragment() {
                 if (e?.isNotEmpty1() == true && r?.isNotEmpty1() == true) {
                     email.setText(e)
                     pass.setText(r)
+                    SharedPrefs.getInstance().setStringValue(requireContext(), "mail", e)
 
                     Utils.showMess(
                         requireContext(),
-                        "Đăng ký tài khoản thành công!"
+                        "Đăng nhập thành công!"
                     )
                 }
 
