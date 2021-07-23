@@ -74,10 +74,5 @@ class InfoFragment : BaseBindingFragment<FragmentInfoBinding, InfoViewmodel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         toolbarTitleAndBack(Constants.TITLE.INFO)
-        right?.visibility = View.VISIBLE
-        //Button add
-        right?.setOnClickListener {
-            viewModel.insertItem()
-        }
     }
 }

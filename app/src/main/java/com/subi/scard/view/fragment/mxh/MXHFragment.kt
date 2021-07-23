@@ -73,10 +73,5 @@ class MXHFragment : BaseBindingFragment<FragmentMXHBinding, MXHViewmodel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         toolbarTitleAndBack(Constants.TITLE.MXH)
-        right?.visibility = View.VISIBLE
-        //Button add
-        right?.setOnClickListener {
-            viewModel.insertItem()
-        }
     }
 }

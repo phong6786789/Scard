@@ -75,6 +75,5 @@ class BankFragment : BaseBindingFragment<FragmentBankBinding, BankViewmodel>(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         toolbarTitleAndBack(Constants.TITLE.BANK)
-        right?.visibility = View.VISIBLE
     }
 }

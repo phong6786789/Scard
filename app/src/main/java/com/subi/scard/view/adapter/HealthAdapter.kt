@@ -9,6 +9,7 @@ import android.view.animation.AlphaAnimation
 import androidx.annotation.UiThread
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.BR
+import com.subi.scard.databinding.ItemHealthBinding
 import com.subi.scard.databinding.ItemMxhBinding
 import com.subi.scard.model.Item
 import com.subi.scard.view.fragment.show_card.ShowCardFragment
@@ -19,7 +20,7 @@ class HealthAdapter(
 ) : RecyclerView.Adapter<HealthAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-        ItemMxhBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemHealthBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                                                                                               )
 
     override fun getItemCount(): Int {
@@ -32,21 +33,17 @@ class HealthAdapter(
         setFadeAnimation(holder.itemView)
     }
 
-    inner class ViewHolder(var binding: ItemMxhBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding: ItemHealthBinding) : RecyclerView.ViewHolder(binding.root) {
         @UiThread
         fun binData(item: Item) {
             binding.apply {
                 setVariable(BR.viewmodel, item)
                 executePendingBindings()
-                cardView.setOnLongClickListener {
-                    action(item)
-                    true
-                }
-                if (ShowCardFragment.isShowCard){
-                    cardView.setCardBackgroundColor(Color.TRANSPARENT);
-                    cardView.cardElevation = 0F;
-                    tvTitle.setTextColor(Color.WHITE)
-                }
+                val des = item.description?.split("@")
+                val edt1x = des?.get(0) ?: ""
+                val edt2x = des?.get(1) ?: ""
+                binding.txtMaSoBH.text = edt1x
+                binding.txtNoiKham.text = edt2x
             }
         }
     }
