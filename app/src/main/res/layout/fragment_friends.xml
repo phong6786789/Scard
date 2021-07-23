@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
 
         <variable
             name="viewmodel"
@@ -20,6 +21,28 @@
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <LinearLayout
+                android:visibility="@{viewmodel.isEmty?View.VISIBLE:View.GONE}"
+                android:id="@+id/lnEmty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:src="@drawable/emty"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"/>
+
+                <TextView
+                    android:text="@{viewmodel.emty}"
+                    android:id="@+id/tvEmty"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"

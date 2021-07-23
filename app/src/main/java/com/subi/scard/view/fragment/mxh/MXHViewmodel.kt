@@ -3,6 +3,8 @@ package com.subi.scard.view.fragment.mxh
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import androidx.databinding.ObservableList
 import androidx.lifecycle.viewModelScope
 import com.subi.pokemonproject.data.network.BaseNetwork
@@ -20,6 +22,9 @@ class MXHViewmodel : BaseViewModel() {
     val TAG = "MXHViewmodel"
     val list: ObservableList<Item> = ObservableArrayList()
     var context: Context? = null
+
+    var isEmty = ObservableBoolean(true)
+    var emty = ObservableField("Chưa có mạng xã hội nào")
     val listSocail = arrayOf(
         Constants.SOCIAL_TYPE.EMAIL,
         Constants.SOCIAL_TYPE.FACEBOOK,
@@ -131,6 +136,12 @@ class MXHViewmodel : BaseViewModel() {
                         response.body()?.getAllList?.let {
                             list.addAll(it)
                             Utils.log(TAG, "size: ${list.size}")
+                        }
+                        if (!list.isEmpty()){
+                            isEmty.set(false)
+                        }
+                        else{
+                            isEmty.set(true)
                         }
                     } else {
                         Utils.log(TAG, "failed: ${response.errorBody()}")
