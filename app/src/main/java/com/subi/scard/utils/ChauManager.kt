@@ -6,10 +6,8 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.ColorDrawable
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.CursorTreeAdapter
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.R

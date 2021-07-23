@@ -12,6 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import androidx.databinding.ObservableList
 import androidx.lifecycle.viewModelScope
 import com.subi.pokemonproject.data.network.BaseNetwork
@@ -34,7 +36,8 @@ class HealthViewmodel : BaseViewModel() {
     val TAG = "HomeViewModel"
     val list: ObservableList<Item> = ObservableArrayList()
     var context: Context? = null
-
+    var isEmty = ObservableBoolean(true)
+    var emty = ObservableField("Bạn chưa thông tin y tế nào")
     val listHealth = arrayOf(
         Constants.HEALTH_TYPE.BHYT,
         Constants.HEALTH_TYPE.CSSK,
@@ -183,6 +186,7 @@ class HealthViewmodel : BaseViewModel() {
                             load()
                         }
                     }
+
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
                 }
@@ -319,6 +323,12 @@ class HealthViewmodel : BaseViewModel() {
                         response.body()?.getAllList?.let {
                             list.addAll(it)
                             Utils.log(TAG, "size: ${list.size}")
+                        }
+                        if (!list.isEmpty()){
+                            isEmty.set(false)
+                        }
+                        else{
+                            isEmty.set(true)
                         }
                     } else {
                         Utils.log(TAG, "failed: ${response.errorBody()}")
