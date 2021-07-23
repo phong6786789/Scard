@@ -1,18 +1,14 @@
 package com.subi.scard.view.fragment.mxh
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.Context
-import android.view.LayoutInflater
-import android.widget.ArrayAdapter
-import androidx.core.view.isVisible
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.viewModelScope
 import com.subi.pokemonproject.data.network.BaseNetwork
 import com.subi.scard.base.viewmodel.BaseViewModel
-import com.subi.scard.databinding.LayoutInsertItemBinding
 import com.subi.scard.model.Item
+import com.subi.scard.utils.ChauManager
 import com.subi.scard.utils.Constants
 import com.subi.scard.utils.Utils
 import kotlinx.coroutines.Dispatchers
@@ -35,43 +31,52 @@ class MXHViewmodel : BaseViewModel() {
         Constants.SOCIAL_TYPE.ZALO
     )
 
-    fun insert() {
-        context?.let {
-            val builder = AlertDialog.Builder(it)
-            val binding = LayoutInsertItemBinding.inflate(LayoutInflater.from(it))
-            binding.tvTitle.text = "THÊM MXH"
+    fun insertItem() {
+        ChauManager.setupViewInsert(context!!, listSocail, Constants.ITEM_TYPE.SOCIAL) {
+            insert(it)
+        }
+    }
 
-            val spinnerAdapter =
-                ArrayAdapter(it, android.R.layout.simple_expandable_list_item_1, listSocail)
-            binding.spinnerItem.adapter = spinnerAdapter
-            builder.setView(binding.root)
-            val dialog = builder.create()
+    fun editItem(item: Item) {
 
-            binding.btnInsert.setOnClickListener { v ->
+        val listSpinner = mutableListOf<String>()
 
-                val link = binding.edtLink.text.toString()
-                if (link.isNotEmpty()) {
-                    val title = binding.spinnerItem.selectedItem.toString()
-                    insertItem(
-                        Item(
-                            title + Utils.getIdUser(it),
-                            title,
-                            link,
-                            Constants.ITEM_TYPE.SOCIAL,
-                            Utils.getIdUser(it),
-                            "0"
-                        )
-                    )
-                    dialog.dismiss()
-                } else {
-                    Utils.showMess(it, "Không được để trống!")
+        listSocail.forEach { mList ->
+            var check = true
+            for (i in 0 until list.size) {
+                if (mList == list[i].title) {
+                    check = false
+                    break
                 }
+            }
+            if(check) listSpinner.add(mList)
+        }
 
+        listSpinner.add(0, item.title!!)
+
+        ChauManager.setupViewEdit(context!!, listSpinner, Constants.ITEM_TYPE.SOCIAL, item) {
+            edit(it)
+        }
+    }
+
+    private fun edit(item: Item) {
+        viewModelScope.launch {
+            try {
+                val res = BaseNetwork.getInstance().editItemById(
+                    item.id, item.title, item.description, item.type, item.idUser, item.status
+                )
+                if (res.isSuccessful) {
+                    res.body()?.status?.let {
+                        if (it.equals("success")) {
+                            load()
+                        }
+                    }
+                } else {
+                    Utils.log(TAG, "failed: ${res.errorBody()}")
+                }
+            } catch (e: Exception) {
+                Utils.log(TAG, "erro: ${e.message}")
             }
-            binding.btnCancel.setOnClickListener {
-                dialog.dismiss()
-            }
-            dialog.show()
         }
     }
 
@@ -94,7 +99,7 @@ class MXHViewmodel : BaseViewModel() {
         }
     }
 
-    fun insertItem(item: Item) {
+    private fun insert(item: Item) {
         viewModelScope.launch {
             try {
                 val res = BaseNetwork.getInstance().insertItem(
@@ -118,7 +123,7 @@ class MXHViewmodel : BaseViewModel() {
         viewModelScope.launch {
             try {
                 val response = BaseNetwork.getInstance()
-                    .getAllItemByIdUserAndType(idUser ?: "", Constants.ITEM_TYPE.SOCIAL)
+                    .getAllItemByIdUserAndType(idUser ?: "111", Constants.ITEM_TYPE.SOCIAL)
                 withContext(Dispatchers.Main) {
                     Utils.log(TAG, "response: ${response.body()}")
                     if (response.isSuccessful) {

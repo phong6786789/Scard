@@ -36,139 +36,48 @@ class FriendsFragment : BaseBindingFragment<FragmentFriendsBinding, FriendsViewm
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
         ShowCardFragment.isShowCard = true
         //Load list
-        viewModel.load(context?.let { Utils.getIdUser(it) } ?:"")
         viewDataBinding?.rcvHome?.apply {
             adapterX = FriendsAdapter(viewModel.list){clickItem(it)}
             adapter = adapterX
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             hasFixedSize()
-            val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
+            val itemTouchHelper = ItemTouchHelper(
+                ChauManager.setupItemTouchHelper(
+                    viewModel.list,
+                    requireContext(),
+                    { clickDelete(it) },
+                    { clickEdit(it) },
+                    { clickLoadRecycView(it) })
+            )
             itemTouchHelper.attachToRecyclerView(this)
         }
     }
 
-    fun clickItem(item: Item){
+    fun clickItem(item: Item) {
         val bundle = bundleOf("id" to item.id?.replace(Constants.FRIEND_TYPE.FRIEND,""))
         findNavController().navigate(R.id.action_friendsFragment_to_showCardFragment, bundle)
     }
 
+    fun clickDelete(id: String) {
+        viewModel.deleteItem(id)
+    }
+
+    //Không cho sửa
+    fun clickEdit(item: Item) {
+//        viewModel.editItem(item)
+    }
+
+    fun clickLoadRecycView(position: Int) {
+        adapterX?.notifyItemChanged(position)
+    }
+
     override fun initData(savedInstanceState: Bundle?, rootView: View) {
         viewModel.context = context
+        viewModel.load()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         toolbarTitleAndBack(Constants.TITLE.FRIENDS)
     }
-
-    val simpleItemTouchCallback =
-        object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
-            val p = Paint()
-
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val item = viewModel.list[position]
-                //Xoá item_mxh
-                if (direction == ItemTouchHelper.LEFT) {
-                    adapterX?.notifyItemChanged(position)
-                    var dialogx: Dialog? = null
-                    dialogx = requireContext().let {
-                        ShowDialog.Builder(it).title("XOÁ DỮ LIỆU")
-                            .message("Bạn có chắc chắn muốn xoá ${item.title}?")
-                            .setLeftButton("XOÁ", object : LeftInterface {
-                                override fun onClick() {
-                                    context?.let { it1 -> viewModel.deleteItem(it1, item) }
-                                    dialogx?.dismiss()
-                                }
-                            })
-                            .setRightButton("KHÔNG", object : RightInterface {
-                                override fun onClick() {
-                                    dialogx?.dismiss()
-                                }
-                            })
-                            .miniDialog()
-                    }
-                    dialogx?.show()
-                    //Sửa item_mxh
-                } else if (direction == ItemTouchHelper.RIGHT) {
-                    adapterX?.notifyItemChanged(position)
-
-                }
-            }
-
-            override fun onChildDraw(
-                c: Canvas,
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                dX: Float,
-                dY: Float,
-                actionState: Int,
-                isCurrentlyActive: Boolean
-            ) {
-                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
-                    val itemView = viewHolder.itemView
-                    val height = itemView.bottom.toFloat() - itemView.top.toFloat()
-                    val width = height / 3
-
-                    if (dX < 0) {
-                        p.color = Color.WHITE
-                        val background = RectF(
-                            itemView.right.toFloat() + dX,
-                            itemView.top.toFloat(),
-                            itemView.right.toFloat(),
-                            itemView.bottom.toFloat()
-                        )
-                        c.drawRect(background, p)
-                        val icon =
-                            BitmapFactory.decodeResource(context?.resources, R.drawable.trash)
-                        val margin = (dX / 5 - width) / 2
-                        val iconDest = RectF(
-                            itemView.right.toFloat() + margin,
-                            itemView.top.toFloat() + width,
-                            itemView.right.toFloat() + (margin + width),
-                            itemView.bottom.toFloat() - width
-                        )
-                        c.drawBitmap(icon, null, iconDest, p)
-                    }
-                    if (dX > 0) {
-                        p.color = Color.WHITE
-                        val background = RectF(
-                            itemView.left.toFloat(),
-                            itemView.top.toFloat(),
-                            itemView.left.toFloat() + dX,
-                            itemView.bottom.toFloat()
-                        )
-                        c.drawRect(background, p)
-                        val icon = BitmapFactory.decodeResource(context?.resources, R.drawable.edit)
-                        val margin = (dX / 5 - width) / 2
-                        val iconDest = RectF(
-                            margin,
-                            itemView.top.toFloat() + width,
-                            margin + width,
-                            itemView.bottom.toFloat() - width
-                        )
-                        c.drawBitmap(icon, null, iconDest, p)
-                    }
-                } else {
-                    c.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
-                }
-                super.onChildDraw(
-                    c,
-                    recyclerView,
-                    viewHolder,
-                    dX / 5,
-                    dY,
-                    actionState,
-                    isCurrentlyActive
-                )
-            }
-        }
 }

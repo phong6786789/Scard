@@ -52,7 +52,8 @@ class HomeViewmodel : BaseViewModel() {
         name.set(namex)
         image.set(imagex)
         //Auto add info of User
-        viewModelScope.launch {
+        if(!idx.equals("null")){
+            viewModelScope.launch {
                 Log.d("TAG", "test: ${FirebaseAuth.getInstance().currentUser?.email.toString()}")
                 val res = BaseNetwork.getInstance().insertItem(
                     (Constants.INFO_TYPE.INFO+idx), namex, imagex, Constants.INFO_TYPE.INFO, idx, "0"
@@ -63,8 +64,8 @@ class HomeViewmodel : BaseViewModel() {
                     Utils.log("TAG", "failed: ${res.body()}")
                 }
 
+            }
         }
-
     }
 
 }
