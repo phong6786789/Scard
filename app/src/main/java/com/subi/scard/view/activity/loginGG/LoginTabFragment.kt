@@ -4,22 +4,21 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
+import com.subi.pokemonproject.data.network.BaseNetwork
 import com.subi.scard.R
-import com.subi.scard.databinding.DialogConfirmBinding
 import com.subi.scard.databinding.LayoutResetPassBinding
 import com.subi.scard.databinding.LoginTabFragmentBinding
-import com.subi.scard.utils.RightInterface
+import com.subi.scard.utils.Constants
 import com.subi.scard.utils.SharedPrefs
-import com.subi.scard.utils.ShowDialog
 import com.subi.scard.utils.Utils
 import com.subi.scard.view.MainActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlin.text.isNotEmpty as isNotEmpty1
 
 class LoginTabFragment : Fragment() {
@@ -61,7 +60,6 @@ class LoginTabFragment : Fragment() {
                     email.setText(e)
                     pass.setText(r)
                     SharedPrefs.getInstance().setStringValue(requireContext(), "mail", e)
-
                     Utils.showMess(
                         requireContext(),
                         "Đăng nhập thành công!"
@@ -92,8 +90,33 @@ class LoginTabFragment : Fragment() {
                                                 requireContext(),
                                                 it1
                                             )
+                                            GlobalScope.launch {
+                                                var namex = emailx
+                                                val imagex =
+                                                    FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
+                                                val res = BaseNetwork.getInstance().insertItem(
+                                                    (Constants.INFO_TYPE.INFO + it1),
+                                                    namex,
+                                                    imagex,
+                                                    Constants.ITEM_TYPE.AVATAR,
+                                                    it1,
+                                                    "0"
+                                                )
+                                                if (res.isSuccessful) {
+                                                    Utils.log(
+                                                        "TAG",
+                                                        "success: ${res.body()?.status}"
+                                                    )
+                                                    Utils.tempNext(
+                                                        requireContext(),
+                                                        MainActivity::class.java
+                                                    )
+                                                } else {
+                                                    Utils.log("TAG", "failed: ${res.body()}")
+                                                }
+                                            }
                                         }
-                                        Utils.tempNext(requireContext(), MainActivity::class.java)
+
                                     }
                                 }.addOnFailureListener {
                                     loading?.dismiss()

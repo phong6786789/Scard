@@ -13,6 +13,7 @@ import com.subi.scard.databinding.ItemHealthBinding
 import com.subi.scard.databinding.ItemMxhBinding
 import com.subi.scard.model.Item
 import com.subi.scard.view.fragment.show_card.ShowCardFragment
+import java.lang.Exception
 
 class HealthAdapter(
     var items: List<Item>,
@@ -39,11 +40,16 @@ class HealthAdapter(
             binding.apply {
                 setVariable(BR.viewmodel, item)
                 executePendingBindings()
-                val des = item.description?.split("@")
-                val edt1x = des?.get(0) ?: ""
-                val edt2x = des?.get(1) ?: ""
-                binding.txtMaSoBH.text = edt1x
-                binding.txtNoiKham.text = edt2x
+               try {
+                   val des = item.description?.split("@")
+                   val edt1x = des?.get(0) ?: ""
+                   val edt2x = des?.get(1) ?: ""
+                   binding.txtMaSoBH.text = edt1x
+                   binding.txtNoiKham.text = edt2x
+               }
+               catch (e:Exception){
+
+               }
             }
         }
     }

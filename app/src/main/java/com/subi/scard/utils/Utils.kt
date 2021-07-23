@@ -68,6 +68,16 @@ object Utils {
         return sharedPrefs.getStringValue(context, Constants.USER.ID_USER, "111")
     }
 
+    fun saveFullName(context: Context, key: String) {
+        val sharedPrefs = SharedPrefs.getInstance()
+        sharedPrefs.setStringValue(context, Constants.USER.FULLNAME, key)
+    }
+
+    fun getFullName(context: Context): String? {
+        val sharedPrefs = SharedPrefs.getInstance()
+        return sharedPrefs.getStringValue(context, Constants.USER.FULLNAME, "")
+    }
+
     //Clear all data
     fun clearAllSharePrefs(context: Context) {
         val sharedPrefs = SharedPrefs.getInstance()

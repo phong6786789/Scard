@@ -5,8 +5,10 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.graphics.*
+import android.graphics.drawable.ColorDrawable
 import android.text.Editable
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.CursorTreeAdapter
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -26,13 +28,23 @@ class ChauManager {
             type: String,
             insert: (Item) -> Unit
         ) {
-            val builder = AlertDialog.Builder(context)
+            val dialog = Dialog(context)
             val binding = LayoutInsertItemBinding.inflate(LayoutInflater.from(context))
+            dialog?.setContentView(binding.root)
+            val window = dialog?.window
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            if (dialog?.window != null) {
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            }
 
+            dialog?.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
             when (type) {
                 Constants.ITEM_TYPE.SOCIAL -> {
                     binding.apply {
-                        tvTitle.text = "THÊM MXH"
+                        tvTitle.text = "Thêm MXH"
                         tvLayoutInsertItemDes.text = "Link URL"
                         tvLayoutInsertItemTitle.text = "Tên mạng xã hội"
                         edtLink.hint = "Vui lòng nhập link URL"
@@ -75,8 +87,7 @@ class ChauManager {
             val customDropDownAdapter = CustomDropDownAdapter(context, list)
 
             binding.spinnerItem.adapter = customDropDownAdapter
-            builder.setView(binding.root)
-            val dialog = builder.create()
+
 
             binding.btnInsert.setOnClickListener {
                 val link = binding.edtLink.text.toString()
@@ -115,23 +126,33 @@ class ChauManager {
             item: Item,
             edit: (Item) -> Unit
         ) {
-            val builder = AlertDialog.Builder(context)
+            val dialog = Dialog(context)
             val binding = LayoutInsertItemBinding.inflate(LayoutInflater.from(context))
+            dialog?.setContentView(binding.root)
+            val window = dialog?.window
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            if (dialog?.window != null) {
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            }
 
+            dialog?.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
             binding.btnInsert.text = "SỬA"
             binding.edtLink.setText(item.description)
 
             when (type) {
                 Constants.ITEM_TYPE.SOCIAL -> {
                     binding.apply {
-                        tvTitle.text = "SỬA MXH"
+                        tvTitle.text = "Sửa MXH"
                         tvLayoutInsertItemDes.text = "Link URL"
                         tvLayoutInsertItemTitle.text = "Tên mạng xã hội"
                     }
                 }
                 Constants.ITEM_TYPE.INFO -> {
                     binding.apply {
-                        tvTitle.text = "SỬA THÔNG TIN INFO"
+                        tvTitle.text = "Sửa thông tin cá nhân"
                         tvLayoutInsertItemTitle.text = "Loại INFO"
                         tvLayoutInsertItemDes.text = "Thông tin cá nhân"
                     }
@@ -175,10 +196,6 @@ class ChauManager {
 
             //set public private cho status
             binding.stickySwitch.setDirection(if (item.status.equals("0")) StickySwitch.Direction.LEFT else StickySwitch.Direction.RIGHT, false)
-
-            builder.setView(binding.root)
-            val dialog = builder.create()
-
             binding.btnInsert.setOnClickListener {
                 val link = binding.edtLink.text.toString()
 
