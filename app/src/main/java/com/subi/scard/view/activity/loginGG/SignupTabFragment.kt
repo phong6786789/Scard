@@ -1,5 +1,6 @@
 package com.subi.scard.view.activity.loginGG
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -44,16 +45,16 @@ class SignupTabFragment : Fragment() {
                             )
                         }
                     } else if (pass == pass2) {
-                        loading?.dismiss()
                         val auth = FirebaseAuth.getInstance()
                         auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-                           if (it.isSuccessful){
-                               context?.let { it1 ->
-                                   SharedPrefs.getInstance().setStringValue(it1, "mail", email)
-                                   SharedPrefs.getInstance().setStringValue(it1, "pass", pass)
-                               }
-                               startActivity(Intent(context, LoginActivity::class.java))
-                           }
+                            if (it.isSuccessful) {
+                                context?.let { it1 ->
+                                    loading?.dismiss()
+                                    SharedPrefs.getInstance().setStringValue(it1, "mail", email)
+                                    SharedPrefs.getInstance().setStringValue(it1, "pass", pass)
+                                }
+                                startActivity(Intent(context, LoginActivity::class.java))
+                            }
                         }.addOnFailureListener {
                             loading?.dismiss()
                             context?.let { it1 ->

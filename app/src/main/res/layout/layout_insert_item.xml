@@ -8,107 +8,125 @@
             type="String" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:paddingVertical="16dp"
+        <RelativeLayout
+            android:id="@+id/lntop"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
             android:background="@drawable/linear_bg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/tvLayoutInsertItemTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:textColor="#000"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/btnCancel"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="6dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/effect_click"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                app:tint="@color/white" />
 
-        <Spinner
-            android:id="@+id/spinnerItem"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/spinner_bg"
-            android:elevation="10dp"
-            android:spinnerMode="dropdown" />
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/effect_click"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/tvTitle"
+                android:textColor="@color/white"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tvLayoutInsertItemDes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:textColor="#000"
-            android:textSize="20dp"
-            android:textStyle="bold" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edt_link"
+        <LinearLayout
+            android:layout_above="@id/btnInsert"
+            android:layout_below="@id/lntop"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/edt_bg"
-            android:elevation="10dp"
-            android:paddingLeft="20dp"
-            android:paddingEnd="5dp"
-            android:paddingRight="20dp"
-            android:textColor="#000"
-            android:textSize="18dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <io.ghyeok.stickyswitch.widget.StickySwitch
-            android:id="@+id/sticky_switch"
-            android:layout_marginTop="10dp"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:ss_animationDuration="500"
-            app:ss_iconPadding="20dp"
-            app:ss_leftIcon="@drawable/ic_open_lock"
-            app:ss_leftText="Công khai"
-            app:ss_rightIcon="@drawable/ic_lock"
-            app:ss_rightText="Mình tôi"
-            app:ss_sliderBackgroundColor="@color/blue_main"
-            app:ss_switchColor="@color/blue4_main"
-            app:ss_textColor="@color/black"
-            app:ss_textSize="15sp"
-            app:ss_animationType="curved"/>
+            <TextView
+                android:id="@+id/tvLayoutInsertItemTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerItem"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/spinner_bg"
+                android:elevation="10dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:id="@+id/tvLayoutInsertItemDes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_link"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edt_bg"
+                android:elevation="10dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="20dp"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <io.ghyeok.stickyswitch.widget.StickySwitch
+                android:id="@+id/sticky_switch"
+                android:layout_marginTop="10dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:ss_animationDuration="500"
+                app:ss_iconPadding="20dp"
+                app:ss_leftIcon="@drawable/ic_open_lock"
+                app:ss_leftText="Công khai"
+                app:ss_rightIcon="@drawable/ic_lock"
+                app:ss_rightText="Mình tôi"
+                app:ss_sliderBackgroundColor="@color/blue_main"
+                app:ss_switchColor="@color/blue4_main"
+                app:ss_textColor="@color/black"
+                app:ss_textSize="15sp"
+                app:ss_animationType="curved"/>
+        </LinearLayout>
 
         <Button
+            android:layout_alignParentBottom="true"
+            android:background="@color/blue_main"
             android:id="@+id/btnInsert"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/button_save"
-            android:elevation="10dp"
             android:text="THÊM"
             android:textColor="@color/white"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnCancel"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_save"
-            android:text="CANCEL"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:elevation="10dp" />
 
-    </LinearLayout>
+
+    </RelativeLayout>
 </layout>

@@ -43,33 +43,30 @@ class HomeViewmodel : BaseViewModel() {
     }
 
     fun load() {
-        val idx = FirebaseAuth.getInstance().currentUser?.uid.toString()
-        var namex = FirebaseAuth.getInstance().currentUser?.displayName.toString()
-        val imagex = FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
-        Log.d(
-            "testX",
-            context?.let { SharedPrefs.getInstance().getStringValue(it, "mail", "") }.toString()
-        )
-        if (namex.isEmpty()) {
-            namex =
-                context?.let { SharedPrefs.getInstance().getStringValue(it, "mail", "") }.toString()
-        }
-        uid.set(idx)
-        name.set(namex)
-        image.set(imagex)
-        //Auto add info of User
-        viewModelScope.launch {
-            Log.d("TAG", "test: ${FirebaseAuth.getInstance().currentUser?.email.toString()}")
-            val res = BaseNetwork.getInstance().insertItem(
-                (Constants.INFO_TYPE.INFO + idx), namex, imagex, Constants.ITEM_TYPE.AVATAR, idx, "0"
-            )
-            if (res.isSuccessful) {
-                Utils.log("TAG", "success: ${res.body()?.status}")
-            } else {
-                Utils.log("TAG", "failed: ${res.body()}")
-            }
-
-        }
+        //Load thông tin user
+      viewModelScope.launch {
+          val idUser = context?.let { Utils.getIdUser(it) }?:""
+          val responseUser = BaseNetwork.getInstance()
+              .getAllItemByIdUserAndType(idUser, Constants.ITEM_TYPE.AVATAR)
+          withContext(Dispatchers.Main) {
+              Utils.log("TAG", "response: ${responseUser.body()}")
+              if (responseUser.isSuccessful) {
+                  var user : Item? =null
+                  responseUser.body()?.getAllList?.let {
+                      for (xz in it){
+                          user = xz
+                      }
+                      name.set(user?.title)
+                      image.set(user?.description)
+                      uid.set(idUser)
+                      context?.let { it1 -> Utils.saveFullName(it1, user?.title?:"") }
+                      Utils.log("TAG", "user: $user")
+                  }
+              } else {
+                  Utils.log("TAG", "failed: ${responseUser.errorBody()}")
+              }
+          }
+      }
     }
 
 }

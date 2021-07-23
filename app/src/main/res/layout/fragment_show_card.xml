@@ -86,7 +86,6 @@
               <androidx.recyclerview.widget.RecyclerView
                   setItemAdapter="@{viewmodel.listInfo}"
                   android:id="@+id/rcv_info"
-                  android:layout_below="@id/contrains_top"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"/>
 
@@ -99,14 +98,12 @@
               <androidx.recyclerview.widget.RecyclerView
                   setItemAdapter="@{viewmodel.listHealth}"
                   android:id="@+id/rcv_health"
-                  android:layout_below="@id/contrains_top"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"/>
 
               <androidx.recyclerview.widget.RecyclerView
                   setItemAdapter="@{viewmodel.listBank}"
                   android:id="@+id/rcv_bank"
-                  android:layout_below="@id/contrains_top"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"/>
 
