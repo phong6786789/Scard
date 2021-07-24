@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/bg_main">
 
         <include layout="@layout/tool_bar" />
 
@@ -62,7 +63,9 @@
                 android:layout_gravity="end|bottom"
                 android:layout_margin="20dp"
                 android:onClick="@{()->viewmodel.insertItem()}"
-                android:backgroundTint="@color/blue_main"
+                android:backgroundTint="@color/white"
+                android:elevation="35dp"
+                app:borderWidth="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/insertItem" />

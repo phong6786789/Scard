@@ -127,6 +127,7 @@
             app:layout_constraintHeight_percent=".78"
             app:layout_constraintVertical_bias="1"
             android:background="@drawable/view_bg"
+
             >
 
             <androidx.viewpager.widget.ViewPager

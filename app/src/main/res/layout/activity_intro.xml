@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
+        android:background="@color/bg_main"
         android:orientation="vertical">
 
         <androidx.viewpager.widget.ViewPager
@@ -20,12 +20,13 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabDots"
-            app:tabBackground="@drawable/tab_seclecter"
             app:tabGravity="center"
             app:tabIndicatorHeight="0dp"
+            app:tabBackground="@drawable/tab_seclecter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true"
+            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_next"
