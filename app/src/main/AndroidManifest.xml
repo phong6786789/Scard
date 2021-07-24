@@ -24,18 +24,18 @@
         <activity
             android:name=".view.PlashScreen"
             android:theme="@style/Theme.Scard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation"
             android:name=".view.MainActivity"
             android:theme="@style/Theme.Scard" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data

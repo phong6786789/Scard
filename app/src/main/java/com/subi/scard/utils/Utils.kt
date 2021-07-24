@@ -65,7 +65,7 @@ object Utils {
 
     fun getIdUser(context: Context): String? {
         val sharedPrefs = SharedPrefs.getInstance()
-        return sharedPrefs.getStringValue(context, Constants.USER.ID_USER, "111")
+        return sharedPrefs.getStringValue(context, Constants.USER.ID_USER, "")
     }
 
     fun saveFullName(context: Context, key: String) {
