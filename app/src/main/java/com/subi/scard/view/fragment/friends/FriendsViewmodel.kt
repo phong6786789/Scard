@@ -119,7 +119,7 @@ class FriendsViewmodel: BaseViewModel() {
         viewModelScope.launch {
             try {
                 val response = BaseNetwork.getInstance()
-                    .getAllItemByIdUserAndType(idUser ?: "111", Constants.ITEM_TYPE.FRIEND)
+                    .getAllItemByIdUserAndType(idUser ?: "", Constants.ITEM_TYPE.FRIEND)
                 withContext(Dispatchers.Main) {
                     Utils.log(TAG, "response: ${response.body()}")
                     if (response.isSuccessful) {

@@ -54,7 +54,7 @@ class MXHViewmodel : BaseViewModel() {
                     break
                 }
             }
-            if(check) listSpinner.add(mList)
+            if (check) listSpinner.add(mList)
         }
 
         listSpinner.add(0, item.title!!)
@@ -90,11 +90,7 @@ class MXHViewmodel : BaseViewModel() {
             try {
                 val res = BaseNetwork.getInstance().deleteItemById(id)
                 if (res.isSuccessful) {
-                    res.body()?.status?.let {
-                        if (it.equals("success")) {
-                            load()
-                        }
-                    }
+                    load()
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
                 }
@@ -111,7 +107,15 @@ class MXHViewmodel : BaseViewModel() {
                     item.id, item.title, item.description, item.type, item.idUser, item.status
                 )
                 if (res.isSuccessful) {
-                    load()
+                    when (res.body()?.status.toString()) {
+                        Constants.STATUS.SUCCESS -> load()
+                        Constants.STATUS.EXIST ->
+                            context?.let { Utils.showMess(it, "Mạng xã hội đã tồn tại!") }
+                        Constants.STATUS.FAILED ->
+                            context?.let {
+                                Utils.showMess(it, "Có lỗi xảy ra, không thể thêm MXH mới")
+                            }
+                    }
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
                 }
@@ -137,10 +141,9 @@ class MXHViewmodel : BaseViewModel() {
                             list.addAll(it)
                             Utils.log(TAG, "size: ${list.size}")
                         }
-                        if (!list.isEmpty()){
+                        if (!list.isEmpty()) {
                             isEmty.set(false)
-                        }
-                        else{
+                        } else {
                             isEmty.set(true)
                         }
                     } else {

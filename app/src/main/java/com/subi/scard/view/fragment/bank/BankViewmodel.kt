@@ -2,6 +2,7 @@ package com.subi.scard.view.fragment.bank
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
@@ -35,21 +36,20 @@ class BankViewmodel : BaseViewModel() {
         Constants.BANK_TYPE.VIETTINBANK,
     )
 
-    fun deleteItem(id: String){
+    fun deleteItem(id: String) {
         viewModelScope.launch {
             try {
                 val res = BaseNetwork.getInstance().deleteItemById(id)
-                if(res.isSuccessful){
+                if (res.isSuccessful) {
                     res.body()?.status?.let {
-                        if(it.equals("success")){
+                        if (it.equals("success")) {
                             load()
                         }
                     }
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
                 }
-            }
-            catch (e: Exception){
+            } catch (e: Exception) {
                 Utils.log(TAG, "erro: ${e.message}")
             }
         }
@@ -67,7 +67,7 @@ class BankViewmodel : BaseViewModel() {
                     break
                 }
             }
-            if(check) listSpinner.add(mList)
+            if (check) listSpinner.add(mList)
         }
 
         listSpinner.add(0, item.title!!)
@@ -111,7 +111,15 @@ class BankViewmodel : BaseViewModel() {
                     item.id, item.title, item.description, item.type, item.idUser, item.status
                 )
                 if (res.isSuccessful) {
-                    load()
+                    when (res.body()?.status.toString()) {
+                        Constants.STATUS.SUCCESS -> load()
+                        Constants.STATUS.EXIST ->
+                            context?.let { Utils.showMess(it, "Thẻ ngân hàng đã tồn tại!") }
+                        Constants.STATUS.FAILED ->
+                            context?.let {Utils.showMess(it,"Có lỗi xảy ra, không thể thêm thẻ mới" )
+                        }
+
+                    }
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
                 }
@@ -137,10 +145,9 @@ class BankViewmodel : BaseViewModel() {
                             list.addAll(it)
                             Utils.log(TAG, "size: ${list.size}")
                         }
-                        if (!list.isEmpty()){
-                                isEmty.set(false)
-                        }
-                        else{
+                        if (!list.isEmpty()) {
+                            isEmty.set(false)
+                        } else {
                             isEmty.set(true)
                         }
                     } else {

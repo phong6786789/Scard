@@ -2,8 +2,8 @@ package com.subi.scard.utils
 
 object Constants {
 //        const val BASE_URL = "http://192.168.1.29:8083/scard/"
-//    const val BASE_URL = "http://192.168.1.177=/scard/"
-    const val BASE_URL = "http://192.168.1.9=/scard/" //Tài
+//    const val BASE_URL = "http://192.168.1.177/scard/"
+    const val BASE_URL = "http://192.168.1.9/scard/" //Tài
     object USER {
         const val ID_USER = "idUser"
         const val FULLNAME = "FULLNAME"
@@ -70,6 +70,12 @@ object Constants {
         const val EMAIL = "Email"
         const val TWITTER = "Twitter"
         const val TIKTOK = "Tiktok"
+    }
+
+    object STATUS{
+        const val SUCCESS = "success"
+        const val EXIST = "exist"
+        const val FAILED = "failed"
 
     }
 }

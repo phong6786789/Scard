@@ -46,6 +46,7 @@ class HomeViewmodel : BaseViewModel() {
         //Load thông tin user
       viewModelScope.launch {
           val idUser = context?.let { Utils.getIdUser(it) }?:""
+          Log.d("loadUser", "id Hiện tại $idUser")
           val responseUser = BaseNetwork.getInstance()
               .getAllItemByIdUserAndType(idUser, Constants.ITEM_TYPE.AVATAR)
           withContext(Dispatchers.Main) {
@@ -59,6 +60,8 @@ class HomeViewmodel : BaseViewModel() {
                       name.set(user?.title)
                       image.set(user?.description)
                       uid.set(idUser)
+                      Log.d("loadUser", "id Hiện tại $idUser")
+
                       context?.let { it1 -> Utils.saveFullName(it1, user?.title?:"") }
                       Utils.log("TAG", "user: $user")
                   }

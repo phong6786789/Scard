@@ -123,10 +123,10 @@ object Utils {
         dialog?.show()
     }
 
-     fun copyToClipboard(context: Context, text: String) {
+     fun copyToClipboard(context: Context, text: String, message: String) {
          val clipboard =
              context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
-         val clip = ClipData.newPlainText("Đã copy", text)
+         val clip = ClipData.newPlainText(message, text)
          clipboard.setPrimaryClip(clip)
      }
 }

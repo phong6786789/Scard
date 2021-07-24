@@ -106,7 +106,15 @@ class InfoViewmodel : BaseViewModel() {
                     item.id, item.title, item.description, item.type, item.idUser, item.status
                 )
                 if (res.isSuccessful) {
-                    load()
+                    when (res.body()?.status.toString()) {
+                        Constants.STATUS.SUCCESS -> load()
+                        Constants.STATUS.EXIST ->
+                            context?.let { Utils.showMess(it, "Thẻ cá nhân đã tồn tại!") }
+                        Constants.STATUS.FAILED ->
+                            context?.let {Utils.showMess(it,"Có lỗi xảy ra, không thể thêm thẻ mới" )
+                            }
+
+                    }
                 } else {
                     Utils.log(TAG, "failed: ${res.errorBody()}")
                 }

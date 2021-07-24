@@ -52,7 +52,8 @@ class BankFragment : BaseBindingFragment<FragmentBankBinding, BankViewmodel>(){
     }
 
     fun clickItem(item: Item) {
-
+        val des = item.description?.split("@")
+        Utils.copyToClipboard(requireContext(), des?.get(0).toString(), "Đã copy mã số thẻ")
     }
 
     fun clickDelete(id: String) {

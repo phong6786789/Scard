@@ -2,6 +2,7 @@ package com.subi.scard.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager.LayoutParams.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -35,6 +36,7 @@ class PlashScreen : AppCompatActivity() {
         io.reactivex.Observable.timer(1000, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
             .subscribe {
                 val uid = Utils.getIdUser(this)
+                Log.d("testz", uid.toString())
                 if (!uid.isNullOrEmpty()) {
                     Utils.tempNext(this, MainActivity::class.java)
                 } else {

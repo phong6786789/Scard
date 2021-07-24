@@ -31,28 +31,31 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:layout_marginTop="16dp"
                     android:id="@+id/txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{title}"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="#F11212"
-                    android:padding="25dp"
+                    android:padding="16dp"
                     app:fontFamily="@font/baloo2"
                     />
 
                 <TextView
+                    android:layout_marginTop="10dp"
                     android:id="@+id/txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Số:"
                     android:textColor="@color/black"
-                    android:paddingLeft="25dp"
+                    android:paddingLeft="16dp"
                     android:layout_below="@+id/txt1"
                     android:textStyle="bold"
                     />
 
                 <TextView
+                    android:layout_marginTop="10dp"
                     android:id="@+id/txt_soCanCuoc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:text="Họ và tên:"
                     android:textColor="@color/black"
-                    android:paddingLeft="25dp"
+                    android:paddingLeft="16dp"
                     android:layout_below="@+id/txt2"
                     android:textStyle="bold"
                     />
