@@ -25,6 +25,7 @@
             app:navGraph="@navigation/navigation"
             tools:layout_editor_absoluteX="264dp"
             tools:layout_editor_absoluteY="196dp" />
+
         <com.etebarian.meowbottomnavigation.MeowBottomNavigation
             android:id="@+id/bottomNavigation"
             android:background="@color/white"
