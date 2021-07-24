@@ -65,7 +65,7 @@ object Utils {
 
     fun getIdUser(context: Context): String? {
         val sharedPrefs = SharedPrefs.getInstance()
-        return sharedPrefs.getStringValue(context, Constants.USER.ID_USER, "111")
+        return sharedPrefs.getStringValue(context, Constants.USER.ID_USER, "")
     }
 
     fun saveFullName(context: Context, key: String) {
@@ -123,10 +123,10 @@ object Utils {
         dialog?.show()
     }
 
-     fun copyToClipboard(context: Context, text: String) {
+     fun copyToClipboard(context: Context, text: String, message: String) {
          val clipboard =
              context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
-         val clip = ClipData.newPlainText("Đã copy", text)
+         val clip = ClipData.newPlainText(message, text)
          clipboard.setPrimaryClip(clip)
      }
 }

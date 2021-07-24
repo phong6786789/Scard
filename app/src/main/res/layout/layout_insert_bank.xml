@@ -91,6 +91,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edt_hoTen"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="10dp"

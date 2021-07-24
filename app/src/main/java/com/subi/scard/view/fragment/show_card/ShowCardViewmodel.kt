@@ -29,6 +29,7 @@ class ShowCardViewmodel: BaseViewModel() {
         Log.d(TAG, "Load for id: $idUser")
 
         //Add friend after scan
+
         viewModelScope.launch {
             try {
                 Utils.log(TAG, "uid: $idUser")
@@ -55,7 +56,7 @@ class ShowCardViewmodel: BaseViewModel() {
                                                     (Constants.FRIEND_TYPE.FRIEND+idUser), user?.title, user?.description, Constants.FRIEND_TYPE.FRIEND, Utils.getIdUser(context), "0"
                                                 )
                                                 if (res.isSuccessful) {
-                                                    Utils.log(TAG+"hehe", "success: ${res.body()?.status}")
+                                                    Utils.log(TAG+"hehe", "add friend success: ${res.body()?.status}")
                                                 } else {
                                                     Utils.log(TAG+"hehe", "failed: ${res.errorBody()}")
                                                 }
@@ -104,29 +105,6 @@ class ShowCardViewmodel: BaseViewModel() {
                                 }
                             }
                             Utils.log(TAG, "size: ${listInfo.size}")
-//                            for(x in it){
-//                                if (x.id=="INFO${x.idUser}"){
-//                                    fullname.set(x.title)
-//                                    avatar.set(x.description)
-//                                    //Tránh trường hợp add friend chính bản thân
-//                                    if (x.idUser!=Utils.getIdUser(context)){
-//                                        viewModelScope.launch {
-//                                            try {
-//                                                val res = BaseNetwork.getInstance().insertItem(
-//                                                    (Constants.FRIEND_TYPE.FRIEND+idUser), x.title, x.description, Constants.FRIEND_TYPE.FRIEND, Utils.getIdUser(context), "0"
-//                                                )
-//                                                if (res.isSuccessful) {
-//                                                    Utils.log(TAG+"hehe", "success: ${res.body()?.status}")
-//                                                } else {
-//                                                    Utils.log(TAG+"hehe", "failed: ${res.errorBody()}")
-//                                                }
-//                                            } catch (e: Exception) {
-//                                                Utils.log(TAG+"hehe", "erro: ${e.message}")
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
                         }
                     } else {
                         Utils.log(TAG, "failed: ${response2.errorBody()}")

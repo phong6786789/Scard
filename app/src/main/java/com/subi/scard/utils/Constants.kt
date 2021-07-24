@@ -69,6 +69,12 @@ object Constants {
         const val EMAIL = "Email"
         const val TWITTER = "Twitter"
         const val TIKTOK = "Tiktok"
+    }
+
+    object STATUS{
+        const val SUCCESS = "success"
+        const val EXIST = "exist"
+        const val FAILED = "failed"
 
     }
 }

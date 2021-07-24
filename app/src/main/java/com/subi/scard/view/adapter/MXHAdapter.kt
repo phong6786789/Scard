@@ -48,15 +48,6 @@ class MXHAdapter(
                 setVariable(BR.viewmodel, item)
                 executePendingBindings()
 
-                if (ShowCardFragment.isShowCard){
-                    cardView3.visibility = View.VISIBLE
-                    cardView.setCardBackgroundColor(Color.TRANSPARENT);
-                    cardView.cardElevation = 0F;
-                    tvTitle.setTextColor(Color.WHITE)
-                    lnBackground.setBackgroundResource(0)
-                    tvTitle.textSize = 18f
-                }
-
                 cardView.setOnLongClickListener {
                     clickItem(item)
                     true

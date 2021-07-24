@@ -427,17 +427,50 @@ class ChauManager {
                         val status = if (direction == "LEFT") 0 else 1
                         if (maSo.isNotEmpty() && hoTen.isNotEmpty()) {
                             val title = binding.spinnerItem.selectedItem.toString()
-                            insert(
-                                Item(
-                                    title + Utils.getIdUser(context),
-                                    title,
-                                    "$maSo@$hoTen",
-                                    type,
-                                    Utils.getIdUser(context),
-                                    status.toString()
-                                )
-                            )
-                            dialog.dismiss()
+
+                            when(type){
+                                Constants.ITEM_TYPE.BANK->{
+                                    if (maSo.length==16){
+                                        insert(
+                                            Item(
+                                                title + Utils.getIdUser(context),
+                                                title,
+                                                "$maSo@$hoTen",
+                                                type,
+                                                Utils.getIdUser(context),
+                                                status.toString()
+                                            )
+                                        )
+                                        dialog.dismiss()
+                                    }
+                                    else{
+                                        Utils.showMess(context, "Thẻ ngân hàng phải đủ 16 số!")
+                                    }
+                                }
+
+                                Constants.ITEM_TYPE.INFO->{
+                                    if (maSo.length==9){
+                                        insert(
+                                            Item(
+                                                title + Utils.getIdUser(context),
+                                                title,
+                                                "$maSo@$hoTen",
+                                                type,
+                                                Utils.getIdUser(context),
+                                                status.toString()
+                                            )
+                                        )
+                                        dialog.dismiss()
+                                    }
+                                    else{
+                                        Utils.showMess(context, "Thẻ cá nhân phải đủ 9 số!")
+                                    }
+
+
+                                }
+                            }
+
+
                         } else {
                             Utils.showMess(context, "Không được để trống!")
                         }
