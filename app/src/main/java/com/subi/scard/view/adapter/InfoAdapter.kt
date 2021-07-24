@@ -40,11 +40,14 @@ class InfoAdapter(
                     true
                 }
 
-                val des = item.description?.split("@")
+                try {
+                    val des = item.description?.split("@")
 
-                title = item.title
-                hoTen = des?.get(1)
-                maSo = des?.get(0)
+                    title = item.title
+                    hoTen = des?.get(1)
+                    maSo = des?.get(0)
+                } catch (e: Exception) {
+                }
 
                 when(item.title){
                     Constants.INFO_TYPE.CCCD ->{

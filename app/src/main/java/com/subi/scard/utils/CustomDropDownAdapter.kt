@@ -49,6 +49,9 @@ class CustomDropDownAdapter(val context: Context, var dataSource: Array<String>)
             Constants.BANK_TYPE.VIETTINBANK.toLowerCase() -> R.drawable.icon_vtb
             Constants.BANK_TYPE.TECHCOMBANK.toLowerCase() -> R.drawable.icon_tcb
 
+            Constants.HEALTH_TYPE.BHYT.toLowerCase() -> R.drawable.bhyt
+            Constants.HEALTH_TYPE.CSSK.toLowerCase() -> R.drawable.bhsk
+
             else -> R.mipmap.ic_launcher
         }
 

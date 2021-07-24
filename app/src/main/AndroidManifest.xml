@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scard"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activity.loginGG.LoginActivity" />
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name=".view.activity.loginGG.LoginActivity" />
 
         <activity
             android:name=".view.activity.intro.IntroActivity"
@@ -25,6 +27,7 @@
 
         </activity>
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation"
             android:name=".view.MainActivity"
             android:theme="@style/Theme.Scard" >

@@ -1,8 +1,8 @@
 package com.subi.scard.utils
 
 object Constants {
-        const val BASE_URL = "http://192.168.1.29:8083/scard/"
-//    const val BASE_URL = "http://192.168.1.177/scard/"
+//        const val BASE_URL = "http://192.168.1.29:8083/scard/"
+    const val BASE_URL = "http://192.168.1.177/scard/"
     object USER {
         const val ID_USER = "idUser"
         const val FULLNAME = "FULLNAME"

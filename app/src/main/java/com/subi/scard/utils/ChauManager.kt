@@ -363,6 +363,9 @@ class ChauManager {
 
                     dialog.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
 
+                    binding.toolbar.textTitle.text  = "Thêm thẻ cá nhân"
+                    binding.edtHoTen.setText(Utils.getFullName(context))
+
                     val customDropDownAdapter = CustomDropDownAdapter(context, list)
                     binding.spinnerItem.adapter = customDropDownAdapter
 
@@ -409,6 +412,8 @@ class ChauManager {
                     }
 
                     dialog.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
+                    binding.toolbar.textTitle.text  = "Thêm thẻ ngân hàng"
+                    binding.edtHoTen.setText(Utils.getFullName(context))
 
                     val customDropDownAdapter = CustomDropDownAdapter(context, list)
                     binding.spinnerItem.adapter = customDropDownAdapter
@@ -479,11 +484,12 @@ class ChauManager {
                     binding.edtMaSo.setText(des?.get(0))
 
                     binding.stickySwitch.setDirection(if (item.status.equals("0")) StickySwitch.Direction.LEFT else StickySwitch.Direction.RIGHT, false)
+                    binding.toolbar.textTitle.text  = "Sửa thẻ cá nhân"
 
                     var position = 0
 
                     for (i in 0..list.size) {
-                        if (list[i].equals(item.title)) {
+                        if (list[i] == item.title) {
                             position = i
                             break
                         }
@@ -538,6 +544,7 @@ class ChauManager {
 
                     dialog.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
 
+                    binding.toolbar.textTitle.text  = "Sửa thẻ ngân hàng"
 
                     val des = item.description?.split("@")
 

@@ -248,6 +248,7 @@ class HealthViewmodel : BaseViewModel() {
                             edtMaSoBH.inputType = InputType.TYPE_CLASS_NUMBER
                             title2 = "Họ và tên"
                             edt2 = "Nhập họ và tên"
+                            binding.edtNoiKham.setText(context?.let { Utils.getFullName(it) })
                         }
                     }
                 }
@@ -258,6 +259,7 @@ class HealthViewmodel : BaseViewModel() {
                     edtMaSoBH.inputType = InputType.TYPE_CLASS_TEXT
                     title2 = "Họ và tên"
                     edt2 = "Nhập họ và tên"
+                    binding.edtNoiKham.setText(context?.let { Utils.getFullName(it) })
                 }
 
             }
