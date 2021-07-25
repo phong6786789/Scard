@@ -17,10 +17,10 @@
         <include layout="@layout/tool_bar" />
 
         <FrameLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
+                android:elevation="50dp"
                 android:visibility="@{viewmodel.isEmty?View.VISIBLE:View.GONE}"
                 android:id="@+id/lnEmty"
                 android:layout_width="match_parent"
@@ -44,11 +44,10 @@
             </LinearLayout>
 
             <ScrollView
-                android:layout_marginTop="8dp"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dp"
-                android:background="@color/bg_main">
+                android:padding="8dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_home"
