@@ -33,52 +33,29 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_marginTop="16dp"
+
+                    android:layout_marginTop="10dp"
                     android:id="@+id/txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{title}"
-                    android:textSize="20sp"
+                    android:textSize="25sp"
                     android:textColor="#FFF"
                     android:padding="16dp"
                     app:fontFamily="@font/baloo2"
                     />
 
                 <TextView
-                    android:visibility="invisible"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/txt2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt1"
-                    android:paddingLeft="16dp"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_marginTop="10dp"
+                    android:textAllCaps="true"
                     android:id="@+id/txt_soCanCuoc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/txt2"
                     android:layout_below="@+id/txt1"
-                    android:layout_marginBottom="0dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="16dp"
                     android:text="@{soThe}"
                     android:textColor="@color/white"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:visibility="invisible"
-                    android:id="@+id/txt3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:paddingLeft="16dp"
-                    android:layout_below="@+id/txt2"
                     android:textStyle="bold"
+                    android:letterSpacing="0.2"
                     />
 
                 <TextView
@@ -86,13 +63,12 @@
                     android:id="@+id/txt_hoTenCanCuoc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/txt3"
-                    android:layout_below="@+id/txt2"
-                    android:layout_marginBottom="0dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_below="@+id/txt_soCanCuoc"
+                    android:layout_marginLeft="16dp"
                     android:text="@{hoTen}"
                     android:textColor="@color/white"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1"/>
 
 
             </RelativeLayout>

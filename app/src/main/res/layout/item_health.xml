@@ -27,19 +27,18 @@
                 android:background="@drawable/round_hospital">
 
                 <TextView
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:id="@+id/txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewmodel.title}"
-                    android:textSize="20sp"
+                    android:textSize="25sp"
                     android:textColor="@color/white"
                     android:padding="16dp"
                     app:fontFamily="@font/baloo2"
                     />
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:id="@+id/txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -51,13 +50,12 @@
                     />
 
                 <TextView
-                    android:layout_marginTop="10dp"
+                    android:letterSpacing="0.2"
                     android:id="@+id/txt_maSoBH"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt2"
                     android:layout_below="@+id/txt1"
-                    android:layout_marginBottom="0dp"
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
@@ -79,7 +77,6 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt3"
                     android:layout_below="@+id/txt2"
-                    android:layout_marginBottom="0dp"
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/white"
 

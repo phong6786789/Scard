@@ -56,12 +56,16 @@ class BankAdapter(
                     Constants.BANK_TYPE.TECHCOMBANK -> imageBank.setImageResource(R.drawable.icon_tcb)
                 }
                 val num = position + 1
-                if (num % 3 == 0) {
+                if (num % 5 == 0) {
                     layout.setBackgroundResource(R.drawable.round_mastercard)
-                } else if (num % 2 == 0) {
+                } else if (num % 4 == 0) {
                     layout.setBackgroundResource(R.drawable.round_visa)
-                } else{
+                } else if (num % 5 == 0) {
+                    layout.setBackgroundResource(R.drawable.round_bank2)
+                } else if (num % 2 == 0) {
                     layout.setBackgroundResource(R.drawable.round_jcb)
+                } else{
+                    layout.setBackgroundResource(R.drawable.round_bank1)
                 }
 
             }

@@ -52,9 +52,11 @@ class InfoAdapter(
                 when(item.title){
                     Constants.INFO_TYPE.CCCD ->{
                         layout.setBackgroundResource(R.drawable.round_info)
+                        imageInfo.setBackgroundResource(R.drawable.ubnd_logo)
                     }
                     Constants.INFO_TYPE.PASSPORT ->{
-                        layout.setBackgroundResource(R.drawable.bg_passport)
+                        layout.setBackgroundResource(R.drawable.round_passport)
+                        imageInfo.setBackgroundResource(R.drawable.passport)
                     }
 
                     else -> cardView.setCardBackgroundColor(R.drawable.bg)
