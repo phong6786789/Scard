@@ -1,4 +1,4 @@
-package com.subi.scard.view.fragment.settings
+package com.subi.scard.view.fragment.settings.list
 
 import android.os.Bundle
 import android.view.View
@@ -15,11 +15,11 @@ import com.subi.scard.utils.Utils
 import com.subi.scard.view.adapter.SettingAdapter
 
 @Suppress("DEPRECATION")
-class SettingsFragment : BaseBindingFragment<FragmentSettingsBinding, SettingsViewmodel>() {
+class ThemeFragment : BaseBindingFragment<FragmentSettingsBinding, ThemeViewmodel>() {
     override val bindingVariable: Int
         get() = BR.viewmodel
-    override val viewModel: SettingsViewmodel
-        get() = ViewModelProviders.of(this).get(SettingsViewmodel::class.java)
+    override val viewModel: ThemeViewmodel
+        get() = ViewModelProviders.of(this).get(ThemeViewmodel::class.java)
     override val layoutResource: Int
         get() = R.layout.fragment_settings
 
@@ -38,22 +38,19 @@ class SettingsFragment : BaseBindingFragment<FragmentSettingsBinding, SettingsVi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbarOnlyTitle(Constants.TITLE.SETTINGS)
+        toolbarOnlyTitle(Constants.TITLE.THEME)
     }
 
     private fun onItemClickListener() = object : SettingAdapter.OnItemClickListener {
         override fun onClickItem(value: CustomItem, i: Int) {
-          when (i) {
-                0 -> findNavController().navigate(
-                    R.id.action_settingsFragment_to_themeFragment
-                )
+            when (i) {
+                0 -> ""
                 1 -> R.id.MXHFragment
                 2 -> R.id.healthFragment
                 3 -> R.id.bankFragment
                 4 -> context?.let { Utils.logOut(it) }
             }
-                resetBottomNav()
-//            findNavController().navigate(idx)
+//                resetBottomNav()
         }
 
     }

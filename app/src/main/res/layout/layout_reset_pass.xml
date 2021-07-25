@@ -54,12 +54,12 @@
               android:textColor="@color/white"
               android:textStyle="bold"
               android:layout_width="match_parent"
-              android:layout_height="60dp"
+              android:layout_height="50dp"
               android:layout_marginTop="20dp"
               android:layout_marginLeft="10dp"
               android:layout_marginRight="10dp"
               android:layout_marginBottom="20dp"
-              android:background="@drawable/button_save"
+              android:background="@drawable/btn_bg"
               android:elevation="10dp"
               />
 
@@ -69,11 +69,11 @@
               android:textColor="@color/white"
               android:textStyle="bold"
               android:layout_width="match_parent"
-              android:layout_height="60dp"
+              android:layout_height="50dp"
               android:layout_marginLeft="10dp"
               android:layout_marginRight="10dp"
               android:layout_marginBottom="20dp"
-              android:background="@drawable/button_save"
+              android:background="@drawable/btn_bg"
               android:elevation="10dp"
               />
       </LinearLayout>

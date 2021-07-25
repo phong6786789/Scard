@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +21,7 @@ object BindingUtils {
     @SuppressLint("DefaultLocale")
     @BindingAdapter("setImageBackground")
     @JvmStatic
-    fun setImageBackground(imageView: LinearLayout, title: String) {
+    fun setImageBackground(imageView: RelativeLayout, title: String) {
 
         var type = when (title.toLowerCase()) {
             Constants.SOCIAL_TYPE.FACEBOOK.toLowerCase() -> R.drawable.round_fb

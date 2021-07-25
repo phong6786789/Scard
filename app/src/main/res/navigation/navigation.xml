@@ -109,6 +109,30 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.subi.scard.view.fragment.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="SettingsFragment" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_settingsFragment_to_themeFragment"
+            app:destination="@id/themeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/themeFragment"
+        android:name="com.subi.scard.view.fragment.settings.list.ThemeFragment"
+        android:label="ThemeFragment" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_themeFragment_to_themeCardFragment"
+            app:destination="@id/themeCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/themeCardFragment"
+        android:name="com.subi.scard.view.fragment.settings.list.theme_card.ThemeCardFragment"
+        android:label="ThemeCardFragment" />
 
 </navigation>
