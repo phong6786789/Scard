@@ -59,7 +59,7 @@ class InfoAdapter(
                         imageInfo.setBackgroundResource(R.drawable.passport)
                     }
 
-                    else -> cardView.setCardBackgroundColor(R.drawable.bg)
+                    else -> cardView.setCardBackgroundColor(R.drawable.white_card)
                 }
 
 

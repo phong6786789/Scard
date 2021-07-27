@@ -26,7 +26,7 @@
                 android:layout_height="120dp"
                 android:layout_gravity="center"
                 android:src="@drawable/logo"
-                app:tint="@color/blue3_main" />
+                app:tint="@color/blue_main" />
         </LinearLayout>
 
         <FrameLayout
@@ -54,7 +54,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:src="@drawable/flash_select"
-                app:tint="@color/blue3_main"
+                app:tint="@color/blue_main"
                 android:focusable="true" />
         </LinearLayout>
     </RelativeLayout>

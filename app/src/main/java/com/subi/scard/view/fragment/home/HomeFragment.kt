@@ -48,7 +48,7 @@ class HomeFragment : BaseBindingFragment<FragmentHomeMainBinding, HomeViewmodel>
         //Load list menu
         viewDataBinding?.rcvMenu?.apply {
             adapter = CustomMenuAdapter(viewModel.list_menu, onItemClickListener())
-            layoutManager = GridLayoutManager(activity, 3, RecyclerView.VERTICAL, false)
+            layoutManager = GridLayoutManager(activity, 1, RecyclerView.HORIZONTAL, false)
             setHasFixedSize(true)
             hasFixedSize()
         }

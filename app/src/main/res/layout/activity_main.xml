@@ -35,8 +35,8 @@
             app:mbn_countBackgroundColor="#ff6f00"
             app:mbn_countTextColor="#000"
             app:mbn_defaultIconColor="#909090"
-            app:mbn_rippleColor="@color/blue2_main"
-            app:mbn_selectedIconColor="@color/blue2_main"
+            app:mbn_rippleColor="@color/blue_main"
+            app:mbn_selectedIconColor="@color/blue_main"
             app:mbn_shadowColor="#5000" />
     </RelativeLayout>
 </layout>
