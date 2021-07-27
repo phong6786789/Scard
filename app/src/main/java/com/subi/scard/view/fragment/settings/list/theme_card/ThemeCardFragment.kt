@@ -1,4 +1,4 @@
-package com.subi.scard.view.fragment.settings
+package com.subi.scard.view.fragment.settings.list.theme_card
 
 import android.os.Bundle
 import android.view.View
@@ -13,13 +13,14 @@ import com.subi.scard.model.CustomItem
 import com.subi.scard.utils.Constants
 import com.subi.scard.utils.Utils
 import com.subi.scard.view.adapter.SettingAdapter
+import com.subi.scard.view.fragment.settings.list.ThemeViewmodel
 
 @Suppress("DEPRECATION")
-class SettingsFragment : BaseBindingFragment<FragmentSettingsBinding, SettingsViewmodel>() {
+class ThemeCardFragment : BaseBindingFragment<FragmentSettingsBinding, ThemeCardViewmodel>() {
     override val bindingVariable: Int
         get() = BR.viewmodel
-    override val viewModel: SettingsViewmodel
-        get() = ViewModelProviders.of(this).get(SettingsViewmodel::class.java)
+    override val viewModel: ThemeCardViewmodel
+        get() = ViewModelProviders.of(this).get(ThemeCardViewmodel::class.java)
     override val layoutResource: Int
         get() = R.layout.fragment_settings
 
@@ -38,22 +39,12 @@ class SettingsFragment : BaseBindingFragment<FragmentSettingsBinding, SettingsVi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbarOnlyTitle(Constants.TITLE.SETTINGS)
+        toolbarOnlyTitle(Constants.TITLE.THEME)
     }
 
     private fun onItemClickListener() = object : SettingAdapter.OnItemClickListener {
         override fun onClickItem(value: CustomItem, i: Int) {
-          when (i) {
-                0 -> findNavController().navigate(
-                    R.id.action_settingsFragment_to_themeFragment
-                )
-                1 -> R.id.MXHFragment
-                2 -> R.id.healthFragment
-                3 -> R.id.bankFragment
-                4 -> context?.let { Utils.logOut(it) }
-            }
-                resetBottomNav()
-//            findNavController().navigate(idx)
+
         }
 
     }
