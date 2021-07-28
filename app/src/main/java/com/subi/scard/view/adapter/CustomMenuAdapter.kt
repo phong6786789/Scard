@@ -39,12 +39,13 @@ class CustomMenuAdapter(
 
             }
 
+            //thay màu menu
             val i = position + 1
             if (i % 3 == 0) {
-                binding.itemCard.setBackgroundColor(Color.parseColor("#FDB8C4"))
-            } else if (i % 3 == 1) {
                 binding.itemCard.setBackgroundColor(Color.parseColor("#B3BBF1"))
-            } else {
+            } else if (i % 3 == 1) {
+                binding.itemCard.setBackgroundColor(Color.parseColor("#FDB8C4"))
+            } else  {
                 binding.itemCard.setBackgroundColor(Color.parseColor("#FDBDA0"))
             }
         }
