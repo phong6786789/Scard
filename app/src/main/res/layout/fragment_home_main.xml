@@ -234,6 +234,7 @@
             />
 
         <LinearLayout
+            android:layoutAnimation="@anim/layout_animation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -319,7 +320,8 @@
                 <FrameLayout
                     android:id="@+id/cardviewx"
                     android:layout_width="match_parent"
-                    android:layout_height="220dp">
+                    android:layout_height="220dp"
+                    android:layoutAnimation="@anim/layout_animation">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardview"
@@ -399,6 +401,7 @@
                         android:layout_marginTop="8dp"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="8dp"
+
                         >
 
                         <RelativeLayout
@@ -412,11 +415,9 @@
                                 android:layout_height="120dp"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/logo" />
-
                         </RelativeLayout>
-
-
                     </androidx.cardview.widget.CardView>
+
                 </FrameLayout>
 
                 <TextView
