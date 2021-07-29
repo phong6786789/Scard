@@ -260,7 +260,7 @@ class LoginActivity : AppCompatActivity() {
                         var namex = FirebaseAuth.getInstance().currentUser?.displayName.toString()
                         val imagex = FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
                         val res = BaseNetwork.getInstance().insertItem(
-                            (Constants.INFO_TYPE.INFO + idUser), namex, imagex, Constants.ITEM_TYPE.INFO, idUser, "0"
+                            (Constants.INFO_TYPE.INFO + idUser), namex, imagex, Constants.ITEM_TYPE.AVATAR, idUser, "0"
                         )
                         if (res.isSuccessful) {
                             Utils.log("TAG", "success: ${res.body()?.status}")
