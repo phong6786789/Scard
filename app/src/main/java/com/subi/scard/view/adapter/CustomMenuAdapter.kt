@@ -1,9 +1,11 @@
 package com.subi.scard.view.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.BR
+import com.subi.scard.R
 import com.subi.scard.databinding.ItemCustomBinding
 import com.subi.scard.model.CustomItem
 
@@ -34,6 +36,17 @@ class CustomMenuAdapter(
             }
             binding.itemCard.setOnClickListener {
                 onItemClickListener?.onClickItem(sync, position)
+
+            }
+
+            //thay màu menu
+            val i = position + 1
+            if (i % 3 == 0) {
+                binding.itemCard.setBackgroundColor(Color.parseColor("#B3BBF1"))
+            } else if (i % 3 == 1) {
+                binding.itemCard.setBackgroundColor(Color.parseColor("#FDB8C4"))
+            } else  {
+                binding.itemCard.setBackgroundColor(Color.parseColor("#FDBDA0"))
             }
         }
 

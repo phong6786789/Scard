@@ -90,7 +90,7 @@ object BindingUtils {
 
     @BindingAdapter("setImageResource")
     @JvmStatic
-    fun setImageResource(imageView: ImageView, image: Int) {
+    fun     setImageResource(imageView: ImageView, image: Int) {
         imageView.setImageResource(image)
     }
 
@@ -98,7 +98,7 @@ object BindingUtils {
     @JvmStatic
     fun setImageFromUrl(imageView: ImageView, url: String) {
         try {
-            Picasso.get().load(url).placeholder(R.drawable.logo).error(R.drawable.logo).into(imageView)
+            Picasso.get().load(url).placeholder(R.drawable.user_fr).error(R.drawable.user_fr).into(imageView)
         }
         catch (e:Exception){
 
