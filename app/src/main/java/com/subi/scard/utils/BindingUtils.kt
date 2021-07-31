@@ -32,6 +32,21 @@ object BindingUtils {
             Constants.SOCIAL_TYPE.EMAIL.toLowerCase() -> R.drawable.round_mail
             Constants.SOCIAL_TYPE.TWITTER.toLowerCase() -> R.drawable.round_twitter
             Constants.SOCIAL_TYPE.SKYPE.toLowerCase() -> R.drawable.round_skype
+            Constants.THEME_COLOR.THEME_1.toLowerCase() -> R.drawable.theme_1
+            Constants.THEME_COLOR.THEME_2.toLowerCase() -> R.drawable.theme_2
+            Constants.THEME_COLOR.THEME_3.toLowerCase() -> R.drawable.theme_3
+            Constants.THEME_COLOR.THEME_4.toLowerCase() -> R.drawable.theme_4
+            Constants.THEME_COLOR.THEME_5.toLowerCase() -> R.drawable.theme_5
+            Constants.THEME_COLOR.THEME_6.toLowerCase() -> R.drawable.theme_6
+            Constants.THEME_COLOR.THEME_7.toLowerCase() -> R.drawable.theme_7
+            Constants.THEME_COLOR.THEME_8.toLowerCase() -> R.drawable.theme_8
+            Constants.THEME_COLOR.THEME_9.toLowerCase() -> R.drawable.theme_9
+            Constants.THEME_COLOR.THEME_10.toLowerCase() -> R.drawable.theme_10
+            Constants.THEME_COLOR.THEME_11.toLowerCase() -> R.drawable.theme_11
+            Constants.THEME_COLOR.THEME_12.toLowerCase() -> R.drawable.theme_12
+            Constants.THEME_COLOR.THEME_13.toLowerCase() -> R.drawable.theme_13
+            Constants.THEME_COLOR.THEME_14.toLowerCase() -> R.drawable.theme_14
+            Constants.THEME_COLOR.THEME_15.toLowerCase() -> R.drawable.theme_15
             else -> R.mipmap.ic_launcher
         }
         imageView.setBackgroundResource(type)

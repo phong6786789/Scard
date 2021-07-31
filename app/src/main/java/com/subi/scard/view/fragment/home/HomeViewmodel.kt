@@ -13,6 +13,8 @@ import com.subi.scard.R
 import com.subi.scard.base.viewmodel.BaseViewModel
 import com.subi.scard.model.CustomItem
 import com.subi.scard.model.Item
+import com.subi.scard.model.Theme
+import com.subi.scard.model.ThemeRepo
 import com.subi.scard.utils.Constants
 import com.subi.scard.utils.SharedPrefs
 import com.subi.scard.utils.Utils
@@ -28,6 +30,7 @@ class HomeViewmodel : BaseViewModel() {
     var name = ObservableField("")
     var image = ObservableField("")
     var context: Context? = null
+    var bg = ObservableField("")
 
     init {
         list_menu.addAll(
@@ -44,32 +47,50 @@ class HomeViewmodel : BaseViewModel() {
 
     fun load() {
         //Load thông tin user
-      viewModelScope.launch {
-          val idUser = context?.let { Utils.getIdUser(it) }?:""
-          Log.d("loadUser", "id Hiện tại $idUser")
-          val responseUser = BaseNetwork.getInstance()
-              .getAllItemByIdUserAndType(idUser, Constants.ITEM_TYPE.AVATAR)
-          withContext(Dispatchers.Main) {
-              Utils.log("TAG", "response: ${responseUser.body()}")
-              if (responseUser.isSuccessful) {
-                  var user : Item? =null
-                  responseUser.body()?.getAllList?.let {
-                      for (xz in it){
-                          user = xz
-                      }
-                      name.set(user?.title)
-                      image.set(user?.description)
-                      uid.set(idUser)
-                      Log.d("loadUser", "id Hiện tại $idUser")
+        viewModelScope.launch {
+            val idUser = context?.let { Utils.getIdUser(it) } ?: ""
+            Log.d("loadUser", "id Hiện tại $idUser")
 
-                      context?.let { it1 -> Utils.saveFullName(it1, user?.title?:"") }
-                      Utils.log("TAG", "user: $user")
-                  }
-              } else {
-                  Utils.log("TAG", "failed: ${responseUser.errorBody()}")
-              }
-          }
-      }
+            val responseTheme = BaseNetwork.getInstance().checkThemeByIdUser(idUser, Constants.THEME_TYPE.QR_CARD)
+            withContext(Dispatchers.Main) {
+                Utils.log("responseTheme", "response: ${responseTheme.body()}")
+                if (responseTheme.isSuccessful) {
+                    val theme = responseTheme.body()?.list?.get(0)
+                    bg.set(theme?.background)
+                } else {
+                    Utils.log("TAG", "failed: ${responseTheme.errorBody()}")
+                }
+            }
+
+
+            val responseUser = BaseNetwork.getInstance()
+                .getAllItemByIdUserAndType(idUser, Constants.ITEM_TYPE.AVATAR)
+            withContext(Dispatchers.Main) {
+                Utils.log("TAG", "response: ${responseUser.body()}")
+                try{
+                    if (responseUser.isSuccessful) {
+                        var user: Item? = null
+                        responseUser.body()?.getAllList?.let {
+                            for (xz in it) {
+                                user = xz
+                            }
+                            name.set(user?.title)
+                            image.set(user?.description)
+                            uid.set(idUser)
+                            Log.d("loadUser", "id Hiện tại $idUser")
+
+                            context?.let { it1 -> Utils.saveFullName(it1, user?.title ?: "") }
+                            Utils.log("TAG", "user: $user")
+                        }
+                    } else {
+                        Utils.log("TAG", "failed: ${responseUser.errorBody()}")
+                    }
+                }catch (ex: Exception){
+
+                }
+
+            }
+        }
     }
 
 }

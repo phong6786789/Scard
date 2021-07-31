@@ -223,7 +223,6 @@
             android:id="@+id/imv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:src="@drawable/header"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -231,6 +230,7 @@
             app:layout_constraintHeight_percent=".40"
             android:scaleType="centerCrop"
             app:layout_constraintVertical_bias="0"
+            android:background="@drawable/header"
             />
 
         <LinearLayout
@@ -336,8 +336,8 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_below="@id/imageView1"
-                            android:background="@drawable/button">
+                            setImageBackground="@{viewmodel.bg}"
+                            android:layout_below="@id/imageView1">
 
                             <ImageView
                                 setImageFromUID="@{viewmodel.uid}"
@@ -408,7 +408,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_below="@id/imageView1"
-                            android:background="@drawable/button">
+                            setImageBackground="@{viewmodel.bg}"
+                            >
 
                             <ImageView
                                 android:layout_width="120dp"

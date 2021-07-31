@@ -8,12 +8,16 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.subi.scard.R
 import com.subi.scard.databinding.LayoutInsertBankBinding
 import com.subi.scard.databinding.LayoutInsertInfoBinding
 import com.subi.scard.databinding.LayoutInsertItemBinding
+import com.subi.scard.databinding.LayoutThemeQrBinding
 import com.subi.scard.model.Item
+import com.subi.scard.view.adapter.QRAdapter
+import com.subi.scard.view.adapter.SettingAdapter
 import io.ghyeok.stickyswitch.widget.StickySwitch
 
 class ChauManager {
@@ -220,6 +224,60 @@ class ChauManager {
             }
             binding.btnCancel.setOnClickListener {
                 dialog.dismiss()
+            }
+            dialog.show()
+        }
+
+        @SuppressLint("SetTextI18n")
+        fun setupThemeQR(
+            context: Context,
+            list: MutableList<String>,
+            edit: (String) -> Unit
+        ) {
+            val dialog = Dialog(context)
+            val binding = LayoutThemeQrBinding.inflate(LayoutInflater.from(context))
+            dialog?.setContentView(binding.root)
+            val window = dialog?.window
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            if (dialog?.window != null) {
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            }
+            dialog?.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
+
+            binding.apply {
+                rcvThemeQr.apply {
+                    adapter = QRAdapter(list){ bg->
+                        var dialogx: Dialog? = null
+                        dialogx = context.let {
+                            ShowDialog.Builder(it).title("ĐỔI MÀU SCARD-QR")
+                                .message("Bạn có chắc chắn muốn đổi màu?")
+                                .setLeftButton("ĐỔI", object : LeftInterface {
+                                    override fun onClick() {
+                                        edit(bg)
+                                        dialogx?.dismiss()
+                                        dialog.dismiss()
+                                    }
+                                })
+                                .setRightButton("KHÔNG", object : RightInterface {
+                                    override fun onClick() {
+                                        dialogx?.dismiss()
+                                    }
+                                })
+                                .miniDialog()
+                        }
+                        dialogx?.show()
+                    }
+                    layoutManager = LinearLayoutManager(context)
+                    setHasFixedSize(true)
+                    hasFixedSize()
+                }
+                toolbar.imageLeft.setOnClickListener {
+                    dialog.dismiss()
+                }
+                toolbar.textTitle.text = "ĐỔI MÀU THẺ SCARD-QR"
             }
             dialog.show()
         }
