@@ -33,20 +33,21 @@ class CustomMenuAdapter(
             binding.apply {
                 setVariable(BR.viewmodel, sync)
                 executePendingBindings()
-            }
-            binding.itemCard.setOnClickListener {
-                onItemClickListener?.onClickItem(sync, position)
 
-            }
+                itemCard.setOnClickListener {
+                    onItemClickListener?.onClickItem(sync, position)
 
-            //thay màu menu
-            val i = position + 1
-            if (i % 3 == 0) {
-                binding.itemCard.setBackgroundColor(Color.parseColor("#B3BBF1"))
-            } else if (i % 3 == 1) {
-                binding.itemCard.setBackgroundColor(Color.parseColor("#FDB8C4"))
-            } else  {
-                binding.itemCard.setBackgroundColor(Color.parseColor("#FDBDA0"))
+                }
+
+                //thay màu menu
+                val i = position + 1
+                if (i % 3 == 0) {
+                    itemCard.setBackgroundColor(Color.parseColor("#B3BBF1"))
+                } else if (i % 3 == 1) {
+                    itemCard.setBackgroundColor(Color.parseColor("#FDB8C4"))
+                } else  {
+                    itemCard.setBackgroundColor(Color.parseColor("#FDBDA0"))
+                }
             }
         }
 

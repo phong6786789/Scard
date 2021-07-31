@@ -9,32 +9,6 @@
         type="com.subi.scard.model.CustomItem" />
     </data>
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/item_card"-->
-<!--        android:layout_width="150dp"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:layout_margin="8dp"-->
-<!--        android:background="@drawable/button"-->
-<!--        android:gravity="center"-->
-<!--        android:orientation="vertical"-->
-<!--        android:paddingVertical="16dp">-->
-
-<!--        <ImageView-->
-<!--            setImageResource="@{viewmodel.image}"-->
-<!--            android:id="@+id/item_image"-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/item_title"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@{viewmodel.title}"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textStyle="bold" />-->
-<!--    </LinearLayout>-->
 
     <RelativeLayout
         android:layout_width="122dp"

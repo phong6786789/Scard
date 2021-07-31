@@ -47,10 +47,10 @@ class SettingsFragment : BaseBindingFragment<FragmentSettingsBinding, SettingsVi
                 0 -> findNavController().navigate(
                     R.id.action_settingsFragment_to_themeFragment
                 )
-                1 -> R.id.MXHFragment
-                2 -> R.id.healthFragment
-                3 -> R.id.bankFragment
-                4 -> context?.let { Utils.logOut(it) }
+//                1 -> R.id.MXHFragment
+                1 -> R.id.healthFragment
+                2 -> R.id.bankFragment
+                3 -> context?.let { Utils.logOut(it) }
             }
                 resetBottomNav()
 //            findNavController().navigate(idx)

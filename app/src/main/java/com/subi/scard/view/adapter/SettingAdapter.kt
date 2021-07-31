@@ -1,5 +1,6 @@
 package com.subi.scard.view.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -31,10 +32,25 @@ class SettingAdapter(
             binding.apply {
                 setVariable(BR.setting, sync)
                 executePendingBindings()
+
+                btnSetting.setOnClickListener {
+                    onItemClickListener?.onClickItem(sync, position)
+                }
+
+                //thay màu menu
+                val i = position + 1
+                if (i % 4 == 0) {
+                    rcvSetting.setBackgroundColor(Color.parseColor("#FFEAEF")) //logout
+                } else if (i % 4 == 3) {
+                    rcvSetting.setBackgroundColor(Color.parseColor("#E9E4FF")) // màn hình
+                } else if (i % 4 == 2) {
+                    rcvSetting.setBackgroundColor(Color.parseColor("#E8F7FF")) //hướng dẫn
+                } else  {
+                    rcvSetting.setBackgroundColor(Color.parseColor("#FFEEE7")) //theme
+                }
             }
-            binding.btnSetting.setOnClickListener {
-                onItemClickListener?.onClickItem(sync, position)
-            }
+
+
         }
 
     }
