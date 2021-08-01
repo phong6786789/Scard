@@ -21,9 +21,9 @@ object BindingUtils {
     @SuppressLint("DefaultLocale")
     @BindingAdapter("setImageBackground")
     @JvmStatic
-    fun setImageBackground(imageView: RelativeLayout, title: String) {
+    fun setImageBackground(imageView: RelativeLayout, title: String?) {
 
-        var type = when (title.toLowerCase()) {
+        var type = when (title?.toLowerCase()) {
             Constants.SOCIAL_TYPE.FACEBOOK.toLowerCase() -> R.drawable.round_fb
             Constants.SOCIAL_TYPE.ZALO.toLowerCase() -> R.drawable.round_zalo
             Constants.SOCIAL_TYPE.INSTAGRAM.toLowerCase() -> R.drawable.round_instagram
@@ -47,7 +47,7 @@ object BindingUtils {
             Constants.THEME_COLOR.THEME_13.toLowerCase() -> R.drawable.theme_13
             Constants.THEME_COLOR.THEME_14.toLowerCase() -> R.drawable.theme_14
             Constants.THEME_COLOR.THEME_15.toLowerCase() -> R.drawable.theme_15
-            else -> R.mipmap.ic_launcher
+            else -> R.drawable.round_mastercard
         }
         imageView.setBackgroundResource(type)
     }
@@ -105,7 +105,7 @@ object BindingUtils {
 
     @BindingAdapter("setImageResource")
     @JvmStatic
-    fun     setImageResource(imageView: ImageView, image: Int) {
+    fun setImageResource(imageView: ImageView, image: Int) {
         imageView.setImageResource(image)
     }
 

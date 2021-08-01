@@ -18,6 +18,7 @@ import com.subi.scard.model.ThemeRepo
 import com.subi.scard.utils.Constants
 import com.subi.scard.utils.SharedPrefs
 import com.subi.scard.utils.Utils
+import com.subi.scard.view.MainActivity
 import com.subi.scard.view.activity.loginGG.LoginActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -76,6 +77,9 @@ class HomeViewmodel : BaseViewModel() {
                             }
                             name.set(user?.title)
                             image.set(user?.description)
+                            MainActivity.user = user?.title.toString()
+                            MainActivity.avatar = user?.description.toString()
+                            MainActivity.idUser = idUser
                             uid.set(idUser)
                             Log.d("loadUser", "id Hiện tại $idUser")
 

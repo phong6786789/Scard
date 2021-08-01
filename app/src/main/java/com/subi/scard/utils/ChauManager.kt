@@ -277,7 +277,7 @@ class ChauManager {
                 toolbar.imageLeft.setOnClickListener {
                     dialog.dismiss()
                 }
-                toolbar.textTitle.text = "ĐỔI MÀU THẺ SCARD-QR"
+                toolbar.textTitle.text = "Đổi màu thẻ QR-Scard"
             }
             dialog.show()
         }

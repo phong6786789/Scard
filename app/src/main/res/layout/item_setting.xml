@@ -20,32 +20,74 @@
         android:orientation="vertical"
         tools:ignore="UnusedAttribute">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusable="true"
-            android:orientation="horizontal"
-            android:padding="16dp">
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:focusable="true"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:padding="16dp">-->
 
-            <ImageView
-                setImageResource="@{setting.image}"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginEnd="8dp"
-                app:tint="@color/blue2_main" />
+        <!--            <ImageView-->
+        <!--                setImageResource="@{setting.image}"-->
+        <!--                android:layout_width="25dp"-->
+        <!--                android:layout_height="25dp"-->
+        <!--                android:layout_marginEnd="8dp"-->
+        <!--                app:tint="@color/blue2_main" />-->
+
+        <!--            <TextView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:text="@{setting.title}"-->
+        <!--                android:textColor="@color/blue_main" />-->
+
+        <!--        </LinearLayout>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="10dp"
+            android:focusable="true">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView_setting"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                app:cardCornerRadius="23dp"
+
+                >
+
+                <RelativeLayout
+                    android:id="@+id/rcv_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:elevation="10dp"
+                        setImageResource="@{setting.image}"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/cardView_setting"
                 android:text="@{setting.title}"
-                android:textColor="@color/blue_main" />
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#F5F5F5" />
+        </RelativeLayout>
     </LinearLayout>
 </layout>

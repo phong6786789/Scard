@@ -66,4 +66,11 @@ class MainActivity : AppCompatActivity() {
             findNavController(R.id.fragment).navigate(R.id.homeFragment)
         }
     }
+
+    companion object{
+        var user = ""
+        var avatar = ""
+        var idUser = ""
+
+    }
 }
