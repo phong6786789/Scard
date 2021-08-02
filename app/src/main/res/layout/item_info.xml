@@ -97,11 +97,10 @@
             android:id="@+id/imageInfo"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/ubnd_logo"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="33dp"
             android:layout_alignParentRight="true"
-            android:elevation="8dp"/>
+            android:layout_marginRight="20dp"
+            android:background="@drawable/ubnd_logo"
+            android:elevation="8dp" />
     </RelativeLayout>
 
 </layout>
